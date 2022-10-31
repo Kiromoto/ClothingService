@@ -30,8 +30,8 @@ object AboutBox: TAboutBox
     object ProgramIcon: TImage
       Left = 8
       Top = 8
-      Width = 65
-      Height = 57
+      Width = 76
+      Height = 68
       Margins.Left = 2
       Margins.Top = 2
       Margins.Right = 2
