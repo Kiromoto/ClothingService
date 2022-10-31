@@ -1,0 +1,4314 @@
+{$optimization off}
+
+unit MAIN;
+
+interface
+
+uses Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Forms,
+  Vcl.Controls, Vcl.Menus, Vcl.StdCtrls, Vcl.Dialogs, Vcl.Buttons, Winapi.Messages,
+  Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdActns, Vcl.ActnList, Vcl.ToolWin,
+  Vcl.ImgList, System.ImageList, System.Actions, Vcl.Grids, Vcl.ValEdit,
+  Data.DB, Vcl.DBGrids, FileCtrl, System.Math, Vcl.WinXCtrls, System.Zip;
+
+type
+  TMainForm = class(TForm)
+    MainMenu1: TMainMenu;
+    File1: TMenuItem;
+    FileNewItem: TMenuItem;
+    FileOpenItem: TMenuItem;
+    FileCloseItem: TMenuItem;
+    Window1: TMenuItem;
+    Help1: TMenuItem;
+    N1: TMenuItem;
+    FileExitItem: TMenuItem;
+    WindowCascadeItem: TMenuItem;
+    WindowTileItem: TMenuItem;
+    WindowArrangeItem: TMenuItem;
+    HelpAboutItem: TMenuItem;
+    OpenDialog: TOpenDialog;
+    FileSaveItem: TMenuItem;
+    FileSaveAsItem: TMenuItem;
+    Edit1: TMenuItem;
+    CutItem: TMenuItem;
+    CopyItem: TMenuItem;
+    PasteItem: TMenuItem;
+    WindowMinimizeItem: TMenuItem;
+    StatusBar: TStatusBar;
+    ActionList1: TActionList;
+    EditCut1: TEditCut;
+    EditCopy1: TEditCopy;
+    EditPaste1: TEditPaste;
+    FileNew1: TAction;
+    FileSave1: TAction;
+    FileExit1: TAction;
+    FileOpen1: TAction;
+    FileSaveAs1: TAction;
+    WindowCascade1: TWindowCascade;
+    WindowTileHorizontal1: TWindowTileHorizontal;
+    WindowArrangeAll1: TWindowArrange;
+    WindowMinimizeAll1: TWindowMinimizeAll;
+    HelpAbout1: TAction;
+    FileClose1: TWindowClose;
+    WindowTileVertical1: TWindowTileVertical;
+    WindowTileItem2: TMenuItem;
+    ImageList1: TImageList;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    TabControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet4: TTabSheet;
+    StringGrid1: TStringGrid;
+    Button1: TButton;
+    OpenDialog1: TOpenDialog;
+    ToolBar2: TToolBar;
+    ToolButton9: TToolButton;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    ToolButton4: TToolButton;
+    ToolButton5: TToolButton;
+    ToolButton6: TToolButton;
+    ToolButton7: TToolButton;
+    ToolButton8: TToolButton;
+    ToolButton10: TToolButton;
+    ToolButton11: TToolButton;
+    Button2: TButton;
+    Label1: TLabel;
+    ComboBox1: TComboBox;
+    TabSheet3: TTabSheet;
+    Edit2: TEdit;
+    StaticText1: TStaticText;
+    Button3: TButton;
+    StaticText2: TStaticText;
+    StaticText3: TStaticText;
+    StaticText4: TStaticText;
+    StaticText5: TStaticText;
+    StaticText6: TStaticText;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    Edit7: TEdit;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    StaticText7: TStaticText;
+    Edit8: TEdit;
+    Button9: TButton;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Button10: TButton;
+    Button11: TButton;
+    Button12: TButton;
+    Button13: TButton;
+    Button14: TButton;
+    Button15: TButton;
+    Button16: TButton;
+    Button17: TButton;
+    Edit9: TEdit;
+    StaticText8: TStaticText;
+    StaticText9: TStaticText;
+    Edit10: TEdit;
+    StaticText10: TStaticText;
+    StaticText11: TStaticText;
+    Edit11: TEdit;
+    Edit12: TEdit;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    StaticText12: TStaticText;
+    StaticText13: TStaticText;
+    Edit13: TEdit;
+    Edit14: TEdit;
+    Button20: TButton;
+    Button18: TButton;
+    Button19: TButton;
+    Button21: TButton;
+    ProgressBar3: TProgressBar;
+    Button22: TButton;
+    ProgressBar4: TProgressBar;
+    Button23: TButton;
+    Button24: TButton;
+    Button25: TButton;
+    ProgressBar1: TProgressBar;
+    ProgressBar2: TProgressBar;
+    StaticText14: TStaticText;
+    Edit15: TEdit;
+    Button26: TButton;
+    Button27: TButton;
+    ProgressBar5: TProgressBar;
+    Label2: TLabel;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    TabSheet2: TTabSheet;
+    Button28: TButton;
+    Edit16: TEdit;
+    StaticText15: TStaticText;
+    CheckBox4: TCheckBox;
+    CheckBox5: TCheckBox;
+    CheckBox6: TCheckBox;
+    Button29: TButton;
+    Edit17: TEdit;
+    CheckBox7: TCheckBox;
+    Button30: TButton;
+    procedure FileNew1Execute(Sender: TObject);
+    procedure FileOpen1Execute(Sender: TObject);
+    procedure HelpAbout1Execute(Sender: TObject);
+    procedure FileExit1Execute(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button11Click(Sender: TObject);
+    procedure Button12Click(Sender: TObject);
+    procedure Button18Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure Button13Click(Sender: TObject);
+    procedure Button19Click(Sender: TObject);
+    procedure Button15Click(Sender: TObject);
+    procedure Button14Click(Sender: TObject);
+    procedure Button16Click(Sender: TObject);
+    procedure Button20Click(Sender: TObject);
+    procedure Button17Click(Sender: TObject);
+    procedure Button22Click(Sender: TObject);
+    procedure Button23Click(Sender: TObject);
+    procedure Button24Click(Sender: TObject);
+    procedure Button26Click(Sender: TObject);
+    procedure Button25Click(Sender: TObject);
+    procedure Button21Click(Sender: TObject);
+    procedure Button27Click(Sender: TObject);
+    procedure Button28Click(Sender: TObject);
+    procedure Button29Click(Sender: TObject);
+    procedure CheckBox7Click(Sender: TObject);
+    procedure Button30Click(Sender: TObject);
+
+  private
+    { Private declarations }
+    procedure CreateMDIChild(const Name: string);
+  public
+    { Public declarations }
+  end;
+
+var
+  MainForm: TMainForm;
+
+implementation
+
+{$R *.dfm}
+
+uses CHILDWIN, About, ComObj, Unit1;
+Var
+Ap : Variant;
+Way : string;
+PokazMessag : boolean;
+ArZip : TZipFile;
+path, f, zname, zfn, fa : string;
+//fa : TStringDynArray;
+
+function FullDirectoryCopyToZip(SourceDir, TargetDir: string; StopIfNotAllCopied, OverWriteFiles: Boolean): Boolean;
+{
+Фукция копирует запаковывает файлы в ZIP архив
+}
+var
+  SR: TSearchRec;
+  I: Integer;
+begin
+  Result:=False;
+  SourceDir:=IncludeTrailingBackslash(SourceDir);
+  TargetDir:=IncludeTrailingBackslash(TargetDir);
+
+  I:=FindFirst(SourceDir+'*', faAnyFile, SR);
+  try
+    while I=0 do
+    begin
+      if (SR.Name<>'') and (SR.Name<>'.') and (SR.Name<>'..') and (SR.Name<>'MDIAPP.exe') then
+      begin
+       if SR.Attr=faDirectory then
+        begin
+         //MkDir(TargetDir+SR.NAME);
+         Result:=FullDirectoryCopyToZip(SourceDir+SR.Name, TargetDir+SR.NAME, StopIfNotAllCopied, OverWriteFiles);
+        end
+        else
+       if not (not OverWriteFiles and FileExists(TargetDir+SR.Name))
+          then ArZip.Add(Pchar(SourceDir+SR.Name), Pchar(TargetDir+SR.Name), zcDeflate)
+        else
+          Result := True;
+       if not Result and StopIfNotAllCopied then exit;
+      end;
+      I:=FindNext(SR);
+    end;
+  finally
+    System.SysUtils.FindClose(SR);
+  end;
+end;
+
+
+function FullDirectoryCopy(SourceDir, TargetDir: string; StopIfNotAllCopied, OverWriteFiles: Boolean): Boolean;
+{
+Фукция копирует СОДЕРЖИМОЕ директории SourceDir в директорию TargetDir.
+Копируются все файлы, подкаталоги, и файлы находящиеся в этих подкаталогах.
+
+Аргумент StopIfNotAllCopied: если значение этого аргумента = True,
+то при первой же ошибке копирования файла или папки, работы функции
+прекратится а функуция вернёт False. В случае если этот аргумент = False,
+то ошибки копирования учитываться не будут.
+
+Аргумент OverWriteFiles: если True, то существующие файлы будут переписаны.
+}
+var
+  SR: TSearchRec;
+  I: Integer;
+begin
+  Result:=False;
+  SourceDir:=IncludeTrailingBackslash(SourceDir);
+  TargetDir:=IncludeTrailingBackslash(TargetDir);
+
+  I:=FindFirst(SourceDir+'*', faAnyFile, SR);
+  try
+    while I=0 do
+    begin
+      if (SR.Name<>'') and (SR.Name<>'.') and (SR.Name<>'..') and (SR.Name<>'MDIAPP.exe') then
+      begin
+       if SR.Attr=faDirectory then
+        begin
+         MkDir(TargetDir+SR.NAME);
+         Result:=FullDirectoryCopy(SourceDir+SR.Name, TargetDir+SR.NAME, StopIfNotAllCopied, OverWriteFiles);
+        end
+        else
+       if not (not OverWriteFiles and FileExists(TargetDir+SR.Name))
+          then Result:=CopyFile(Pchar(SourceDir+SR.Name), Pchar(TargetDir+SR.Name), False)
+        else
+          Result := True;
+       if not Result and StopIfNotAllCopied then exit;
+      end;
+      I:=FindNext(SR);
+    end;
+  finally
+    System.SysUtils.FindClose(SR);
+  end;
+end;
+
+procedure ActualOfCart;
+var
+i, j, yOT, yV, yN, yR, mOT, mV, colN, colV, ColCart, P, ZZ : integer;
+textEx, mS, yS, buf, NowDate : string;
+begin
+ Ap.Range[Ap.Cells[8, 5], Ap.Cells[8, 7]].Select;
+ //MainForm.Label2.Caption:=Ap.Selection.Font.ThemeColor;
+ Ap.Selection.Font.ThemeColor:=1;
+ TextEx:=Ap.Range['F8'];
+ if TextEx='Мужчина' then
+  begin
+   Ap.Range[Ap.Cells[19, 1], Ap.Cells[19, 20]].Select;
+   Ap.Selection.Interior.Color:=14277081;
+   Ap.Range[Ap.Cells[57, 1], Ap.Cells[57, 20]].Select;
+   Ap.Selection.Interior.Color:=14277081;
+  end
+ else
+ if TextEx='Женщина' then
+  begin
+   Ap.Range[Ap.Cells[17, 1], Ap.Cells[18, 20]].Select;
+   Ap.Selection.Interior.Color:=14277081;
+  end;
+
+ Ap.Range[Ap.Cells[22, 1], Ap.Cells[22, 20]].Select;
+ //MainForm.Label2.Caption:=Ap.Selection.Interior.Color;
+ TextEx:=Ap.Selection.Interior.Color;
+ if not (TextEx='14277081') then
+  begin
+   Ap.Selection.Interior.Color:=14277081;
+   Ap.Range[Ap.Cells[31, 1], Ap.Cells[37, 20]].Select;
+   Ap.Selection.Interior.Color:=14277081;
+   Ap.Range[Ap.Cells[31, 1], Ap.Cells[37, 20]].Select;
+  end;
+
+ ZZ:=0;
+ TextEx:=Ap.Range['E6'];
+ if TextEx='полковник' then
+  begin
+   P:=14;
+   Ap.Range[Ap.Cells[14, 1], Ap.Cells[15, 20]].Select;
+   Ap.Selection.Interior.Color:=16777215;
+  end
+ else
+  begin
+   P:=16;
+   Ap.Range[Ap.Cells[14, 1], Ap.Cells[15, 20]].Select;
+   Ap.Selection.Interior.Color:=14277081;
+  end;
+
+ Ap.Range[Ap.Cells[66, 1], Ap.Cells[66, 20]].Select;
+ Ap.Selection.Font.Size:=8;
+ Ap.Selection.Font.Name:='Times New Roman';
+ Ap.Selection.HorizontalAlignment:=-4108;
+ Ap.Selection.VerticalAlignment:=-4108;
+
+ Ap.Range[Ap.Cells[1, 1], Ap.Cells[1, 1]].Select;
+
+ for i:=P to 63 do
+  begin
+   colCart:=0;
+   for j:=7 to 19 do
+    begin
+     textEx:=Ap.Cells[i,j]; //Читаем ячейку
+     if (length(textEx)<>0) and (pos('/',textex)<>0) then // Если она не пуста, плюсуем количество предметов
+      begin
+       P:=pos('/',textex);
+       textex:=copy(textex,1,p-1);
+       colCart:=colCart+StrToInt(textex);
+      end;
+    end;
+   TextEx:=Ap.Cells[i,5]; //Читаем ячейку с нормой количество/срок
+   p:=pos('/',textex);
+   if p<>0 then
+    begin
+      mS:=copy(textex,1,p-1);
+      colN:=StrToInt(mS); // Количество по норме
+      delete(textex,1,p);
+      yN:=StrToInt(textex); // Срок по норме
+    end;
+
+   Textex:=Ap.Cells[i,6]; //Читаем ячейку с аттестатом или переносом ведомости
+   if (length(textex)<>0) and (pos('/',textex)<>0) then
+    begin
+     P:=pos('/',textex);
+     buf:=copy(textex,1,p-1); // Количество предметов прибывших с сотрудником
+     delete(textex,1,p);
+     mS:=copy(textex,1,2);
+     yS:=copy(textex,4,4);
+     mV:=StrToInt(mS); // Месяц выдачи предметов прибывших с сотрудником
+     yV:=StrToInt(yS); // Год выдачи предметов прибывших с сотрудником
+     ColV:=StrToInt(buf);
+     ColCart:=ColCart+ColV;
+    end
+   else if (not length(textex)<>0) and ((i=14)or(i=15)) then
+     begin
+     textex:=Ap.Range['E8']; //Читаем дату присвоения звания ПОЛКОВНИК
+     mS:=copy(TextEx,4,2);
+     yS:=copy(TextEx,7,4);
+     mV:=StrToInt(mS); // Узнаем месяц присвоения звания ПОЛКОВНИК
+     yV:=StrToInt(yS); // Узнаем год присвоения звания ПОЛКОВНИК
+     end
+   else if (not length(textex)<>0) and (not ((i=14)or(i=15))) then
+    begin
+     textex:=Ap.Range['Q7']; //Читаем дату прибытия сотрудника
+     mS:=copy(TextEx,4,2);
+     yS:=copy(TextEx,7,4);
+     mV:=StrToInt(mS); // Узнаем месяц прибытия сотрудника
+     yV:=StrToInt(yS); // Узнаем год прибытия сотрудника
+    end;
+   if ColN>0 then
+    begin
+     if ColCart>0 then
+      while ColCart-ColN>0 do
+       begin
+        ColCart:=ColCart-ColN;
+        yV:=yV+yN;
+       end
+      else
+     if ColCart<0 then
+      while ColCart<=0 do
+       begin
+        ColCart:=ColCart+ColN;
+        yV:=yV-yN;
+       end
+      else
+     if ColCart=0 then
+      begin
+       if (i=22) or (i=35) or (i=36) or (i=38) or (i=39) or (i=40) or (i=41) or (i=43) or (i=47)
+        or (i=48) or (i=49) or (i=50) or (i=52) or (i=61) or (i=63) then
+         begin
+          if (yV-yN>2020) then
+           begin
+            ColCart:=ColCart+ColN;
+            yV:=yV-yN;
+           end;
+         end
+        else
+         begin
+          buf:=Ap.Range['Q7']; //Читаем дату прибытия сотрудника
+          mS:=copy(buf,4,2);
+          yS:=copy(buf,7,4);
+          yR:=StrToInt(yS); // Узнаем месяц прибытия сотрудника
+          mOT:=StrToInt(mS); // Узнаем год прибытия сотрудника
+          if (yV-yN>yR) or ((yV-yN=yR)and(mV>=mOT)) then
+           begin
+            ColCart:=ColCart+ColN;
+            yV:=yV-yN;
+           end;
+         end;
+      end;
+
+     if mV<10 then buf:='0'+IntToStr(mV) else buf:=IntToStr(mV);
+     Ap.Cells[i,20]:=IntToStr(ColCart)+'/'+buf+'.'+IntToStr(yV);
+     ZZ:=ZZ+ColCart;
+    end
+   else
+   if colN=0 then Ap.Cells[i,20]:='';
+  end;
+
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ Ap.Cells[12,20]:='Состоит на '+NowDate;
+ Ap.Range['T64']:=IntToStr(ZZ);
+
+ buf:=Ap.Range['E6'];
+ if not (buf='полковник') then
+  begin
+   Ap.Cells[14,20]:='';
+   Ap.Cells[15,20]:='';
+  end;
+
+end;
+
+procedure DelOfSotrudnik; //Процедура исключения сотрудника из списка при увольнении, переводе
+var
+ i, pEx : integer;
+ TExtEx : string;
+begin
+// добавление в список уволенных
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(MainForm.Edit2.Text,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkBook.Sheets.Item[2].Activate;
+ pEx:=2;
+ TextEx:=Ap.Cells[pEx,1];
+ while length(TextEx)<>0 do
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+ Ap.Cells[pEx,1]:=MainForm.StringGrid1.Cells[1,MainForm.ComboBox1.ItemIndex+1]; //записать личный номер удаляемого сотрудника
+ Ap.Cells[pEx,2]:=MainForm.StringGrid1.Cells[2,MainForm.ComboBox1.ItemIndex+1]; //записать звание удаляемого сотрудника
+ Ap.Cells[pEx,3]:=MainForm.StringGrid1.Cells[3,MainForm.ComboBox1.ItemIndex+1]; //записать ФИО удаляемого сотрудника
+ Ap.Cells[pEx,4]:=MainForm.StringGrid1.Cells[4,MainForm.ComboBox1.ItemIndex+1]; //записать дату присвоения в/звания удаляемого сотрудника
+ Ap.Cells[pEx,5]:=MainForm.StringGrid1.Cells[5,MainForm.ComboBox1.ItemIndex+1]; //записать пол удаляемого сотрудника
+ Ap.Cells[pEx,6]:=DateToStr(MainForm.DateTimePicker2.Date); //записать дату совершения операции по удалению сотрудника
+
+ // удаление из списка действующих сотрудников
+ Ap.ActiveWorkBook.Sheets.Item[1].Activate;
+ i:=MainForm.ComboBox1.ItemIndex+2;
+ Ap.Rows[i].Select;
+ Ap.Selection.Delete;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.ComboBox1.Text:='Выберите сотрудника';
+ MainForm.Button10.Enabled:=false;
+ MainForm.Button11.Enabled:=false;
+ MainForm.Button12.Enabled:=false;
+ MainForm.Button13.Enabled:=false;
+ MainForm.Button14.Enabled:=false;
+ MainForm.Button18.Enabled:=false;
+ MainForm.Button19.Enabled:=false;
+ MainForm.Button21.Enabled:=false;
+ MainForm.Label5.caption:='';
+ MainForm.Label7.Caption:='';
+ MainForm.Button1.Click;
+end;
+
+procedure CreatOpisVZAMEN (way : string); //Процедура создания описи ведомостей замены текущего года
+var
+ NowDate, wayEX, Sdir : string;
+begin
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ Sdir:=MainForm.Edit15.Text+NowDate;
+ wayEX:=MainForm.Edit15.Text+'OPIS_VZAMEN_EX'+'.xlsx';
+ IF not DirectoryExists(Sdir) then MkDir(Sdir);
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(wayEX,0,false);
+ Ap.Visible:=false; //true-окно EXEL становиться видимым
+ Ap.DisplayAlerts:=False;
+ Ap.Workbooks[1].SaveAs(way);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure NewListOfCart; // Процедура создания нового листа карточки, в случае полного заполнения старого
+var
+j,i, NumOfList, ZZ, listIndex, pEx : integer;
+NumOfCart, bufEx, textEx : string;
+SosNa : array[14..100] of string[20];
+begin
+ NumOfCart:=Ap.Range['K1']; // Запомнили номер карточки
+ NumOflist:=StrToInt(Ap.Range['A6']); //Запомнили номер текущего листа карточки
+ ZZ:=0; //Количество предметов для переноса в новую карточку
+ for i:=14 to 63 do
+   Begin
+    SosNa[i]:=Ap.Cells[i,20]; //Переписываем значение 14-50 ячейки столбца T (20)
+    bufEx:=Ap.Cells[i,20];
+    if length(bufex)<>0 then
+     begin
+       j:=pos('/',bufex);
+       bufex:=copy(bufex,1,j-1);
+       ZZ:=ZZ+StrToInt(bufex);
+     end;
+   end;
+
+ ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге;
+ if ListIndex=1 then Ap.Workbooks[1].Sheets.Item[1].Name:='1';
+ BufEx:=IntToStr(ListIndex+1);
+ Ap.Cells[12,20]:='Перенос в карточку '+NumOfCart+'-'+bufEx; //Замена названия СОСТОИТ НА в закончившемся листе
+ Ap.Range['S4']:=DateToStr(MainForm.DateTimePicker2.Date);
+ Ap.WorkBooks[1].WorkSheets.Item[ListIndex].Copy(After:=Ap.WorkBooks[1].WorkSheets.Item[ListIndex]); //копируем лист
+ Ap.Workbooks[1].Sheets.Item[listIndex+1].Name:=bufEx;
+ Ap.Workbooks[1].Sheets.Item[listIndex+1].Activate;
+
+ for I:=6 to 20 do Ap.Cells[12,i]:=''; //Очищаем строку с наименованиеми документов на выдачу
+
+ for i:=6 to 20 do
+  for j:=14 to 63 do
+    Ap.Cells[j,i]:=''; //Очищаем основное поле карточки
+ Ap.Range['A6']:=bufex; //Присваеваем номер листа карточки
+ Ap.Range['C6']:=DateToStr(MainForm.DateTimePicker2.date); // Дата регистрации карточки
+ Ap.Range['S3']:=DateToStr(MainForm.DateTimePicker2.date);  //Дата начала карточки
+ Ap.Range['E6']:=MainForm.Label5.Caption;  //Актуальное воинское звание
+ Ap.Range['E8']:=MainForm.StringGrid1.Cells[4,MainForm.ComboBox1.ItemIndex+1];  //Дата присвоения последнего воинского звания
+ Ap.Range['E9']:=MainForm.Edit11.Text; //заполняем должность руководителя МТО
+ Ap.Range['N9']:=MainForm.Edit12.Text; //заполняем инициалы и фамилию руководителя МТО
+ Ap.Cells[12,6]:='Перенос из карточки '+NumOfCart+'-'+IntToStr(ListIndex); //
+ Ap.Cells[12,20]:='Состоит на __.__.20__'; //
+ Ap.Cells[64,6]:=IntToStr(ZZ); // Записали общее количество
+ Ap.Cells[64,20]:=IntToStr(ZZ); // Записали общее количество
+ Ap.Range['S4']:='__.__.____'; // Зата оконочания новой карточки
+
+ for i:=14 to 63 do
+  Begin
+   Ap.Cells[i,6]:=SosNa[i]; //Заполняем перенос из
+   Ap.Cells[i,20]:=SosNa[i]; // Заполняем состоит на...
+  end;
+
+ pEx:=6; //Поиск свободного столбца для записи
+ TextEx:=Ap.Cells[12,pEx];
+ While (Length(TextEx)<>0) and (pEx<20) do
+ begin
+  inc(pEx);
+  TextEx:=Ap.Cells[12,pEx];
+ end;
+end;
+
+procedure ZamenaFromSRPP(wayPP,wayCart : string); //Процедура замены имущества из проекта справки-расчета
+var
+i, j, p, colPL, colMIN, TT, k, pEx, NVed, ListIndex, MW : integer;
+NugnaZamena : boolean;
+SumSpRas, TextEx, way, wayEX, NowDate, FIO, NCart, buf, POL : string;
+SSR, Minus, TZam, Pluss, MIN, MAX, RaSS : real;
+MasSR : array [1..2,8..57] of integer;
+  //1..2, где 1 - положительные значения предметов
+  //1..2, где 2 - отрицательные значения предметов - выданы вперед, подлежат замене
+MasCena : array [8..57] of real; // Цена предметов вещевого имущества
+SS : array [1..4,1..5000] of real;
+  //1..4, где 1 - это стоимость положительных предметов
+  //1..4, где 2 - это указатель порядкового номера положительного предмета
+  //1..4, где 3 - это стоимость отрицательных предметов
+  //1..4, где 4 - это указатель порядкового номера отрицательного предмета
+
+MinS, MinRes : array [1..2,0..5000] of extended;  //MinS - массив для работы и поиска, MinRes - массив для записи наилучшего результата
+  //1..2, где 1 - это стоимость предметов
+  //1..2, где 2 - это указатель порядкового номера предмета
+VSV : array [14..100,0..5] of integer;
+ //14..50, где в 14..100, количество предметов для замены
+ //0..5, где в 0 записано количество предметов к замене
+ //0..5, где в 1 записано количество из столбца карточки состоит На..
+ //0..5, где в 2 записан месяц из столбца карточки состоит На..
+ //0..5, где в 3 записан год из столбца карточки состоит На..
+ //0..5, где в 4 записано количество предметов по норме
+ //0..5, где в 5 записано срок носки предметов по норме
+begin
+ FillChar(MasSR,sizeof(MasSR),0);
+ FillChar(MasCena,sizeof(MasCena),0);
+ FillChar(SS,sizeof(SS),0);
+ FillChar(MinS,sizeof(MinS),0);
+ FillChar(MinRes,sizeof(MinRes),0);
+ FillChar(VSV,sizeof(VSV),0);
+
+ p:=pos('_', wayCart);
+ k:=length(wayCart);
+ NCart:=WayCart;
+ delete(NCart,1,p);
+ k:=length(NCart);
+ p:=pos('.', NCart);
+ delete(NCart,p,k);
+
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(wayPP,0,false); //Открываем проект справки расчета
+ Ap.Visible:=false; //true-окно EXEL становиться видимым
+ Ap.DisplayAlerts:=False;
+ //прочесть справку рассчет
+ SumSpRas:=Ap.Range['G58']; //Сумма по справке-расчету
+ FIO:=Ap.Range['A4']; //ФИО
+ SSR:=StrToFloat(SumSpRas);
+ POL:=Ap.Workbooks[1].Sheets.Item[1].Name;
+ If POL='Man' then MW:=1 else if POL='Woman' then MW:=2;
+ Minus:=0;
+ Pluss:=0;
+ colPL:=0;
+ colMIN:=0;
+ NugnaZamena:=false;
+ For i:=8 to 57 do //Читаем количество и цену по справке
+  begin
+   TextEx:=Ap.Cells[i,6];
+   MasCena[i]:=StrToFloat(TextEx);
+   TextEx:=Ap.Cells[i,5];
+   if length(TextEx)>0 then
+    begin
+     p:=StrToInt(TextEx);   //
+     if p>0 then
+      begin
+       MasSR[1,i]:=p;
+       Pluss:=pluss+p*MasCena[i];
+       for j:=1 to p do
+        begin
+         inc(colPL);
+         SS[1,colPL]:=MasCena[i];
+         SS[2,colPL]:=i;
+        end;
+      end
+      else
+       begin
+        MasSR[2,i]:=p;
+        Minus:=minus+p*MasCena[i];
+        NugnaZamena:=true;
+        for j:=-1 downto p do
+         begin
+          inc(colMIN);
+          SS[3,colMIN]:=MasCena[i];
+          SS[4,colMIN]:=i;
+         end;
+       end;
+    end;
+  end;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ //Если возможно заменить все предметы, выданные вперед, и получить положительную сумму компенсации
+ if (SSR>0) and NugnaZamena then
+  begin
+   min:=100000000000;
+   for i:=1 to colPL do
+    begin
+     for k:=1 to 5000 do
+      begin
+       MinS[1,k]:=0;
+       MinS[2,k]:=0;
+      end;
+     p:=0;
+     rass:=0;
+     for j:=i to colPL do
+      begin
+       inc(p);
+       MinS[1,p]:=SS[1,j]; //Сумма в массив
+       MinS[2,p]:=SS[2,j]; //Номер в массив
+       rass:=rass+SS[1,j];
+       if (rass+minus>=0) and (rass+minus>=min) then
+        begin
+         rass:=rass-MinS[1,p];
+         MinS[1,p]:=0;
+         MinS[2,p]:=0;
+         dec(p);
+        end
+       else
+       if (rass+minus>=0) and (rass+minus<min) then
+        begin
+         for k:=1 to 5000 do
+          begin
+           MinRes[1,k]:=0;
+           MinRes[2,k]:=0;
+          end;
+         for k:=1 to p do
+          begin
+           MinRes[1,k]:=MinS[1,k];
+           MinRes[2,k]:=MinS[2,k];
+          end;
+         minRes[2,0]:=p;
+         min:=rass+minus;
+         rass:=rass-MinS[1,p];
+         MinS[1,p]:=0;
+         MinS[2,p]:=0;
+         dec(p);
+        end;
+      end;
+    end;
+   For i:=8 to 57 do MasSR[1,i]:=0;
+   for i:=1 to round(MinRes[2,0]) do
+    begin
+     k:=Round(MinRes[2,i]);
+     inc(MasSR[1,k]);
+    end;
+  end
+ else
+  if (SSR<0) and NugnaZamena and (pluss>0) then //Если не все предметы, выданные вперед, возможно заменить
+   begin
+    min:=100000000000;
+    for i:=1 to colMIN do
+     begin
+      for k:=1 to 5000 do
+       begin
+        MinS[1,k]:=0;
+        MinS[2,k]:=0;
+       end;
+      p:=0;
+      rass:=0;
+      for j:=i to colMIN do
+       begin
+        inc(p);
+        MinS[1,p]:=SS[3,j]; //Сумма в массив
+        MinS[2,p]:=SS[4,j]; //Номер в массив
+        rass:=rass+SS[3,j];
+        if pluss-rass<0 then
+         begin
+          rass:=rass-MinS[1,p];
+          MinS[1,p]:=0;
+          MinS[2,p]:=0;
+          dec(p);
+         end
+        else
+        if (pluss-rass>=0) and (pluss-rass<min) then
+         begin
+          for k:=1 to 5000 do
+           begin
+            MinRes[1,k]:=0;
+            MinRes[2,k]:=0;
+           end;
+          for k:=1 to p do
+           begin
+            MinRes[1,k]:=MinS[1,k];
+            MinRes[2,k]:=MinS[2,k];
+           end;
+          minRes[2,0]:=p;
+          min:=pluss-rass;
+         end;
+       end;
+     end;
+
+    For i:=8 to 57 do MasSR[2,i]:=0;
+    p:=Round(MinRes[2,0]);
+    for i:=1 to p do
+     begin
+      k:=Round(MinRes[2,i]);
+      dec(MasSR[2,k]);
+     end;
+   end
+ else
+  if (SSR=0) and NugnaZamena and (pluss>0) then //Все предметы меняются на все предметы, выданные вперед без поиска оптимального варианта
+   begin
+    min:=0;
+   end;
+
+ if NugnaZamena and (min<>100000000000) and (pluss>0) then
+  begin
+   //Открываем ОПИСЬ ведомостей замены для регистрации новой ведомости замены
+   NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+   delete(NowDate,1,6);
+   way:=MainForm.Edit15.Text+NowDate+'\OPIS_VZAMEN_'+NowDate+'.xlsx';
+   If not FileExists(way) then CreatOpisVZAMEN(way);
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(way,0,false); //Открываем проект справки расчета
+   Ap.Visible:=false; //true-окно EXEL становиться видимым
+   Ap.DisplayAlerts:=False;
+   pEx:=2;
+   TextEx:=Ap.Cells[pEx,1];
+   NVed:=1;
+   while Length(TextEx)>0 do
+    begin
+     NVed:=StrToInt(TextEx);
+     inc(pEx);
+     TextEx:=Ap.Cells[pEx,1];
+    end;
+   If pEx=2 then NVed:=1 else inc(NVed);
+   Ap.Cells[pEx,1]:=IntToStr(NVed); // Номер ведомости
+   Ap.Cells[pEx,2]:=NCart; // Номер карточки сотрудника
+   Ap.Cells[pEx,3]:=DateToStr(MainForm.DateTimePicker2.Date); // Дата создания ведомости
+   Ap.Cells[pEx,4]:=FIO; // ФИО сотрудника
+   Ap.ActiveWorkbook.Save;
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+   //Открываем ведомость замены для регистрации и заполнения
+   wayEX:=MainForm.Edit15.Text+'VZAMEN_EX.xlsx';
+   way:=MainForm.Edit15.Text+NowDate+'\VZAMEN_'+IntToStr(Nved)+'.xlsx';
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(wayEX,0,false); //Открываем ведомость замены
+   Ap.Visible:=false; //true-окно EXEL становиться видимым
+   Ap.DisplayAlerts:=False;
+   Ap.Workbooks[1].Sheets.Item[MW].Activate;
+   if MW=1 then Ap.Workbooks[1].Sheets.Item[2].Delete else Ap.Workbooks[1].Sheets.Item[1].Delete;
+   Ap.Range['F2']:=IntToStr(Nved); // Номер ведомости
+   Ap.Range['A4:L4']:=FIO; // ФИО
+   Ap.Range['A59:B59']:=MainForm.Edit9.Text; // Должность исполнителя
+   Ap.Range['E59:F59']:=MainForm.Edit10.Text; // Инициалы и Фамилия исполнителя
+   Ap.Range['A60']:=DateToStr(MainForm.DateTimePicker2.Date); // дата создания ведомости
+   For i:=8 to 57 do
+    begin
+     if MasSR[1,i]>0 then Ap.Cells[i,4]:=IntToStr(MasSR[1,i]);
+     if MasSR[2,i]<0 then Ap.Cells[i,10]:=IntToStr(0-MasSR[2,i]);
+    end;
+   Ap.ActiveWorkbook.SaveAs(way);
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+   // Открываем карточку сотрудника для записи данных ведомости замены
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(wayCart,0,false); //Открываем карточку сотрудника
+   Ap.Visible:=false; //true-окно EXEL становиться видимым
+   Ap.DisplayAlerts:=False;
+   ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+   Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+   ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+   Ap.ActiveWorkbook.Save;
+   pEx:=6; //Поиск свободного столбца для записи
+   TextEx:=Ap.Cells[12,pEx];
+   While (Length(TextEx)<>0) and (pEx<20) do
+    begin
+     inc(pEx);
+     TextEx:=Ap.Cells[12,pEx];
+    end;
+   if pEx=20 then
+    begin
+     NewListOfCart; //Создание нового листа карточки, если старый закончился
+     pEx:=7;
+    end;
+   Ap.Cells[12,pEx]:='Ведомость замены №'+IntToStr(NVed); //Записываем в документы ведомость замены
+   TT:=0;
+   for i:=14 to 63 do //Заполняем массив данными нормы и данными ячийки СОСТОИТ НА...
+    begin
+     if MasSR[1,i-6]<>0 then
+      begin
+       VSV[i,0]:=MasSR[1,i-6];
+       TT:=TT+MasSR[1,i-6];
+      end;
+     if MasSR[2,i-6]<>0 then
+      begin
+       VSV[i,0]:=MasSR[2,i-6];
+       TT:=TT-MasSR[2,i-6];
+      end;
+     if (VSV[i,0]<>0) then
+      begin
+       TextEx:=Ap.Cells[i,20]; //СОСТОИТ НА...
+       if Length(TextEx)>0 then
+        begin
+         p:=pos('/',TextEx);
+         VSV[i,1]:=StrToInt(copy(TextEx,1,p-1)); // Читаем количество предметов СОСТОИТ НА
+         VSV[i,2]:=StrToInt(copy(TextEx,p+1,2)); // Читаем месяц СОСТОИТ НА
+         if VSV[i,2]<10 then buf:='0'+IntToStr(VSV[i,2]) else buf:=IntToStr(VSV[i,2]);
+         VSV[i,3]:=StrToInt(copy(TextEx,p+4,4)); // Читаем год СОСТОИТ НА
+        end;
+       TextEx:=Ap.Cells[i,5]; //Читаем норму
+       p:=pos('/',TextEx);
+       VSV[i,4]:=StrToInt(copy(TextEx,1,p-1)); // Читаем норму - количество
+       delete(TextEx,1,p);
+       VSV[i,5]:=StrToInt(TextEx); // Читаем норму - срок
+       if VSV[i,0]>0 then
+        begin
+         if (VSV[i,1]=0) or ((VSV[i,1]>0) and (VSV[i,1]<VSV[i,4])) then
+          Ap.Cells[i,pEx]:=IntToStr(VSV[i,0])+'/'+buf+'.'+IntToStr(VSV[i,3]);
+         if VSV[i,1]=VSV[i,4] then //Количество предметов состоит на = норме выдачи
+          begin
+           VSV[i,3]:=VSV[i,3]+VSV[i,5];
+           Ap.Cells[i,pEx]:=IntToStr(VSV[i,0])+'/'+buf+'.'+IntToStr(VSV[i,3]);
+          end;
+        end;
+       if VSV[i,0]<0 then Ap.Cells[i,pEx]:=IntToStr(VSV[i,0])+'/'+buf+'.'+IntToStr(VSV[i,3]);
+      end;
+    end;
+   Ap.Cells[64,pEx]:=IntToStr(TT); // Количество предметов по ведомости замены
+   Ap.ActiveWorkbook.Save;
+   ActualOfCart; //приводим карточку в актуальное состояние
+   Ap.ActiveWorkbook.Save;
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+  end
+ else
+  begin
+   k:=StrToInt(NCart);
+   dec(k);
+   MainForm.ComboBox1.ItemIndex:=k;
+   ShowMessage('Замена предметов невозможна для сотрудника: '+MainForm.ComboBox1.Text);
+  end;
+end;
+
+procedure CreatOpisSPRS(way : string); //Процедура создания описи справок ДК на текущий год
+var
+ NowDate, wayEX, Sdir : string;
+begin
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ Sdir:=MainForm.Edit4.Text+NowDate;
+ wayEX:=MainForm.Edit4.Text+'OPIS_SR_EX'+'.xlsx';
+ IF not DirectoryExists(Sdir) then MkDir(Sdir);
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(wayEX,0,false);
+ Ap.Visible:=false; //true-окно EXEL становиться видимым
+ Ap.DisplayAlerts:=False;
+ Ap.Workbooks[1].SaveAs(way);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure CreatOpisORDER (way : string); //Процедура создания описи ордеров на пошив текущего года
+var
+ NowDate, wayEX, Sdir : string;
+begin
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ Sdir:=MainForm.Edit6.Text+NowDate;
+ wayEX:=MainForm.Edit6.Text+'OPIS_ORDER_EX'+'.xlsx';
+ IF not DirectoryExists(Sdir) then MkDir(Sdir);
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(wayEX,0,false);
+ Ap.Visible:=false; //true-окно EXEL становиться видимым
+ Ap.DisplayAlerts:=False;
+ Ap.Workbooks[1].SaveAs(way);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure GrateNewSVEDOM(way : string);
+ var
+ i, j, pEx : integer;
+ way2, TextEx : string;
+ begin
+  way2:=MainForm.Edit5.Text+'SVEDOM_EX'+'.xlsx';
+  Ap:=CreateOleObject('Excel.Application');
+  Ap.Workbooks.Open(way2,0,false);
+  Ap.Visible:=false; //true-окно EXEL становиться видимым
+  Ap.DisplayAlerts:=False;
+  Ap.Workbooks[1].SaveAs(way);
+  Ap.ActiveWorkBook.Sheets.Item[1].Activate;
+  pEx:=2;
+  j:=1;
+  TextEx:=MainForm.StringGrid1.Cells[j,1];
+  while length(TextEx)<>0 do
+   begin
+    for i:=1 to 3 do
+     begin
+      Ap.ActiveWorkBook.Sheets.Item[i].Activate;
+      Ap.Cells[pEx,1]:=MainForm.StringGrid1.Cells[1,j];//Запись номера карточки в ведомость
+      Ap.Cells[pEx,2]:=MainForm.StringGrid1.Cells[2,j]; //Запись воинского звания
+      Ap.Cells[pEx,3]:=MainForm.StringGrid1.Cells[3,j]; //Запись Ф И О
+     end;
+    inc(pEx);
+    inc(j);
+    TextEx:=MainForm.StringGrid1.Cells[j,1];
+   end;
+
+  Ap.ActiveWorkBook.Sheets.Item[1].Activate;
+  Ap.ActiveWorkbook.Save;
+  Ap.ActiveWorkbook.Close;
+  Ap.Application.Quit;
+  If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+ end;
+
+procedure CreateOfATTESTAT(OldName : string); //Процедура создания вещевого аттестата
+var
+ i, ListIndex, TN, p, pEx, NumAtt, MW, LY, TT : integer;
+ TextEx, buf, NameOpisEX, NameOpisSave, NowDate, Sdir, way, way1, s1, s2 : string;
+ SN : array [14..100,1..3] of integer;
+ //1-количество состоит На..,
+ //2,3 - месяц и год состоит На...,
+
+begin
+ FillChar(SN,sizeof(SN),0);
+ //ОТКРЫТЬ КАРТОЧКУ, ПРОЧЕСТЬ данные столбца СОСТОИТ НА
+ if FileExists(OLdName) then
+  begin
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(OldName,0,false);
+   Ap.Visible:=false; //true-окно EXEL становиться видимым
+   Ap.DisplayAlerts:=False;
+   ListIndex:=Ap.Workbooks[1].Sheets.Count;
+   Ap.Workbooks[1].Sheets.Item[listIndex].Activate;
+   Ap.ActiveWorkbook.Save;
+   ActualOfCart;
+   Ap.ActiveWorkbook.Save;
+
+   TextEx:=Ap.Range['F8'];
+   if TextEx='Мужчина' then MW:=1 else MW:=2;
+
+   TextEx:=Ap.Range['E6'];
+   if (TextEx='полковник') then TN:=14 else TN:=16;
+   For i:=TN to 63 do //Процедура заполнения массива данными личной карточки
+    begin
+     SN[i,1]:=0;
+     SN[i,2]:=0;
+     SN[i,3]:=0;
+     TextEx:=Ap.Cells[i,20]; //Читаем ячейку СОСТОИТ НА
+     if length(textex)>0 then
+      begin
+       p:=pos('/',TextEx);
+       buf:=copy(textEx,1,p-1);
+       SN[i,1]:=StrToInt(buf); //Количество предметов в ячейке СОСТОИТ НА
+       delete(TextEx,1,p);
+       SN[i,2]:=StrToInt(Copy(TextEx,1,2)); //Месяц предметов в ячейке СОСТОИТ НА
+       SN[i,3]:=StrToInt(Copy(TextEx,4,4)); //Год предметов в ячейке СОСТОИТ НА
+      end;
+    end;
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+   //ЗАРЕГЕСТРИРОВАТЬ АТТЕСТАТ В ОПИСИ АТТЕСТАТОВ текущего года, ЕСЛИ ЕЕ НЕТ - создать опись
+   NameOpisEx:=MainForm.Edit7.Text+'\OPIS_ATT_EX.xlsx';
+   NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+   delete(NowDate,1,6);
+   NameOpisSave:=MainForm.Edit7.Text+NowDate+'\OPIS_ATT_'+NowDate+'.xlsx';
+   if not FileExists(NameOpisSave) then
+    begin
+     Sdir:=MainForm.Edit7.Text+NowDate;
+     IF not DirectoryExists(Sdir) then MkDir(Sdir);
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(NameOpisEx,0,false);
+     Ap.Visible:=false; //true-окно EXEL становиться видимым
+     Ap.DisplayAlerts:=False;
+     Ap.Workbooks[1].SaveAs(NameOpisSave);
+     Ap.ActiveWorkbook.Close;
+     Ap.Application.Quit;
+     If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+    end;
+   //ОФОРМИТЬ АТТЕСТАТ ПО ОБРАЗЦУ
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(NameOpisSave,0,false);
+   Ap.Visible:=false; //true-окно EXEL становиться видимым
+   Ap.DisplayAlerts:=False;
+   pEx:=2;
+   TextEx:=Ap.Cells[pEx,1];
+   if Length(TextEx)>0 then NumAtt:=1+StrToInt(TextEx) else NumAtt:=1;
+   while length(TextEx)>0 do
+    begin
+     NumAtt:=StrToInt(TextEx);
+     inc(NumAtt);
+     inc(pEx);
+     TextEx:=Ap.Cells[pEx,1];
+    end;
+   Ap.Cells[pEx,1]:=IntToStr(NumAtt); //Номер вещевого аттестата
+   Ap.Cells[pEx,2]:=MainForm.StringGrid1.Cells[1,MainForm.ComboBox1.ItemIndex+1]; //№ карточки сотрудника
+   Ap.Cells[pEx,3]:=DateToStr(MainForm.DateTimePicker2.Date);  //Дата регистрации
+   Ap.Cells[pEx,4]:=MainForm.StringGrid1.Cells[3,MainForm.ComboBox1.ItemIndex+1]; // запись ФИО в опись
+   Ap.Workbooks[1].Save;
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+   //ЗАПОЛНЯЕМ АТТЕСТАТ СОТРУДНИКА
+   way:=MainForm.Edit7.Text+'ATT_EX.xlsx';
+   way1:=MainForm.Edit7.Text+NowDate+'\ATT_'+IntToStr(NumAtt)+'.xlsx';
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(way,0,false);
+   Ap.Visible:=false; //true-окно EXEL становиться видимым
+   Ap.DisplayAlerts:=False;
+   Ap.Workbooks[1].Sheets.Item[MW].Activate;
+
+   Ap.Range['I1']:=IntToStr(NumAtt); //Номер вещевого аттестата
+   Ap.Range['A7:D7']:=IntToStr(NumAtt); //Номер вещевого аттестата
+   Ap.Range['I7:J7']:=IntToStr(NumAtt); //Номер вещевого аттестата
+   Ap.Range['A3:L3']:=MainForm.StringGrid1.Cells[3,MainForm.ComboBox1.ItemIndex+1]; //ФИО
+   Ap.Range['K7:L7']:=DateToStr(MainForm.DateTimePicker2.Date); //Дата регистрации
+   Ap.Range['A67:F67']:=DateToStr(MainForm.DateTimePicker2.Date); //Дата регистрации
+   Ap.Range['A66:F66']:=MainForm.Edit11.Text; //Должность руководителя
+   Ap.Range['K66:L66']:=MainForm.Edit12.Text; //ФИО руководителя
+   Ap.Range['A68:F68']:=MainForm.Edit9.Text; //Должность исполнителя
+   Ap.Range['K68:L68']:=MainForm.Edit10.Text; //ФИО исполнителя
+
+   TextEx:=MainForm.ComboBox1.Text;
+   i:=length(TextEx);
+   while TextEx[i]<>' ' do dec(i);
+   S1:=TextEx[i+1]+'.';
+   dec(i);
+   while TextEx[i]<>' ' do dec(i);
+   S2:=TextEx[i+1]+'.';
+   Delete(TextEx,i,length(TextEx)-i+1);
+   TextEx:=S2+S1+TextEx;
+   Ap.Range['K64:L64']:=TextEx; //заполняем инициалы и фамилию получившего аттестат
+   TT:=0;
+   for i:=14 to 63 do
+    begin
+     if SN[i,1]>0 then
+      begin
+       TT:=TT+SN[i,1];
+       LY:=SN[i,3] mod 10;
+       if SN[i,2]<10 then TextEx:='0'+IntToStr(SN[i,2]) else TextEx:=IntToStr(SN[i,2]);
+       SN[i,3]:=SN[i,3] div 10;
+       TextEx:=TextEx+'.'+IntToStr(SN[i,3]);
+       Ap.Cells[i-2,11]:=TextEx; //Записали дату выдачи
+       if LY=0 then Ap.Cells[i-2,12]:='ноль'; //Записали прописью последнюю цифру даты выдачи
+       if LY=1 then Ap.Cells[i-2,12]:='один'; //Записали прописью последнюю цифру даты выдачи
+       if LY=2 then Ap.Cells[i-2,12]:='два'; //Записали прописью последнюю цифру даты выдачи
+       if LY=3 then Ap.Cells[i-2,12]:='три'; //Записали прописью последнюю цифру даты выдачи
+       if LY=4 then Ap.Cells[i-2,12]:='четыре'; //Записали прописью последнюю цифру даты выдачи
+       if LY=5 then Ap.Cells[i-2,12]:='пять'; //Записали прописью последнюю цифру даты выдачи
+       if LY=6 then Ap.Cells[i-2,12]:='шесть'; //Записали прописью последнюю цифру даты выдачи
+       if LY=7 then Ap.Cells[i-2,12]:='семь'; //Записали прописью последнюю цифру даты выдачи
+       if LY=8 then Ap.Cells[i-2,12]:='восемь'; //Записали прописью последнюю цифру даты выдачи
+       if LY=9 then Ap.Cells[i-2,12]:='девять'; //Записали прописью последнюю цифру даты выдачи
+
+       if SN[i,1]=1 then Ap.Cells[i-2,9]:='один'; //Записали прописью количество предметов
+       if SN[i,1]=2 then Ap.Cells[i-2,9]:='два'; //Записали прописью количество предметов
+       if SN[i,1]=3 then Ap.Cells[i-2,9]:='три'; //Записали прописью количество предметов
+       if SN[i,1]=4 then Ap.Cells[i-2,9]:='четыре'; //Записали прописью количество предметов
+       if SN[i,1]=5 then Ap.Cells[i-2,9]:='пять'; //Записали прописью количество предметов
+       if SN[i,1]=6 then Ap.Cells[i-2,9]:='шесть'; //Записали прописью количество предметов
+       if SN[i,1]=7 then Ap.Cells[i-2,9]:='семь'; //Записали прописью количество предметов
+       if SN[i,1]=8 then Ap.Cells[i-2,9]:='восемь'; //Записали прописью количество предметов
+       if SN[i,1]=9 then Ap.Cells[i-2,9]:='девять'; //Записали прописью количество предметов
+       if SN[i,1]=10 then Ap.Cells[i-2,9]:='десять'; //Записали прописью количество предметов
+       if SN[i,1]=11 then Ap.Cells[i-2,9]:='одиннадцать'; //Записали прописью количество предметов
+       if SN[i,1]=12 then Ap.Cells[i-2,9]:='двенадцать'; //Записали прописью количество предметов
+       if SN[i,1]=13 then Ap.Cells[i-2,9]:='тринадцать'; //Записали прописью количество предметов
+       if SN[i,1]=14 then Ap.Cells[i-2,9]:='четырнадцать'; //Записали прописью количество предметов
+       if SN[i,1]=15 then Ap.Cells[i-2,9]:='пятнадцать'; //Записали прописью количество предметов
+       if SN[i,1]=16 then Ap.Cells[i-2,9]:='шестнадцать'; //Записали прописью количество предметов
+       if SN[i,1]=17 then Ap.Cells[i-2,9]:='семнадцать'; //Записали прописью количество предметов
+       if SN[i,1]=18 then Ap.Cells[i-2,9]:='восемнадцать'; //Записали прописью количество предметов
+       if SN[i,1]=19 then Ap.Cells[i-2,9]:='девятнадцать'; //Записали прописью количество предметов
+       if SN[i,1]=20 then Ap.Cells[i-2,9]:='двадцать'; //Записали прописью количество предметов
+      end;
+    end;
+   Ap.Range['K62:L62']:=IntToStr(TT);
+   if MW=1 then Ap.Workbooks[1].Sheets.Item[2].Delete else Ap.Workbooks[1].Sheets.Item[1].Delete;
+   Ap.Workbooks[1].WorkSheets[1].SaveAs(way1);
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+  end
+ else ShowMessage('Карточка отсутствует!');
+end;
+
+procedure PovtorRasDK(way1,OldName : string; Var SumSpRas : string); //Повторный рассчет ДК после оформления ведомости замены.
+var
+ RasDate, TextEx, buf, way, NowDate : string;
+ TN, MW, ListIndex, pEx, p, i, j, colN, yN, yX, mX : integer;
+ SN : array [14..100,0..5] of integer;
+ // 0-количество предметов для денежной компенсации,
+ // 1-количество состоит На.., 2,3 - месяц и год состоит На...,
+ //4-Количество по норме, 5- срок по норме
+begin
+ FillChar(SN,sizeof(SN),0);
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ for i:=14 to 63 do
+  begin
+   SN[i,0]:=0;
+   SN[i,1]:=0;
+   SN[i,2]:=0;
+   SN[i,3]:=0;
+   SN[i,4]:=0;
+   SN[i,5]:=0;
+  end;
+
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(OldName,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+ Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+ ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+ Ap.ActiveWorkbook.Save;
+
+ RasDate:=DateToStr(MainForm.DateTimePicker1.Date);
+ delete(RasDate,1,3);
+ mX:=StrToInt(copy(RasDate,1,2));  //Узнаем месяц расчета ДК
+ yX:=StrToInt(copy(RasDate,4,4));  //Узнаем год расчета ДК
+ //Узнаем мужчина или женщина
+ TextEx:=Ap.Range['F8'];
+ if TextEx='Женщина' then MW:=2 else MW:=1;
+ //Проверка на полковника
+ TextEx:=Ap.Range['E6'];
+ if (TextEx='полковник') then TN:=14 else TN:=16;
+
+ For i:=TN to 63 do // заполнение массива SN данными личной карточки
+  begin
+   TextEx:=Ap.Cells[i,20]; //Читаем ячейку СОСТОИТ НА
+   if length(textex)>0 then
+    begin
+     p:=pos('/',TextEx);
+     buf:=copy(textEx,1,p-1);
+     SN[i,1]:=StrToInt(buf); //Количество предметов в ячейке СОСТОИТ НА
+     delete(TextEx,1,p);
+     SN[i,2]:=StrToInt(Copy(TextEx,1,2)); //Месяц предметов в ячейке СОСТОИТ НА
+     SN[i,3]:=StrToInt(Copy(TextEx,4,4)); //Год предметов в ячейке СОСТОИТ НА
+    end;
+   TextEx:=Ap.Cells[i,5]; //Читаем норму количество/срок
+   p:=pos('/',TextEx);
+   if p>0 then
+    begin
+     SN[i,4]:=StrToInt(copy(textEx,1,p-1));
+     delete(TextEx,1,p);
+     SN[i,5]:=StrToInt(TextEx);
+    end;
+  end;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ // Рассчет денежной компенсации
+ For i:=TN to 63 do
+  begin
+   if (SN[i,3]>0)and(SN[i,4]>0)and(i<>28)and(i<>35)and(i<>39)and(i<>40)and(i<>41) then
+    begin
+     if (SN[i,1]=SN[i,4]) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно норме
+      begin
+       SN[i,3]:=SN[i,3]+SN[i,5];
+       while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+        begin
+         SN[i,3]:=SN[i,3]+SN[i,5];
+         SN[i,0]:=SN[i,0]+SN[i,4];
+        end;
+      end
+     else
+     if (SN[i,1]=0) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно 0
+      while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+       begin
+        SN[i,3]:=SN[i,3]+SN[i,5];
+        SN[i,0]:=SN[i,0]+SN[i,4];
+       end
+     else
+     if (SN[i,1]>0) and (SN[i,1]<SN[i,4]) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов меньше нормы
+      begin
+       SN[i,0]:=SN[i,4]-SN[i,1];
+       SN[i,3]:=SN[i,3]+SN[i,5];
+       while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+        begin
+         SN[i,3]:=SN[i,3]+SN[i,5];
+         SN[i,0]:=SN[i,0]+SN[i,4];
+        end;
+      end
+     else
+     if (SN[i,1]>0) and ((SN[i,3]>yX) or ((SN[i,3]=yX) and (SN[i,2]>mX))) then //если предметы выданы вперед относительно даты расчета
+       begin
+        SN[i,0]:=SN[i,1];
+        SN[i,3]:=SN[i,3]-SN[i,5];
+        while (yX<SN[i,3]) or ((SN[i,3]=yX) and (SN[i,2]>=mX)) do
+         begin
+          SN[i,3]:=SN[i,3]-SN[i,5];
+          SN[i,0]:=SN[i,0]+SN[i,4];
+         end;
+        SN[i,0]:=0-SN[i,0];
+       end;
+    end;
+  end;
+
+ //4. Создание черновика справки-расчета, занесение туда данных
+ way:=MainForm.Edit4.Text+'SREX.xlsx';
+ if FileExists(way1) then deleteFile(way1); //удаляем файл прошлого расчета
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkBook.Sheets.Item[MW].Activate;
+ Ap.Range['G2']:=DateToStr(MainForm.DateTimePicker1.Date); // запись даты по которую осуществлялся расчет денежной компенсации
+ Ap.Range['A4:G4']:=MainForm.StringGrid1.Cells[3,MainForm.ComboBox1.ItemIndex+1]; // запись ФИО в справку-расчет
+ Ap.Range['A62:C62']:=MainForm.Edit11.Text; // запись должности руководителя МТО
+ Ap.Range['F62:G62']:=MainForm.Edit12.Text; // запись инициалы и фамилия руководителя МТО
+ Ap.Range['A64:C64']:=MainForm.Edit9.Text; // запись должности исполнителя МТО
+ Ap.Range['F64:G64']:=MainForm.Edit10.Text; // запись инициалы и фамилия исполнителя МТО
+ Ap.Range['A63:C63']:=DateToStr(MainForm.DateTimePicker2.date); // запись даты создания справки-расчета
+ j:=TN-6;
+ for i:=TN to 63 do
+  begin
+   If SN[i,0]<>0 then Ap.Cells[j,5]:=IntToStr(SN[i,0]); //заносим количество предметов компенсации
+   inc(j);
+  end;
+ SumSpRas:=Ap.Range['G58']; //узнаем сумму по справке
+ if MW=1 then Ap.Workbooks[1].Sheets.Item[2].Delete else Ap.Workbooks[1].Sheets.Item[1].Delete;
+ Ap.Workbooks[1].WorkSheets[1].SaveAs(way1);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+
+procedure TMainForm.Button10Click(Sender: TObject);
+var
+ FileName : string;
+begin
+ FileName:=Edit3.Text+'CART_'+label7.Caption+'.xlsx'; //Указываем полный путь к карточке
+ if FileExists(FileName) then
+  begin
+   MainForm.Label2.Caption:='Открытие крточки сотрудника...';
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(FileName,0,false);
+   MainForm.Label2.Caption:='Открытие крточки сотрудника...приведение в актуальное состояние!';
+   ActualOfCart;
+   Ap.ActiveWorkbook.Save;
+   Ap.Visible:=true; //true-окно EXEL становиться видимым
+   MainForm.Label2.Caption:='Открытие крточки сотрудника...ЗАВЕРШЕНО!';
+  end
+ else ShowMessage('Карточка отсутствует!');
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure TMainForm.Button11Click(Sender: TObject);
+Var
+ NowDate, way, way1, Sdir, TextEx, S1, S2 : string;
+ pEx, Num, i : integer;
+begin
+ //Проверка наличия папки и списка одреров текущего года
+ MainForm.Label2.Caption:='Выписка ордера сотруднику...';
+ NowDate:=DateToStr(DateTimePicker1.Date);
+ NowDate:=Copy(NowDate,7,4);
+ way:=MainForm.Edit6.Text+NowDate+'\'+'OPIS_ORDER_'+NowDate+'.xlsx';
+ if not FileExists(way) then  //Проверка наличия файла со списком оредров текущего года
+  begin
+   MainForm.Label2.Caption:='Выписка ордера сотруднику...открытие файла описи';
+   Sdir:=MainForm.Edit6.Text+NowDate;
+   MkDir(Sdir);
+   Ap:=CreateOleObject('Excel.Application');
+   way1:=MainForm.Edit6.Text+'OPIS_ORDER_EX'+'.xlsx';
+   Ap.Workbooks.Open(way1,0,false);
+   Ap.Visible:=false; //true-окно EXEL становиться видимым
+   Ap.DisplayAlerts:=False;
+   Ap.Workbooks[1].SaveAs(way);
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+  end;
+ //Добавление выписываемого оредра в список ордеров текущего года
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false; //true-окно EXEL становиться видимым
+ Ap.DisplayAlerts:=False;
+ pEx:=2;
+ Num:=1;
+ TextEx:=Ap.Cells[pEx,1];
+ while length(TextEx)<>0 do
+  begin
+   inc(pEx);
+   inc(Num);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+ Ap.Cells[pEx,1]:=IntToStr(Num); //Записали номер ордера
+ Ap.Cells[pEx,2]:=label7.Caption; //Записали номер карточки сотрудника
+ Ap.Cells[pEx,3]:=DateToStr(DateTimePicker1.Date); //Записали дату выписки ордера
+ Ap.Cells[pEx,4]:='31.12.'+NowDate; //Записали дату действия ордера
+ Ap.Cells[pEx,5]:=ComboBox1.items.Strings[ComboBox1.ItemIndex]; //Записали ФИО
+ Ap.Cells[pEx,6]:=Edit13.Text; //Записали наименование организации пошива
+ Ap.Workbooks[1].Save;
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ //создание ордера на пошив для выбранного сотрудника
+ MainForm.Label2.Caption:='Выписка ордера сотруднику...создание файла-ордера';
+ way1:=MainForm.Edit6.Text+'ORDER_EX'+'.xlsx';
+ way:=MainForm.Edit6.Text+NowDate+'\'+'ORDER_'+IntToStr(Num)+'.xlsx';
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way1,0,false);
+ Ap.Visible:=false; //true-окно EXEL становиться видимым
+ Ap.DisplayAlerts:=False;
+ Ap.Range['H3']:=NowDate; //заполняем год
+ Ap.Range['E4']:=IntToStr(Num); //заполняем номер ордера
+ Ap.Range['C6:H6']:=ComboBox1.Text; //заполняем ФИО
+ Ap.Range['C8:H8']:=Edit13.Text; //заполняем наименование организации
+ Ap.Range['C10:H10']:=Edit13.Text+' '+Edit14.Text; //заполняем наименование организации + ее адрес
+ Ap.Range['B35:D35']:=Edit11.Text; //заполняем должность руководителя МТО
+ Ap.Range['G35:H35']:=Edit12.Text; //заполняем инициалы и фамилию руководителя МТО
+ Ap.Range['B37:D37']:=Edit9.Text; //заполняем должность специалиста МТО
+ Ap.Range['G37:H37']:=Edit10.Text; //заполняем инициалы и фамилию специалиста МТО
+ TextEx:=ComboBox1.Text;
+ i:=length(TextEx);
+ while TextEx[i]<>' ' do dec(i);
+ S1:=TextEx[i+1]+'.';
+ dec(i);
+ while TextEx[i]<>' ' do dec(i);
+ S2:=TextEx[i+1]+'.';
+ Delete(TextEx,i,length(TextEx)-i+1);
+ TextEx:=S2+S1+TextEx;
+ Ap.Range['D41:E41']:=TextEx; //заполняем инициалы и фамилию получившего ордер
+ Ap.Workbooks[1].SaveAs(way);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ //открываем вновь созданный ордер заново для выбора предметов пошива
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=true; //true-окно EXEL становиться видимым
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure TMainForm.Button12Click(Sender: TObject);  //Рассчет денежной компенсации на выбранную дату...
+Var
+ NowDate, RasDate, way, way1, Sdir, TextEx, buf, S1, S2, SumSpRas : string;
+ pEx, Num, i, p, ListIndex, TN, MW, j : integer;
+ ColN, yN, yR, mR, yX, mX, TT : integer;
+ NugnaZamena : boolean;
+ SSR : real;
+ SN : array [14..100,0..5] of integer; //1-количество состоит На.., 2,3 - месяс и год состоит На...,
+ //4-Количество по норме, 5- срок по норме
+begin
+ FillChar(SN,sizeof(SN),0);
+ MainForm.Label2.Caption:='Расчет денежной компенсации...открытие сводной ведомости';
+ //1. Открытие сводной ведомости, получение информации о выданных предметах
+ NowDate:=DateToStr(DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ way:=Edit5.Text+'SVEDOM_'+NowDate+'.xlsx';
+ if not FileExists(way) then GrateNewSVEDOM(way); //Проверка файла ведомости текущего года
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkbook.Sheets.item[1].Activate;
+
+ pEx:=2;
+ TextEx:=Ap.Cells[pEx,1];
+ while StrToInt(TextEx)<>StrToInt(StringGrid1.Cells[1,ComboBox1.ItemIndex+1]) do  //Ищем сотрудника в сводной ведомости
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+ For I:=4 to 53 do //Переписываем данные СВ в массив SV
+  begin
+   TextEx:=Ap.Cells[pEx,i];
+   if length(textEx)=0 then SN[i+10,0]:=0
+    else SN[i+10,0]:=StrToInt(textEx);
+  end;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.Label2.Caption:='Расчет денежной компенсации...открытие карточки сотрудника';
+ //2. Открытие карточки сотрудника, приведение ее в актуальное состояние
+ TextEx:=MainForm.StringGrid1.Cells[1,MainForm.ComboBox1.ItemIndex+1];
+ way:=Edit3.Text+'CART_'+TextEx+'.xlsx';
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+ Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+ ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+ RasDate:=DateToStr(DateTimePicker1.Date);
+ delete(RasDate,1,3);
+ mX:=StrToInt(copy(RasDate,1,2));  //Узнаем месяц расчета ДК
+ yX:=StrToInt(copy(RasDate,4,4));  //Узнаем год расчета ДК
+ //Узнаем мужчина или женщина
+ TextEx:=Ap.Range['F8'];
+ if TextEx='Женщина' then MW:=2 else MW:=1;
+  //Проверка на полковника
+ TextEx:=Ap.Range['E6'];
+ if ((length(TextEx)=9) and (TextEx='полковник')) or (SN[14,0]>0) then TN:=14 else TN:=16;
+
+ For i:=TN to 63 do //Процедура заполнения массива данными личной карточки
+  begin
+   SN[i,1]:=0;
+   SN[i,2]:=0;
+   SN[i,3]:=0;
+   SN[i,4]:=0;
+   SN[i,5]:=0;
+   TextEx:=Ap.Cells[i,20]; //Читаем ячейку СОСТОИТ НА
+   if length(textex)>0 then
+    begin
+     p:=pos('/',TextEx);
+     buf:=copy(textEx,1,p-1);
+     SN[i,1]:=StrToInt(buf); //Количество предметов в ячейке СОСТОИТ НА
+     delete(TextEx,1,p);
+     SN[i,2]:=StrToInt(Copy(TextEx,1,2)); //Месяц предметов в ячейке СОСТОИТ НА
+     SN[i,3]:=StrToInt(Copy(TextEx,4,4)); //Год предметов в ячейке СОСТОИТ НА
+    end;
+   TextEx:=Ap.Cells[i,5]; //Читаем норму количество/срок
+   p:=pos('/',TextEx);
+   if p>0 then
+    begin
+     SN[i,4]:=StrToInt(copy(textEx,1,p-1));
+     delete(TextEx,1,p);
+     SN[i,5]:=StrToInt(TextEx);
+    end
+   else SN[i,4]:=0;
+   SN[i,1]:=SN[i,1]+SN[i,0]; //Добавляем в состояние карточки количество предметов из сводной ведомости
+   SN[i,0]:=0; //Очищаем ячейку для освобождения под расчет компенсации
+   While (SN[i,4]>0) and (SN[i,1]>SN[i,4]) do
+    begin
+     SN[i,1]:=SN[i,1]-SN[i,4]; //Уменьшаем количество предментов на норму
+     SN[i,3]:=SN[i,3]+SN[i,5]; //Переходим к следующему сроку выдачи
+    end;
+  end;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.Label2.Caption:='Расчет денежной компенсации...расчет';
+ //3. Рассчет денежной компенсации
+ TT:=0; //Счетчик количества предметов денежной компенсации
+ NugnaZamena:=False; //Индикатор предметов выданных вперед
+ For i:=TN to 63 do
+  begin
+   if (SN[i,3]>0)and(SN[i,4]>0)and(i<>22)and((i<31)or(i>37)) then
+    begin
+     if (SN[i,1]=SN[i,4]) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно норме
+      begin
+       SN[i,3]:=SN[i,3]+SN[i,5];
+       while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+        begin
+         SN[i,3]:=SN[i,3]+SN[i,5];
+         SN[i,0]:=SN[i,0]+SN[i,4];
+        end;
+      end
+     else
+     if (SN[i,1]=0) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно 0
+      while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+       begin
+        SN[i,3]:=SN[i,3]+SN[i,5];
+        SN[i,0]:=SN[i,0]+SN[i,4];
+       end
+     else
+     if (SN[i,1]>0) and (SN[i,1]<SN[i,4]) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов меньше нормы
+      begin
+       SN[i,0]:=SN[i,4]-SN[i,1];
+       SN[i,3]:=SN[i,3]+SN[i,5];
+       while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+        begin
+         SN[i,3]:=SN[i,3]+SN[i,5];
+         SN[i,0]:=SN[i,0]+SN[i,4];
+        end;
+      end
+     else
+     if (SN[i,1]>0) and ((SN[i,3]>yX) or ((SN[i,3]=yX) and (SN[i,2]>mX))) then //если предметы выданы вперед относительно даты расчета
+       begin
+        SN[i,0]:=SN[i,1];
+        SN[i,3]:=SN[i,3]-SN[i,5];
+        while (yX<SN[i,3]) or ((SN[i,3]=yX) and (SN[i,2]>=mX)) do
+         begin
+          SN[i,3]:=SN[i,3]-SN[i,5];
+          SN[i,0]:=SN[i,0]+SN[i,4];
+         end;
+        SN[i,0]:=0-SN[i,0];
+        if SN[i,0]<0 then NugnaZamena:=true;
+       end;
+    end;
+   TT:=TT+SN[i,0];
+  end;
+
+ MainForm.Label2.Caption:='Расчет денежной компенсации...создание чернокика';
+ //4. Создание черновика справки-расчета занесение туда данных
+ way:=Edit4.Text+'SREX.xlsx';
+ Way1:=Edit4.Text+NowDate;
+ if not DirectoryExists(way1) then MkDir(way1);
+ way1:=Edit4.Text+NowDate+'\'+'SR_'+'PP'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx';
+ if FileExists(way1) then deleteFile(way1); //удаляем файл прошлого расчета
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkBook.Sheets.Item[MW].Activate;
+ //Ap.Range['E2:F2']:=num; // запись номера справки-расчета
+ Ap.Range['G2']:=DateToStr(MainForm.DateTimePicker1.Date); // запись даты по которую осуществлялся расчет денежной компенсации
+ Ap.Range['A4:G4']:=StringGrid1.Cells[3,ComboBox1.ItemIndex+1]; // запись ФИО в справку-расчет
+ Ap.Range['A62:C62']:=MainForm.Edit11.Text; // запись должности руководителя МТО
+ Ap.Range['F62:G62']:=MainForm.Edit12.Text; // запись инициалы и фамилия руководителя МТО
+ Ap.Range['A64:C64']:=MainForm.Edit9.Text; // запись должности исполнителя МТО
+ Ap.Range['F64:G64']:=MainForm.Edit10.Text; // запись инициалы и фамилия исполнителя МТО
+ Ap.Range['A63:C63']:=DateToStr(DateTimePicker2.date); // запись даты создания справки-расчета
+ //Ap.Range['D59:G59']:='=ЧислоПрописью(E58)'; // формула количества - число прописью
+ //Ap.Range['C60:G60']:='=СуммаПрописью(G58)'; // формула суммы - сумма прописью
+ j:=TN-6;
+ for i:=TN to 63 do
+  begin
+   if MainForm.CheckBox1.Checked then
+    begin
+     If (SN[i,0]<>0) and (i<>19)and(i<>21)and(i<>38)and(i<>39)and(i<>40)and(i<>41)and(i<>43)
+      and(i<>47)and(i<>48)and(i<>49)and(i<>50)and(i<>52)and(i<>57)
+       and(i<>61)and(i<>63) then Ap.Cells[j,5]:=IntToStr(SN[i,0]);
+    end
+     else
+      begin
+       If SN[i,0]<>0 then Ap.Cells[j,5]:=IntToStr(SN[i,0]);
+      end;
+   inc(j);
+  end;
+ SumSpRas:=Ap.Range['G58']; //узнаем сумму по справке
+
+ Ap.ActiveWorkbook.Worksheets[1].Rows['7:7'].RowHeight:=55;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['8:10'].RowHeight:=20;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['11:12'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['14:15'].RowHeight:=20;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['17:17'].RowHeight:=20;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['18:24'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['32:32'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['32:32'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['33:34'].RowHeight:=20;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['35:35'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['36:36'].RowHeight:=20;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['37:38'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['39:39'].RowHeight:=20;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['40:42'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['43:44'].RowHeight:=20;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['45:50'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['52:53'].RowHeight:=10;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['54:55'].RowHeight:=20;
+ Ap.ActiveWorkbook.Worksheets[1].Rows['56:57'].RowHeight:=10;
+
+ if MW=1 then Ap.Workbooks[1].Sheets.Item[2].Delete else Ap.Workbooks[1].Sheets.Item[1].Delete;
+ Ap.Workbooks[1].WorkSheets[1].SaveAs(way1);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+ SSR:=StrToFloat(SumSpRas);
+ if SSR=0 then deleteFile(way1); //удаляем файл рассчета
+ if pokazMessag and (SSR<>0) and NugnaZamena then ShowMessage('Денежная компенсация на '+DateToStr(MainForm.DateTimePicker1.Date)+' составляет: '+SumSpRas+'. Для правильного рассчета денежной компенсации требуется заменить предметы одежды, выданные вперед!');
+ if pokazMessag and (SSR<>0) and (not NugnaZamena) then ShowMessage('Денежная компенсация на '+DateToStr(MainForm.DateTimePicker1.Date)+' составляет: '+SumSpRas);
+end;
+
+procedure TMainForm.Button13Click(Sender: TObject);  //Регистрация черновика спраки-расчета, занесение в сводную ведомость
+Var
+ way, way1, NowDate, TextEx, DateOfGreate, DateOfPrice, SumSpRas, NumSpRs, buf : string;
+ wayFileDel : string;
+ pEx, i, j, p, TT : integer;
+ SSR : real;
+ NugnaZamena : boolean;
+ SN : array [14..100,0..5] of integer; //0 - количество предметов из справки-расчета
+ // 1-количество состоит На.., 2,3 - месяс и год состоит На...,
+ //4-Количество по норме, 5- срок по норме
+begin
+ FillChar(SN,sizeof(SN),0);
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ way:=MainForm.Edit4.Text+NowDate+'\SR_PP'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx'; //Проект справки-расчета
+ if not FileExists(way) then
+  Begin
+   ShowMessage('Расчет денежной компенсации не производился. Выберите дату расчета денежной компенсации и нажмите кнопку "Рассчитать денежную компенсацию на дату"');
+   MainForm.DateTimePicker1.Focused;
+   //MainForm.Button12.Click; //Если проекта справки нет - создаем ее на число, выбранное в календаре
+  end
+ else
+  begin
+
+   MainForm.Label2.Caption:='Регистрация справки-расчета...открытие справки';
+   //Открываем проект справки-расчета для определения суммы и дальнейшего действия
+   NugnaZamena:=False; //Индикатор отрицательных предметов компенсации
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(way,0,false); //Открываем проект справки расчета
+   Ap.Visible:=false;
+   Ap.DisplayAlerts:=False;
+   Ap.Range['A4:G4']:=StringGrid1.Cells[3,ComboBox1.ItemIndex+1]; // запись ФИО в справку-расчет
+   DateOfGreate:=Ap.Range['A63']; // запись даты создания справки-расчета
+   DateOfPrice:=Ap.Range['G2']; // запись даты по которую осуществлялся расчет денежной компенсации
+   SumSpRas:=Ap.Range['G58']; //сумма по справке
+   for i:=14 to 63 do //Читаем количество предметов для денежной компенсации
+    begin
+     TextEx:=Ap.Cells[i-6,5];
+     if length(TextEx)>0 then SN[i,0]:=StrToInt(TextEx) else SN[i,0]:=0;
+     if SN[i,0]<0 then NugnaZamena:=True;
+    end;
+   Ap.ActiveWorkbook.Save;
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+   SSR:=StrToFloat(SumSpRas); //Сумма по справке в число
+   SSR:=system.Math.RoundTo(SSR,-2);
+   if (SSR=0) and (not NugnaZamena) and PokazMessag then ShowMessage('Сумма компенсации составляет 0 рублей. Файл-проект справки-расчет носит название: SR_PP'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx');
+   if (SSR<0) and PokazMessag then ShowMessage('Сумма компенсации составляет '+FloatToStr(SSR)+' рублей. Файл-проект справки-расчет носит название: SR_PP'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx');
+   if (SSR>0) and PokazMessag and NugnaZamena then ShowMessage('Для регистрации справки-расчета на выплату денежной компенсации требуется оформить замену предметы одежды, выданные вперед! '+'Файл-проект справки-расчет носит название: SR_PP'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx');   //Написать процедуры при увольнении
+
+   if (SSR>0) and not NugnaZamena then
+    begin
+     MainForm.Label2.Caption:='Регистрация справки-расчета...открытие описи';
+     //Открываем опись справок-расчета текущего года
+     way1:=MainForm.Edit4.Text+NowDate+'\OPIS_SR_'+NowDate+'.xlsx';
+     if not FileExists(way1) then CreatOpisSPRS(way1);
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(way1,0,false); //Открываем опись справок-расчетов
+     Ap.Visible:=false;
+     Ap.DisplayAlerts:=False;
+     pEx:=2;
+     TextEx:=Ap.Cells[pEx,1];
+     while Length(TextEx)>0 do
+      begin
+       inc(pEx);
+       TextEx:=Ap.Cells[pEx,1];
+      end;
+     TextEx:=Ap.Cells[pEx-1,1];
+     If pEx=2 then p:=0 else p:=StrToInt(TextEx);
+     inc(p);
+     NumSpRs:=IntToStr(p);
+     Ap.Cells[pEx,1]:=NumSpRs; //Присвоили номер справки-расчет
+     Ap.Cells[pEx,2]:=StringGrid1.Cells[1,ComboBox1.ItemIndex+1]; //Норме карточки сотрудника
+     Ap.Cells[pEx,3]:=DateOfGreate; //Дата регистрации справки-расчета
+     Ap.Cells[pEx,4]:=DateOfPrice; //Запись даты по которую осуществлялся расчет денежной компенсации
+     Ap.Cells[pEx,5]:=StringGrid1.Cells[3,ComboBox1.ItemIndex+1]; // запись ФИО в опись
+     Ap.Cells[pEx,6]:=IntToStr(pEx-1); //Присвоили номер справки-расчет
+     Ap.Cells[pEx,7]:=SumSpRas; //Сумма денежной компенсации по справке
+     Ap.ActiveWorkbook.Save;
+     Ap.ActiveWorkbook.Close;
+     Ap.Application.Quit;
+     If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+     //Открываем проект справки-расчет
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(way,0,false); //Открываем проект справки расчета
+     Ap.Visible:=false;
+     Ap.DisplayAlerts:=False;
+     Ap.Range['E2:F2']:=NumSpRs; // запись номера справки-расчета
+     Ap.Range['A4:G4']:=StringGrid1.Cells[3,ComboBox1.ItemIndex+1]; // запись ФИО в справку-расчет
+     wayFileDel:=way;
+     way:=MainForm.Edit4.Text+NowDate+'\SR_'+NumSpRs+'.xlsx'; //Сохраняем зарегистрированную справку-расчет
+     Ap.ActiveWorkbook.SaveAs(way);
+     Ap.ActiveWorkbook.Close;
+     Ap.Application.Quit;
+     If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+     DeleteFile(wayFileDel); //удаляем проект справки-расчет
+
+     MainForm.Label2.Caption:='Регистрация справки-расчета...запись в карточку сотрудника';
+     way:=MainForm.Edit3.Text+'CART_'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx';
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(way,0,false);
+     Ap.Visible:=false;
+     Ap.DisplayAlerts:=False;
+     ActualOfCart; //приводим карточку в актуальное состояние
+
+     pEx:=6; //Поиск свободного столбца для записи
+     TextEx:=Ap.Cells[12,pEx];
+     While (Length(TextEx)<>0) and (pEx<20) do
+      begin
+       inc(pEx);
+       TextEx:=Ap.Cells[12,pEx];
+      end;
+     if pEx=20 then
+      begin
+       NewListOfCart; //Создание нового листа карточки, если старый закончился
+       pEx:=7;
+      end;
+     Ap.Cells[12,pEx]:='Справка-расчет №'+NumSpRs; //Записываем в документы выдачи справку-расчет
+     TT:=0;
+     for I:=14 to 63 do //Заполняем массив данными нормы и данными ячийки СОСТОИТ НА...
+      begin
+       if SN[i,0]>0 then
+        begin
+         TT:=TT+SN[i,0];
+         TextEx:=Ap.Cells[i,20]; //СОСТОИТ НА...
+         if Length(TextEx)>0 then
+          begin
+           p:=pos('/',TextEx);
+           SN[i,1]:=StrToInt(copy(TextEx,1,p-1)); // Читаем количество предметов СОСТОИТ НА
+           SN[i,2]:=StrToInt(copy(TextEx,p+1,2)); // Читаем месяц СОСТОИТ НА
+           if SN[i,2]<10 then buf:='0'+IntToStr(SN[i,2]) else buf:=IntToStr(SN[i,2]);
+           SN[i,3]:=StrToInt(copy(TextEx,p+4,4)); // Читаем год СОСТОИТ НА
+          end;
+         TextEx:=Ap.Cells[i,5]; //Читаем норму
+         p:=pos('/',TextEx);
+         SN[i,4]:=StrToInt(copy(TextEx,1,p-1)); // Читаем норму - количество
+         delete(TextEx,1,p);
+         SN[i,5]:=StrToInt(TextEx); // Читаем норму - срок
+         if (SN[i,1]=0) or ((SN[i,1]>0) and (SN[i,1]<SN[i,4])) then
+          Ap.Cells[i,pEx]:=IntToStr(SN[i,0])+'/'+buf+'.'+IntToStr(SN[i,3]);
+         if SN[i,1]=SN[i,4] then //Количество предметов состоит на = норме выдачи
+          begin
+           SN[i,3]:=SN[i,3]+SN[i,5];
+           Ap.Cells[i,pEx]:=IntToStr(SN[i,0])+'/'+buf+'.'+IntToStr(SN[i,3]);
+          end;
+        end;
+      end;
+     Ap.Cells[64,pEx]:=IntToStr(TT); // Количество предметов по справке-расчету
+     Ap.Cells[66,pEx]:=SumSpRas; //Сумма денежной компенсации по справке
+     Ap.ActiveWorkbook.Save;
+     ActualOfCart; //приводим карточку в актуальное состояние
+     Ap.ActiveWorkbook.Save;
+     Ap.ActiveWorkbook.Close;
+     Ap.Application.Quit;
+     If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+     IF PokazMessag then ShowMessage('Справка-расчет №'+NumSpRs+' успешно зарегистрирована и добавлена в личную карточку сотрдника!');
+    end;
+  end;
+end;
+
+procedure TMainForm.Button14Click(Sender: TObject); //Перевод сотрудника и выписка вещевого аттестата
+var
+ NugnaZamena, PolkovTrue : boolean;
+ RasDate, TextEx, buf, way, way1, SumSpRas, NowDate, OldName, NewName : string;
+ TN, TT, MW, ListIndex, pEx, p, i, j, colN, yN, yX, mX : integer;
+ SSR : real;
+ SN : array [14..100,0..5] of integer; //0 - количество предметов из сводной ведомости
+ // 1-количество состоит На.., 2,3 - месяц и год состоит На...,
+ //4-Количество по норме, 5- срок по норме
+begin
+ MainForm.Label2.Caption:='Перевод сотрудника...';
+ FillChar(SN,sizeof(SN),0);
+ NowDate:=DateToStr(DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ way:=Edit5.Text+'SVEDOM_'+NowDate+'.xlsx';
+ if not FileExists(way) then GrateNewSVEDOM(way); //Проверка файла ведомости текущего года
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+
+ pEx:=2;
+ TextEx:=Ap.Cells[pEx,1];
+ while StrToInt(TextEx)<>StrToInt(StringGrid1.Cells[1,ComboBox1.ItemIndex+1]) do  //Ищем сотрудника в сводной ведомости
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+
+ MainForm.Label2.Caption:='Перевод сотрудника...получение данных сводной ведомости';
+ TT:=0;
+ for i:=4 to 53 do //Переписываем из Сводной ведомости в массив SN данные о выдаче текущего года
+  begin
+   TextEx:=Ap.Cells[pEx,i];
+   if length(TextEx)<>0 then SN[i+10,0]:=StrToInt(TextEx) else SN[i+10,0]:=0;  //Добавляем в массив данные из сводной ведомости
+   TT:=TT+SN[i+10,0];
+  end;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.Label2.Caption:='Перевод сотрудника...получение данных личной карточки';
+ OldName:=Edit3.Text+'CART_'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx';  //Запоминаем путь к карточке, чтобы в конце ее переименовать
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(OldName,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+ Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+ ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+ Ap.ActiveWorkbook.Save;
+
+ pEx:=6; //Поиск свободного столбца для записи
+ TextEx:=Ap.Cells[12,pEx];
+ buf:='Сводная ведомость '+NowDate;
+ While (Length(TextEx)<>0) and (pEx<20) and (textEx<>buf) do
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[12,pEx];
+  end;
+ if pEx=20 then
+  begin
+   NewListOfCart; //Создание нового листа карточки, если старый закончился
+   pEx:=7;
+  end;
+ if textex=buf then //Если сводная уже заносилась в карточку, то удаляем ее, чтобы записать заново
+  begin
+   for i:=14 to 63 do Ap.Cells[i,pEx]:='';
+   ActualOfCart;
+  end
+  else If tt<>0 then Ap.Cells[12,pEx]:='Сводная ведомость '+NowDate;
+
+ RasDate:=DateToStr(DateTimePicker1.Date);
+ delete(RasDate,1,3);
+ mX:=StrToInt(copy(RasDate,1,2));  //Узнаем месяц расчета ДК
+ yX:=StrToInt(copy(RasDate,4,4));  //Узнаем год расчета ДК
+ //Узнаем мужчина или женщина
+ TextEx:=Ap.Range['F8'];
+ if TextEx='Женщина' then MW:=2 else MW:=1;
+ //Проверка на полковника
+ TextEx:=Ap.Range['E6'];
+ if (TextEx='полковник')or(SN[14,0]>0) then TN:=14 else TN:=16;
+ if (SN[14,0]>0) and (TextEx<>'полковник') then ShowMessage('Вы уверены, что товарищ '+MainForm.ComboBox1.Text+' уже ПОЛКОВНИК? Шапку каракулевую Вы ему выдавали?');
+
+ For i:=TN to 63 do //Процедура заполнения личной карточки данными сводной ведомости
+  begin
+   SN[i,1]:=0;
+   SN[i,2]:=0;
+   SN[i,3]:=0;
+   SN[i,4]:=0;
+   SN[i,5]:=0;
+   TextEx:=Ap.Cells[i,20]; //Читаем ячейку СОСТОИТ НА
+   if length(textex)>0 then
+    begin
+     p:=pos('/',TextEx);
+     buf:=copy(textEx,1,p-1);
+     SN[i,1]:=StrToInt(buf); //Количество предметов в ячейке СОСТОИТ НА
+     delete(TextEx,1,p);
+     SN[i,2]:=StrToInt(Copy(TextEx,1,2)); //Месяц предметов в ячейке СОСТОИТ НА
+     SN[i,3]:=StrToInt(Copy(TextEx,4,4)); //Год предметов в ячейке СОСТОИТ НА
+    end;
+   TextEx:=Ap.Cells[i,5]; //Читаем норму - количество/срок
+   p:=pos('/',TextEx);
+   if p>0 then
+    begin
+     SN[i,4]:=StrToInt(copy(textEx,1,p-1));
+     delete(TextEx,1,p);
+     SN[i,5]:=StrToInt(TextEx);
+    end
+   else SN[i,4]:=0;
+   if (SN[i,0]<>0) and (SN[i,4]>0) then
+    begin
+     if SN[i,1]=SN[i,4] then
+      begin
+        SN[i,1]:=SN[i,1]-SN[i,4];
+        SN[i,3]:=SN[i,3]+SN[i,5];
+      end;
+     If SN[i,2]<10 then buf:='0'+IntToStr(SN[i,2]) else buf:=IntToStr(SN[i,2]);
+     Ap.Cells[i,pEx]:=IntToStr(SN[i,0])+'/'+buf+'.'+IntToStr(SN[i,3]); //ЗАписываем ячейку с выданным предметом
+     SN[i,1]:=SN[i,1]+SN[i,0]; //Добавляем в состояние карточки количество предметов из сводной ведомости
+     SN[i,0]:=0; //Очищаем ячейку под расчет компенсации
+     While (SN[i,4]>0) and (SN[i,1]>SN[i,4]) do
+      begin
+       SN[i,1]:=SN[i,1]-SN[i,4]; //Уменьшаем количество предментов на норму
+       SN[i,3]:=SN[i,3]+SN[i,5]; //Переходим к следующему сроку выдачи
+      end;
+    end
+   else SN[i,0]:=0;
+  end;
+ Ap.Cells[64,pEx]:=IntToStr(TT); //Запись общего количества предметов по Сводной ведомости
+ Ap.ActiveWorkbook.Save;
+ ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+ Ap.Range['S4']:=DateToStr(MainForm.DateTimePicker1.Date); //Дата окончания карточки
+ Ap.Range['S7']:=DateToStr(MainForm.DateTimePicker1.Date); // Дата увольнения сотрудника
+ Ap.Cells[12,20]:='Состоит на день перевода';
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.Label2.Caption:='Перевод сотрудника...расчет денежной компенсации';
+ // Рассчет денежной компенсации
+ TT:=0; //Счетчик количества предметов денежной компенсации
+ NugnaZamena:=False; //Индикатор предметов выданных вперед
+ For i:=TN to 63 do
+  begin
+   if (SN[i,3]>0)and(SN[i,4]>0)and(i<>22)and((i<31)or(i>37)) then
+    begin
+     if (SN[i,1]=SN[i,4]) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно норме
+      begin
+       SN[i,3]:=SN[i,3]+SN[i,5];
+       while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+        begin
+         SN[i,3]:=SN[i,3]+SN[i,5];
+         SN[i,0]:=SN[i,0]+SN[i,4];
+        end;
+      end
+     else
+     if (SN[i,1]=0) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно 0
+      while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+       begin
+        SN[i,3]:=SN[i,3]+SN[i,5];
+        SN[i,0]:=SN[i,0]+SN[i,4];
+       end
+     else
+     if (SN[i,1]>0) and (SN[i,1]<SN[i,4]) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов меньше нормы
+      begin
+       SN[i,0]:=SN[i,4]-SN[i,1];
+       SN[i,3]:=SN[i,3]+SN[i,5];
+       while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+        begin
+         SN[i,3]:=SN[i,3]+SN[i,5];
+         SN[i,0]:=SN[i,0]+SN[i,4];
+        end;
+      end
+     else
+     if (SN[i,1]>0) and ((SN[i,3]>yX) or ((SN[i,3]=yX) and (SN[i,2]>mX))) then //если предметы выданы вперед относительно даты расчета
+       begin
+        SN[i,0]:=SN[i,1];
+        SN[i,3]:=SN[i,3]-SN[i,5];
+        while (yX<SN[i,3]) or ((SN[i,3]=yX) and (SN[i,2]>=mX)) do
+         begin
+          SN[i,3]:=SN[i,3]-SN[i,5];
+          SN[i,0]:=SN[i,0]+SN[i,4];
+         end;
+        SN[i,0]:=0-SN[i,0];
+        if SN[i,0]<0 then NugnaZamena:=true;
+       end;
+    end;
+   TT:=TT+SN[i,0];
+  end;
+
+ MainForm.Label2.Caption:='Перевод сотрудника...создание черновика справки-расчета';
+ //4. Создание черновика справки-расчета, занесение туда данных
+ way:=Edit4.Text+'SREX.xlsx';
+ Way1:=Edit4.Text+NowDate;
+ if not DirectoryExists(way1) then MkDir(way1);
+ way1:=Edit4.Text+NowDate+'\'+'SR_'+'PP'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx';
+ if FileExists(way1) then deleteFile(way1); //удаляем файл прошлого расчета
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkBook.Sheets.Item[MW].Activate;
+ Ap.Range['G2']:=DateToStr(MainForm.DateTimePicker1.Date); // запись даты по которую осуществлялся расчет денежной компенсации
+ Ap.Range['A4:G4']:=StringGrid1.Cells[3,MainForm.ComboBox1.ItemIndex+1]; // запись ФИО в справку-расчет
+ Ap.Range['A62:C62']:=MainForm.Edit11.Text; // запись должности руководителя МТО
+ Ap.Range['F62:G62']:=MainForm.Edit12.Text; // запись инициалы и фамилия руководителя МТО
+ Ap.Range['A64:C64']:=MainForm.Edit9.Text; // запись должности исполнителя МТО
+ Ap.Range['F64:G64']:=MainForm.Edit10.Text; // запись инициалы и фамилия исполнителя МТО
+ Ap.Range['A63:C63']:=DateToStr(DateTimePicker2.date); // запись даты создания справки-расчета
+ //Ap.Range['D59:G59']:='=ЧислоПрописью(E58)'; // формула количества - число прописью
+ //Ap.Range['C60:G60']:='=СуммаПрописью(G58)'; // формула суммы - сумма прописью
+
+ j:=TN-6;
+ for i:=TN to 57 do
+  begin
+   If SN[i,0]<>0 then Ap.Cells[j,5]:=IntToStr(SN[i,0]); //заносим количество предметов компенсации
+   inc(j);
+  end;
+ SumSpRas:=Ap.Range['G58']; //узнаем сумму по справке
+ if MW=1 then Ap.Workbooks[1].Sheets.Item[2].Delete else Ap.Workbooks[1].Sheets.Item[1].Delete;
+ Ap.Workbooks[1].WorkSheets[1].SaveAs(way1);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ //В ЗАВИСИМОСТИ ОТ ПОЛУЧЕННОЙ СУММЫ ДЕНЕЖНОЙ КОМПЕНСАЦИИ И НЕОБХОДИМОСТИ ЗАМЕНЫ ПРОИЗВОДИМ СЛЕДУЮЩИЕ ДЕЙСТВИЯ
+ if NugnaZamena then
+  begin
+   MainForm.Label2.Caption:='Перевод сотрудника...замена предметов';
+   ZamenaFromSRPP(way1, OldName); //Процедура замены имущества из проекта справки-расчета
+   PovtorRasDK(way1,OldName,SumSpRas); //Повторный рассчет ДК после оформления ведомости замены.
+   SSR:=StrToFloat(SumSpRas); //Сумма денежной компенсации в цифре
+   SSR:=system.Math.RoundTo(SSR,-2);
+  end
+ else
+  begin
+   SSR:=StrToFloat(SumSpRas); //Сумма денежной компенсации в цифре
+   SSR:=system.Math.RoundTo(SSR,-2);
+  end;
+
+ if SSR>0 then
+  begin
+   MainForm.Label2.Caption:='Перевод сотрудника...добавление в карточку денежной компенсации';
+   PokazMessag:=false;
+   MainForm.Button13.Click; //Регестрируем и разносим в карточку справку-расчет
+   PokazMessag:=true;
+   MainForm.Label2.Caption:='Перевод сотрудника...оформление аттестата';
+   CreateOfATTESTAT(OldName);//ЗДЕСЬ НУЖНА процедура выписки вещевого аттестата
+   ShowMessage('Денежная компенсация на день перевода '+DateToStr(MainForm.DateTimePicker1.Date)+' составляет: '+SumSpRas+' р. Личная карточка сотрудника, справка-расчет и вещевой аттестат готовы к печати!');
+  end
+ else
+  begin
+   MainForm.Label2.Caption:='Перевод сотрудника...оформление аттестата';
+   deleteFile(way1); //удаляем файл рассчета
+   CreateOfATTESTAT(OldName);//ЗДЕСЬ НУЖНА процедура выписки вещевого аттестата
+   ShowMessage('Выплата денежной компенсации при переводе '+MainForm.ComboBox1.Text+' не требуется! Личная карточка сотрудника и вещевой аттестат готовы к печати!');
+  end;
+
+ NewName:=Edit3.Text+'CART_'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'_NO_ACTUAL.xlsx'; //название карточки уволенного или переведенного сотрудника
+ RenameFile(OldName, NewName); //Переименовываем карточку удаленного сотрудника
+ DelOfSotrudnik; //удаляем сотрудника из списка
+ MainForm.Label2.Caption:='Перевод сотрудника...ЗАВЕРШЕНО!';
+end;
+
+
+procedure TMainForm.Button15Click(Sender: TObject); //Добавление сведений и сводной ведомости в карточки ВСЕХ сотрудников
+var
+ i, j, pEx, p, k, MW, TN, TT, cEx, ListIndex : integer;
+ NowDate, TextEx, way, buf : string;
+ VSV : array [1..700,12..63,0..5] of Integer;
+ //1..5000 список сотрудников
+ //12..50, где в 12,0 списано общее количество выданных по СВ
+ //12..50, где в 13,0 записан номер карточки сотрудника,
+ //12..50, где в 14..50,0 предметы из сводной ведомости
+ //0..5, где в 0 записано количество предметов по Сводной или количество для компенсации
+ //0..5, где в 1 записано количество из столбца карточки состоит На..
+ //0..5, где в 2 записан месяц из столбца карточки состоит На..
+ //0..5, где в 3 записан год из столбца карточки состоит На..
+ //0..5, где в 4 записано количество предметов по норме
+ //0..5, где в 5 записано срок носки предметов по норме
+begin
+ FillChar(VSV,sizeof(VSV),0);
+
+ NowDate:=DateToStr(DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ way:=Edit5.Text+'SVEDOM_'+NowDate+'.xlsx';
+ if not FileExists(way) then GrateNewSVEDOM(way); //Проверка файла ведомости текущего года
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkbook.Sheets.item[1].Activate;
+ //Читаем сводную ведомость, каждого сотрудника
+ p:=MainForm.StringGrid1.RowCount;
+ MainForm.ProgressBar1.Width:=MainForm.Button15.Width;;
+ MainForm.ProgressBar1.Height:=25;
+ MainForm.ProgressBar1.Visible:=True; //Статус бар делаем видимым
+ pEx:=2;
+ TextEx:=Ap.Cells[pEx,1];
+ while Length(TextEx)>0 do
+  begin
+   MainForm.ProgressBar1.Position:=100*(pEx-1) div p;
+   VSV[pEx-1,13,0]:=StrToInt(TextEx); //Номер карточки сотрудника
+   For i:=14 to 63 do
+    begin
+      TextEx:=Ap.Cells[pEx,i-10];
+      if length(TextEx)>0 then
+       begin
+        VSV[pEx-1,i,0]:=StrToInt(TextEx);
+        VSV[pEx-1,12,0]:=VSV[pEx-1,12,0]+StrToInt(TextEx);
+       end
+        else VSV[pEx-1,i,0]:=0; //Заполняем количество предметов по ведомости на каждого сотрудника
+    end;
+   inc(pEx);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ //Открываем по списку карточки всех сотрудников и добавляем туда ведомость
+ MainForm.ProgressBar1.Position:=0; //Обнуляем статус бар
+ dec(pEx);
+ For i:=1 to pEx do //Идем по всему массиву
+  begin
+   way:=MainForm.Edit3.Text+'CART_'+IntToStr(VSV[i,13,0])+'.xlsx'; //Путь к карточке i-того сотрудника
+   if (FileExists(way)) and (VSV[i,12,0]>0) then
+    begin
+     TT:=0;
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(way,0,false);
+     Ap.Visible:=false;
+     Ap.DisplayAlerts:=False;
+     ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+     Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+     ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+     Ap.ActiveWorkbook.Save;
+
+     cEx:=6; //Поиск свободного столбца для записи
+     TextEx:=Ap.Cells[12,cEx];
+     buf:='Сводная ведомость '+NowDate;
+     While (Length(TextEx)<>0) and (cEx<20) and (textEx<>buf) do
+      begin
+       inc(cEx);
+       TextEx:=Ap.Cells[12,cEx];
+      end;
+     if cEx=20 then
+      begin
+       NewListOfCart; //Создание нового листа карточки, если старый закончился
+       cEx:=7;
+      end;
+     if textex=buf then //Если сводная уже заносилась в карточку, то удаляем ее, чтобы записать заново
+      begin
+       for k:=14 to 50 do Ap.Cells[k,cEx]:='';
+       ActualOfCart;
+       Ap.ActiveWorkbook.Save;
+      end
+     else if VSV[i,12,0]>0 then Ap.Cells[12,cEx]:='Сводная ведомость '+NowDate;
+
+     //Узнаем мужчина или женщина
+     TextEx:=Ap.Range['F8'];
+     if TextEx='Женщина' then MW:=2 else MW:=1;
+     //Проверка на полковника
+     TextEx:=Ap.Range['E6'];
+     if (TextEx='полковник')or(VSV[i,14,0]>0)or(VSV[i,15,0]>0) then
+      begin
+       TN:=14;
+       if (not (TextEx='полковник')) and ((VSV[i,14,0]>0)or(VSV[i,15,0]>0)) then
+        begin
+         Ap.Range['E6']:='полковник';
+         Buf:={'Укажите месяц.год (mm.yyyy) присвоения воинского звания ПОЛКОВНИК '}+Ap.Cells[8,7];
+         TextEx:=InputBox('Дата присвоения воинского звания ПОЛКОВНИК', buf, '01.2021');
+         Ap.Range['E8']:='01.'+TextEx;
+         Ap.Cells[14,6]:='0/'+TextEx;
+         Ap.Cells[15,6]:='0/'+TextEx;
+         Ap.Cells[14,20]:='0/'+TextEx;
+         Ap.Cells[15,20]:='0/'+TextEx;
+        end;
+      end
+       else TN:=16;
+
+     For j:=TN to 63 do //Процедура заполнения массива данными личной карточки
+      begin
+       VSV[i,j,1]:=0;
+       VSV[i,j,2]:=0;
+       VSV[i,j,3]:=0;
+       VSV[i,j,4]:=0;
+       VSV[i,j,5]:=0;
+       TextEx:=Ap.Cells[j,5]; //Читаем норму количество/срок
+       p:=pos('/',TextEx);
+       if p>0 then
+        begin
+         VSV[i,j,4]:=StrToInt(copy(textEx,1,p-1)); //Количество к выдаче по норме
+         delete(TextEx,1,p);
+         VSV[i,j,5]:=StrToInt(TextEx); //Срок эксплуатации по норме - лет
+        end
+       else VSV[i,j,4]:=0;
+       TextEx:=Ap.Cells[j,20]; //Читаем ячейку СОСТОИТ НА
+       if length(textex)>0 then
+         begin
+          p:=pos('/',TextEx);
+          buf:=copy(textEx,1,p-1);
+          VSV[i,j,1]:=StrToInt(buf); //Количество предметов в ячейке СОСТОИТ НА
+          delete(TextEx,1,p);
+          VSV[i,j,2]:=StrToInt(Copy(TextEx,1,2)); //Месяц предметов в ячейке СОСТОИТ НА
+          VSV[i,j,3]:=StrToInt(Copy(TextEx,4,4)); //Год предметов в ячейке СОСТОИТ НА
+         end;
+       if (VSV[i,j,0]>0) and (VSV[i,j,4]>0) then
+        begin
+         if (VSV[i,j,1]=VSV[i,j,4]) then VSV[i,j,3]:=VSV[i,j,3]+VSV[i,j,5];
+         If VSV[i,j,2]<10 then buf:='0'+IntToStr(VSV[i,j,2]) else buf:=IntToStr(VSV[i,j,2]);
+         Ap.Cells[j,cEx]:=IntToStr(VSV[i,j,0])+'/'+buf+'.'+IntToStr(VSV[i,j,3]); //ЗАписываем ячейку с выданным предметом
+        end;
+      end;
+     Ap.Cells[64,cEx]:=IntToStr(VSV[i,12,0]); //Общее количество предметов по сводной ведомости
+     Ap.ActiveWorkbook.Save;
+     ActualOfCart;
+     Ap.ActiveWorkbook.Save;
+     Ap.ActiveWorkbook.close;
+     Ap.Application.Quit;
+     if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+    end;
+   MainForm.ProgressBar1.Position:=100* i div pEx;
+  end;
+
+ MainForm.ProgressBar1.Visible:=false;
+ ShowMessage('Сводная ведомость '+NowDate+' года успешно разнесена по карточкам всех сотрудников!');
+
+end;
+
+procedure TMainForm.Button16Click(Sender: TObject); //Рассчет денежной компенсации для ВСЕХ сотрудников
+var
+i, j, p, k, PR, pEx, cEx, TT, ListIndex, mX, yX, TN, MW : integer;
+way, way1, TextEx, NowDate, SF, buf, RasDate, SumSpRas, wayOp : string;
+SSR : real;
+NugnaZamena : boolean;
+CherK : array [0..1000,1..6] of string;
+ // 1..6, где 1 - номер карточки
+ // 1..6, где 2 - дата расчета
+ // 1..6, где 3 - дата по какую произведен расчет
+ // 1..6, где 4 - ФИО
+ // 1..6, где 5 - сумма по справке
+ // 1..6, где 6 - нужна/не нужна замена
+VSV : array [0..500,12..63,0..5] of Integer;
+ //1..5000 список сотрудников
+ //12..50, где в 12,0 списано общее количество выданных по СВ
+ //12..50, где в 13,0 записан номер карточки сотрудника,
+ //12..50, где в 14..50,0 предметы из сводной ведомости
+ //0..5, где в 0 записано количество предметов по Сводной или количество для компенсации
+ //0..5, где в 1 записано количество из столбца карточки состоит На..
+ //0..5, где в 2 записан месяц из столбца карточки состоит На..
+ //0..5, где в 3 записан год из столбца карточки состоит На..
+ //0..5, где в 4 записано количество предметов по норме
+ //0..5, где в 5 записано срок носки предметов по норме
+begin
+ FillChar(VSV,sizeof(VSV),0);
+
+ //Открытие ведомости на выдачу текущего года для чтения из нее сведений
+ MainForm.Label2.Caption:='Открытие ведомости на выдачу текущего года для чтения из нее сведений...';
+ NowDate:=DateToStr(DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ way:=Edit5.Text+'SVEDOM_'+NowDate+'.xlsx';
+ if not FileExists(way) then GrateNewSVEDOM(way); //Проверка файла ведомости текущего года
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=true;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkbook.Sheets.item[1].Activate;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+
+ MainForm.Label2.Caption:='Открытие ведомости на выдачу текущего года для чтения из нее сведений...';
+ MainForm.ProgressBar2.Position:=0;
+ MainForm.ProgressBar2.Width:=MainForm.Button16.Width;;
+ MainForm.ProgressBar2.Visible:=true;
+ PR:=MainForm.ComboBox1.Items.Count;
+ for i:=0 to MainForm.ComboBox1.Items.Count-1 do
+  begin
+   MainForm.Label2.Caption:='Чтение сводной ведомости...';
+   MainForm.ComboBox1.ItemIndex:=i;
+   pEx:=2;
+   SF:=MainForm.StringGrid1.Cells[1,MainForm.ComboBox1.ItemIndex+1]; //Запоминаем номер карточки i-го сотрудника
+   TextEx:=Ap.Cells[pEx,1]; //Читаем номер карточки сотрудника из Сводной ведомости
+   while (SF<>TextEx) and (length(TextEx)>0) do
+    begin
+     inc(pEx);
+     TextEx:=Ap.Cells[pEx,1]; //Читаем номер карточки сотрудника из Сводной ведомости
+    end;
+   if length(TextEx)>0 then //Если мы нашли нужный номер
+    begin
+     VSV[i,13,0]:=StrToInt(SF);
+     TT:=0;
+     for j:=14 to 63 do //переписываем сводную ведомость в массив рассчета
+      begin
+       TextEx:=Ap.Cells[pEx,j-10];
+       if length(TextEx)>0 then
+        begin
+         VSV[i,j,0]:=StrToInt(TextEx);
+         TT:=TT+VSV[i,j,0];
+        end;
+      end;
+     VSV[i,12,0]:=TT; //Общее количество предметов по сводной ведомости i-го сотрудника
+    end
+   else ShowMessage('Сотрудник '+MainForm.StringGrid1.Cells[2,MainForm.ComboBox1.ItemIndex+1]+' в сводной ведомости '+NowDate+' года не найден!');
+   MainForm.Label2.Caption:='Чтение сводной ведомости...'+IntToStr(i+1)+' из '+IntToStr(MainForm.ComboBox1.Items.Count);
+   MainForm.ProgressBar2.Position:=100*(i+1) div PR; //Изменяем ProgressBar2
+  end;
+ //MainForm.ProgressBar2.Visible:=false; //Скрываем ProgressBar2
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+ //Получаем данные по какую дату необходимо произвести расчет денежной компенсации
+ RasDate:=DateToStr(DateTimePicker1.Date);
+ delete(RasDate,1,3);
+ mX:=StrToInt(copy(RasDate,1,2));  //Узнаем месяц расчета ДК
+ yX:=StrToInt(copy(RasDate,4,4));  //Узнаем год расчета ДК
+
+ //Создание файла-описи черновиков справок ДК
+ MainForm.Label2.Caption:='Создание файла-описи черновиков справок ДК...';
+ Way:=MainForm.Edit4.Text+'CHER_SR_EX.xlsx'; //Путь к образцу списка-черновика с ДК
+ WayOp:=MainForm.Edit4.Text+NowDate+'\CHER_SR_'+NowDate+'.xlsx'; //Путь к черновику-списку справок текущего года
+ if FileExists(wayOp) then deleteFile(wayOp); //Удаляем предыдущий список-черновик справок ДК
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkbook.SaveAs(wayOp); //Сохраняем образец описи в файл текущего года
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.ProgressBar2.Position:=0;
+ //MainForm.ProgressBar2.Visible:=True; //Показываем ProgressBar2
+ For i:=0 to MainForm.ComboBox1.Items.Count-1 do
+  begin
+   MainForm.ComboBox1.ItemIndex:=i;
+   //Читаем данные из карточки i-го сотрудника
+   MainForm.Label2.Caption:='Получение данных из карточки сотрудника...'+IntToStr(i+1)+' из '+IntToStr(MainForm.ComboBox1.Items.Count);
+   way:=MainForm.Edit3.Text+'CART_'+IntToStr(VSV[i,13,0])+'.xlsx'; //Путь к карточке i-того сотрудника
+   if FileExists(way) then //Если файл карточки есть то
+    begin
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(way,0,false);
+     Ap.Visible:=false;
+     Ap.DisplayAlerts:=False;
+     ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+     Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+     ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+     Ap.ActiveWorkbook.Save;
+
+     cEx:=6; //Поиск свободного столбца для записи
+     TextEx:=Ap.Cells[12,cEx];
+     buf:='Сводная ведомость '+NowDate;
+     While (Length(TextEx)<>0) and (cEx<20) and (textEx<>buf) do
+      begin
+       inc(cEx);
+       TextEx:=Ap.Cells[12,cEx];
+      end;
+     if cEx=20 then
+      begin
+       NewListOfCart; //Создание нового листа карточки, если старый закончился
+       cEx:=7;
+      end;
+
+     //Узнаем мужчина или женщина
+     TextEx:=Ap.Range['F8'];
+     if TextEx='Женщина' then MW:=2 else MW:=1;
+     //Проверка на полковника
+     TextEx:=Ap.Range['E6'];
+     if (TextEx='полковник')or(VSV[i,14,0]>0) then TN:=14 else TN:=16;
+     For j:=TN to 63 do //Процедура заполнения массива данными личной карточки
+      begin
+       VSV[i,j,1]:=0;
+       VSV[i,j,2]:=0;
+       VSV[i,j,3]:=0;
+       VSV[i,j,4]:=0;
+       VSV[i,j,5]:=0;
+       TextEx:=Ap.Cells[j,5]; //Читаем норму количество/срок
+       p:=pos('/',TextEx);
+       if p>0 then
+        begin
+         VSV[i,j,4]:=StrToInt(copy(textEx,1,p-1)); //Количество к выдаче по норме
+         delete(TextEx,1,p);
+         VSV[i,j,5]:=StrToInt(TextEx); //Срок эксплуатации по норме - лет
+        end
+       else VSV[i,j,4]:=0;
+       TextEx:=Ap.Cells[j,20]; //Читаем ячейку СОСТОИТ НА
+       if length(textex)>0 then
+        begin
+         p:=pos('/',TextEx);
+         buf:=copy(textEx,1,p-1);
+         VSV[i,j,1]:=StrToInt(buf); //Количество предметов в ячейке СОСТОИТ НА
+         delete(TextEx,1,p);
+         VSV[i,j,2]:=StrToInt(Copy(TextEx,1,2)); //Месяц предметов в ячейке СОСТОИТ НА
+         VSV[i,j,3]:=StrToInt(Copy(TextEx,4,4)); //Год предметов в ячейке СОСТОИТ НА
+        end;
+       VSV[i,j,1]:=VSV[i,j,1]+VSV[i,j,0]; //Добавляем к количеству предметов СОСТОИТ НА выдачу по СВ
+       VSV[i,j,0]:=0; //Очищаем ячейку под расчет компенсации
+       While (VSV[i,j,4]>0) and (VSV[i,j,1]>VSV[i,j,4]) do
+        begin
+         VSV[i,j,1]:=VSV[i,j,1]-VSV[i,j,4]; //Уменьшаем количество предментов на норму
+         VSV[i,j,3]:=VSV[i,j,3]+VSV[i,j,5]; //Переходим к следующему сроку выдачи
+        end;
+      end;
+
+     Ap.ActiveWorkbook.Save;
+     Ap.ActiveWorkbook.close;
+     Ap.Application.Quit;
+     if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+    end;
+
+   // Рассчет денежной компенсации для i-го сотрудника
+   MainForm.Label2.Caption:='Расчет денежной компенсации сотрудника...'+IntToStr(i+1)+' из '+IntToStr(MainForm.ComboBox1.Items.Count);
+   TT:=0; //Счетчик количества предметов денежной компенсации
+   NugnaZamena:=False; //Индикатор предметов выданных вперед
+   For j:=TN to 63 do
+    begin
+     if (VSV[i,j,3]>0)and(VSV[i,j,4]>0)and(j<>22)and((j<31)or(j>37)) then
+      begin
+       if (VSV[i,j,1]=VSV[i,j,4]) and ((VSV[i,j,3]<yX) or ((VSV[i,j,3]=yX) and (VSV[i,j,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно норме
+        begin
+         VSV[i,j,3]:=VSV[i,j,3]+VSV[i,j,5];
+         while (VSV[i,j,3]<yX) or ((VSV[i,j,3]=yX) and (VSV[i,j,2]<mX)) do
+          begin
+           VSV[i,j,3]:=VSV[i,j,3]+VSV[i,j,5];
+           VSV[i,j,0]:=VSV[i,j,0]+VSV[i,j,4];
+          end;
+        end
+       else
+       if (VSV[i,j,1]=0) and ((VSV[i,j,3]<yX) or ((VSV[i,j,3]=yX) and (VSV[i,j,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно 0
+        while (VSV[i,j,3]<yX) or ((VSV[i,j,3]=yX) and (VSV[i,j,2]<mX)) do
+         begin
+          VSV[i,j,3]:=VSV[i,j,3]+VSV[i,j,5];
+          VSV[i,j,0]:=VSV[i,j,0]+VSV[i,j,4];
+         end
+       else
+       if (VSV[i,j,1]>0) and (VSV[i,j,1]<VSV[i,j,4]) and ((VSV[i,j,3]<yX) or ((VSV[i,j,3]=yX) and (VSV[i,j,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов меньше нормы
+        begin
+         VSV[i,j,0]:=VSV[i,j,4]-VSV[i,j,1];
+         VSV[i,j,3]:=VSV[i,j,3]+VSV[i,j,5];
+         while (VSV[i,j,3]<yX) or ((VSV[i,j,3]=yX) and (VSV[i,j,2]<mX)) do
+          begin
+           VSV[i,j,3]:=VSV[i,j,3]+VSV[i,j,5];
+           VSV[i,j,0]:=VSV[i,j,0]+VSV[i,j,4];
+          end;
+        end
+       else
+       if (VSV[i,j,1]>0) and ((VSV[i,j,3]>yX) or ((VSV[i,j,3]=yX) and (VSV[i,j,2]>mX))) then //если предметы выданы вперед относительно даты расчета
+         begin
+          VSV[i,j,0]:=VSV[i,j,1];
+          VSV[i,j,3]:=VSV[i,j,3]-VSV[i,j,5];
+          while (yX<VSV[i,j,3]) or ((VSV[i,j,3]=yX) and (VSV[i,j,2]>=mX)) do
+           begin
+            VSV[i,j,3]:=VSV[i,j,3]-VSV[i,j,5];
+            VSV[i,j,0]:=VSV[i,j,0]+VSV[i,j,4];
+           end;
+          VSV[i,j,0]:=0-VSV[i,j,0];
+          if VSV[i,j,0]<0 then NugnaZamena:=true;
+         end;
+      end;
+     TT:=TT+VSV[i,j,0];
+    end;
+
+   //Создание черновика справки-расчета i-го сотрудника, занесение туда данных
+   //if (TT=0) and not NugnaZamena then //Компенсация составит 0!
+   MainForm.Label2.Caption:='Создание черновика справки-расчета сотрудника...'+IntToStr(i+1)+' из '+IntToStr(MainForm.ComboBox1.Items.Count);
+   way:=Edit4.Text+'SREX.xlsx';
+   Way1:=Edit4.Text+NowDate;
+   if not DirectoryExists(way1) then MkDir(way1);
+   way1:=Edit4.Text+NowDate+'\'+'SR_'+'PP'+IntToStr(VSV[i,13,0])+'.xlsx';
+   if FileExists(way1) then deleteFile(way1); //удаляем файл прошлого расчета
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(way,0,false);
+   Ap.Visible:=false;
+   Ap.DisplayAlerts:=False;
+   Ap.ActiveWorkBook.Sheets.Item[MW].Activate;
+   Ap.Range['G2']:=DateToStr(MainForm.DateTimePicker1.Date); // запись даты по которую осуществлялся расчет денежной компенсации
+   Ap.Range['A4:G4']:=StringGrid1.Cells[3,MainForm.ComboBox1.ItemIndex+1]; // запись ФИО в справку-расчет
+   Ap.Range['A62:C62']:=MainForm.Edit11.Text; // запись должности руководителя МТО
+   Ap.Range['F62:G62']:=MainForm.Edit12.Text; // запись инициалы и фамилия руководителя МТО
+   Ap.Range['A64:C64']:=MainForm.Edit9.Text; // запись должности исполнителя МТО
+   Ap.Range['F64:G64']:=MainForm.Edit10.Text; // запись инициалы и фамилия исполнителя МТО
+   Ap.Range['A63:C63']:=DateToStr(DateTimePicker2.date); // запись даты создания справки-расчета
+   //Ap.Range['D59:G59']:='=ЧислоПрописью(E58)'; // формула количества - число прописью
+   //Ap.Range['C60:G60']:='=СуммаПрописью(G58)'; // формула суммы - сумма прописью
+
+   k:=TN-6;
+   for j:=TN to 63 do
+    begin
+     if MainForm.CheckBox1.Checked then
+      begin
+       If (VSV[i,j,0]<>0) and (j<>19)and(j<>21)and(j<>38)and(j<>39)and(j<>40)and(j<>41)and(j<>43)
+        and(j<>47)and(j<>48)and(j<>49)and(j<>50)and(j<>52)and(j<>57)
+        and(j<>61)and(j<>63) then Ap.Cells[k,5]:=IntToStr(VSV[i,j,0]);
+      end
+     else
+      begin
+       If VSV[i,j,0]<>0 then Ap.Cells[k,5]:=IntToStr(VSV[i,j,0]);
+      end;
+     inc(k);
+    end;
+   SumSpRas:=Ap.Range['G58']; //узнаем сумму по справке
+   if MW=1 then Ap.Workbooks[1].Sheets.Item[2].Delete else Ap.Workbooks[1].Sheets.Item[1].Delete;
+   Ap.Workbooks[1].WorkSheets[1].SaveAs(way1);
+   Ap.ActiveWorkbook.Close;
+   Ap.Application.Quit;
+   If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+   SSR:=StrToFloat(SumSpRas);
+   SSR:=system.Math.RoundTo(SSR,-2);
+
+   Cherk[i,1]:=IntToStr(VSV[i,13,0]); //Норме личной карточки
+   Cherk[i,2]:=DateToStr(DateTimePicker2.date); //Дата рассчета
+   Cherk[i,3]:=DateToStr(DateTimePicker1.date); //Дата по какую производился рассчет ДК
+   Cherk[i,4]:=StringGrid1.Cells[3,MainForm.ComboBox1.ItemIndex+1]; //ФИО
+   Cherk[i,5]:=FloatToStr(SSR); //Сумма рассчета
+   if NugnaZamena then Cherk[i,6]:='Требуется замена' else Cherk[i,6]:='Замена не требуется'; //Норме личной карточки
+   MainForm.ProgressBar2.Position:=100*(i+1) div PR; //Изменяем ProgressBar2
+  end;
+
+ MainForm.Label2.Caption:='Запись результата расчета сотрудника в опись-черновик...'+IntToStr(i+1)+' из '+IntToStr(MainForm.ComboBox1.Items.Count);
+ //Запись результата i-го сотрудника в опись-черновик
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(wayOp,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ MainForm.ProgressBar2.Position:=0;
+ //MainForm.ProgressBar2.Visible:=True; //Показываем ProgressBar2
+ PR:=MainForm.ComboBox1.Items.Count-1;
+ if PR=0 then PR:=1;
+
+ For i:=0 to MainForm.ComboBox1.Items.Count-1 do
+  Begin
+   Ap.Cells[i+2,1]:=Cherk[i,1]; //Норме личной карточки
+   Ap.Cells[i+2,2]:=Cherk[i,2]; //Дата рассчета
+   Ap.Cells[i+2,3]:=Cherk[i,3]; //Дата по какую производился рассчет ДК
+   Ap.Cells[i+2,4]:=Cherk[i,4]; //ФИО
+   Ap.Cells[i+2,5]:=Cherk[i,5]; //Сумма рассчета
+   Ap.Cells[i+2,6]:=Cherk[i,6]; //Сумма рассчета
+   MainForm.ProgressBar2.Position:=100*(i+1) div PR; //Изменяем ProgressBar2
+  End;
+
+ Ap.ActiveWorkbook.Save; //Сохраняем черновик-опись текущего года
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.ProgressBar2.Visible:=false; //Скрываем ProgressBar2
+ ShowMessage('Расчет ДК Центру произведен!');
+end;
+
+procedure TMainForm.Button17Click(Sender: TObject); //Печать всех справок
+var
+ {
+ function PrintOut(
+  From: Variant; // Старница начала печати
+  To: Variant;   // Старница окончания печати
+  Copies: Variant; // Количество копий
+  Preview: Variant; // Вызов предварительного просмотра перед печатью (True), без просмотра - False
+  ActivePrinter: Variant; //Выбор активного принтера
+  PrintToFile: Variant; //Печать в файл (True), если нет - False
+  Collate: Variant): Workbook;
+ }
+
+ i, pEx, wayOpis, col, dStart, mStart, yStart, dRead, mRead, yRead : integer;
+ textEx, NowDate, wayPrint : string;
+ StrPrint : array [1..2000] of string;
+begin
+ for i:=1 to 2000 do StrPrint[i]:='';
+
+ NowDate:=DateToStr(DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ way:=Edit4.Text+NowDate+'\OPIS_SR_'+NowDate+'.xlsx';
+ if FileExists(way) then //Проверка файла описи справок-расчетов текущего года
+  begin
+   TextEx:=DateToStr(MainForm.DateTimePicker1.Date);
+   dStart:=StrToInt(copy(TextEx,1,2));
+   mStart:=StrToInt(copy(TextEx,4,2));
+   yStart:=StrToInt(copy(TextEx,7,4));
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(way,0,false);
+   Ap.Visible:=false;
+   Ap.DisplayAlerts:=False;
+   Ap.ActiveWorkbook.Sheets.item[1].Activate;
+   col:=0;
+   pEx:=2;
+   TextEx:=Ap.Cells[pEx,3]; //Читаем дату регистрации справки-расчета
+   while length(textEx)>0 do
+    begin
+     dRead:=StrToInt(copy(TextEx,1,2));
+     mRead:=StrToInt(copy(TextEx,4,2));
+     yRead:=StrToInt(copy(TextEx,7,4));
+     if (yRead>yStart) or
+        ((yRead=yStart) and (mRead>mStart)) or
+        ((yRead=yStart) and (mRead=mStart) and (dRead>=dStart)) then
+          begin
+           inc(col);
+           StrPrint[col]:=Ap.Cells[pEx,1]; //Запоминаем номер справки подходящей по дате
+           MainForm.Label2.Caption:='Подсчет справок-расчетов для печати...'+IntToStr(col);
+          end;
+     Inc(pEx);
+     TextEx:=Ap.Cells[pEx,3];
+    end;
+   Ap.ActiveWorkbook.Save; //Сохраняем опись текущего года
+   Ap.ActiveWorkbook.close;
+   Ap.Application.Quit;
+   if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+  end
+ else
+  begin
+   ShowMessage('Файл описи справок расчетов '+NowDate+' года не найден!');
+  end;
+ //Печатаем отобранные справки расчеты
+ MainForm.ProgressBar4.Position:=0;
+ MainForm.ProgressBar4.Width:=MainForm.Button17.Width;;
+ MainForm.ProgressBar4.Visible:=true;
+ MainForm.Label2.Caption:='Печать справок на денежную компенсацию...';
+ for i:=1 to col do
+  begin
+   MainForm.Label2.Caption:='Отправка на печать... '+IntToStr(i)+' справка-расчет из '+IntToStr(col);
+   wayPrint:=Edit4.Text+NowDate+'\SR_'+StrPrint[i]+'.xlsx'; //Путь к справке расчету для печати
+   if FileExists(wayPrint) then
+    begin
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(wayPrint,2,false);
+     if MainForm.CheckBox3.Checked then Ap.Visible:=true
+      else Ap.Visible:=false;
+
+     //Ap.Range['D59:G59']:='=ЧислоПрописью(E58)'; // формула количества - число прописью
+     //Ap.Range['C60:G60']:='=СуммаПрописью(G58)'; // формула суммы - сумма прописью
+     Ap.ActiveWorkbook.RefreshAll;
+
+     Ap.ActiveWorkbook.Worksheets[1].Rows['7:7'].RowHeight:=55;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['8:10'].RowHeight:=20;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['11:12'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['14:15'].RowHeight:=20;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['17:17'].RowHeight:=20;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['18:24'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['32:32'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['32:32'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['33:34'].RowHeight:=20;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['35:35'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['36:36'].RowHeight:=20;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['37:38'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['39:39'].RowHeight:=20;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['40:42'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['43:44'].RowHeight:=20;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['45:50'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['52:53'].RowHeight:=10;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['54:55'].RowHeight:=20;
+     Ap.ActiveWorkbook.Worksheets[1].Rows['56:57'].RowHeight:=10;
+
+     //Ap.Range['D59:G59']:='=ЧислоПрописью(E58)'; // формула количества - число прописью
+     //Ap.Range['C60:G60']:='=СуммаПрописью(G58)'; // формула суммы - сумма прописью
+     //Ap.ActiveWorkbook.RefreshAll;
+     //Ap.ActiveWorkbook.save;
+
+     //Ap.Application.EnableEvents:=false;
+     //Ap.ActiveWorkbook.Worksheets[1].PrintPreview;
+
+     if MainForm.CheckBox2.Checked then
+      Ap.ActiveWorkbook.Worksheets[1].PrintOut(1,1,1,false)  //Печатаем файл с 1 по 2 страницу в 2-х экземплярах
+     else
+      Ap.ActiveWorkbook.Worksheets[1].PrintOut(1,1,2,false);
+
+     Ap.DisplayAlerts:=false;
+     Ap.ActiveWorkbook.save;
+     Ap.ActiveWorkbook.close;
+     Ap.Application.Quit;
+     if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+     MainForm.Label2.Caption:='Печать справок на денежную компенсацию...'+IntTOStr(i)+' из '+IntToStr(Col);
+   end;
+   MainForm.ProgressBar4.Position:=100*(i+1) div col; //Изменяем ProgressBar4
+  end;
+ MainForm.ProgressBar4.Visible:=False;
+ MainForm.Label2.Caption:='Печать справок на денежную компенсацию...ЗАВЕРШЕНА!';
+end;
+
+procedure TMainForm.Button9Click(Sender: TObject);  //просмотр списка уволенных и переведенных
+var
+ way, TextEx : string;
+begin
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(Edit2.Text,0,false);
+ Ap.Visible:=true;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkBook.Sheets.Item[2].Activate;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure TMainForm.Button18Click(Sender: TObject); //увольнение сотрудника по окончанию контракта
+var
+ NugnaZamena, PolkovTrue : boolean;
+ RasDate, TextEx, buf, way, way1, SumSpRas, NowDate, OldName, NewName : string;
+ TN, TT, MW, ListIndex, pEx, p, i, j, colN, yN, yX, mX : integer;
+ SSR : real;
+ SN : array [14..63,0..5] of integer; //0 - количество предметов из сводной ведомости
+ // 1-количество состоит На.., 2,3 - месяц и год состоит На...,
+ //4-Количество по норме, 5- срок по норме
+
+begin
+ MainForm.Label2.Caption:='Исключение сотрудника...';
+ // занесение данных из сводной ведомости в личную карточку увольняемого
+ NowDate:=DateToStr(DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ way:=Edit5.Text+'SVEDOM_'+NowDate+'.xlsx';
+ if not FileExists(way) then GrateNewSVEDOM(way); //Проверка файла ведомости текущего года
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+
+ pEx:=2;
+ TextEx:=Ap.Cells[pEx,1];
+ while StrToInt(TextEx)<>StrToInt(StringGrid1.Cells[1,ComboBox1.ItemIndex+1]) do  //Ищем сотрудника в сводной ведомости
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+
+ MainForm.Label2.Caption:='Исключение сотрудника...получение данных сводной ведомости';
+ TT:=0;
+ for i:=4 to 53 do //Переписываем из Сводной ведомости в массив SN данные о выдаче текущего года
+  begin
+   TextEx:=Ap.Cells[pEx,i];
+   if length(TextEx)<>0 then SN[i+10,0]:=StrToInt(TextEx) else SN[i+10,0]:=0;  //Добавляем в массив данные из сводной ведомости
+   TT:=TT+SN[i+10,0];
+  end;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.Label2.Caption:='Исключение сотрудника...получение данных личной карточки';
+ OldName:=Edit3.Text+'CART_'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx';  //Запоминаем путь к карточке, чтобы в конце ее переименовать
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(OldName,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+ Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+
+ ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+ Ap.ActiveWorkbook.Save;
+
+ pEx:=6; //Поиск свободного столбца для записи
+ TextEx:=Ap.Cells[12,pEx];
+ buf:='Сводная ведомость '+NowDate;
+ While (Length(TextEx)<>0) and (pEx<20) and (textEx<>buf) do
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[12,pEx];
+  end;
+ if pEx=20 then
+  begin
+   NewListOfCart; //Создание нового листа карточки, если старый закончился
+   pEx:=7;
+  end;
+ if textex=buf then
+  begin
+   for i:=14 to 63 do Ap.Cells[i,pEx]:='';
+   ActualOfCart;
+  end
+  else If tt<>0 then Ap.Cells[12,pEx]:='Сводная ведомость '+NowDate; //Если сводная уже заносилась в карточку, то удаляем ее, чтобы записать заново
+
+ RasDate:=DateToStr(DateTimePicker1.Date);
+ delete(RasDate,1,3);
+ mX:=StrToInt(copy(RasDate,1,2));  //Узнаем месяц расчета ДК
+ yX:=StrToInt(copy(RasDate,4,4));  //Узнаем год расчета ДК
+ //Узнаем мужчина или женщина
+ TextEx:=Ap.Range['F8'];
+ if TextEx='Женщина' then MW:=2 else MW:=1;
+ //Проверка на полковника
+ TextEx:=Ap.Range['E6'];
+ if (TextEx='полковник')or(SN[14,0]>0) then TN:=14 else TN:=16;
+ if (SN[14,0]>0) and (TextEx<>'полковник') then ShowMessage('Вы уверены, что товарищ '+MainForm.ComboBox1.Text+' уже ПОЛКОВНИК? Шапку каракулевую Вы ему выдавали?');
+
+ For i:=TN to 63 do //Процедура заполнения личной карточки данными сводной ведомости
+  begin
+   SN[i,1]:=0;
+   SN[i,2]:=0;
+   SN[i,3]:=0;
+   SN[i,4]:=0;
+   SN[i,5]:=0;
+   TextEx:=Ap.Cells[i,20]; //Читаем ячейку СОСТОИТ НА
+   if length(textex)>0 then
+    begin
+     p:=pos('/',TextEx);
+     buf:=copy(textEx,1,p-1);
+     SN[i,1]:=StrToInt(buf); //Количество предметов в ячейке СОСТОИТ НА
+     delete(TextEx,1,p);
+     SN[i,2]:=StrToInt(Copy(TextEx,1,2)); //Месяц предметов в ячейке СОСТОИТ НА
+     SN[i,3]:=StrToInt(Copy(TextEx,4,4)); //Год предметов в ячейке СОСТОИТ НА
+    end;
+   TextEx:=Ap.Cells[i,5]; //Читаем норму количество/срок
+   p:=pos('/',TextEx);
+   if p>0 then
+    begin
+     SN[i,4]:=StrToInt(copy(textEx,1,p-1));
+     delete(TextEx,1,p);
+     SN[i,5]:=StrToInt(TextEx);
+    end
+   else SN[i,4]:=0;
+   if (SN[i,0]<>0) and (SN[i,4]>0) then
+    begin
+     if SN[i,1]=SN[i,4] then
+      begin
+        SN[i,1]:=SN[i,1]-SN[i,4];
+        SN[i,3]:=SN[i,3]+SN[i,5];
+      end;
+     If SN[i,2]<10 then buf:='0'+IntToStr(SN[i,2]) else buf:=IntToStr(SN[i,2]);
+     Ap.Cells[i,pEx]:=IntToStr(SN[i,0])+'/'+buf+'.'+IntToStr(SN[i,3]); //ЗАписываем ячейку с выданным предметом
+     SN[i,1]:=SN[i,1]+SN[i,0]; //Добавляем в состояние карточки количество предметов из сводной ведомости
+     SN[i,0]:=0; //Очищаем ячейку под расчет компенсации
+     While (SN[i,4]>0) and (SN[i,1]>SN[i,4]) do
+      begin
+       SN[i,1]:=SN[i,1]-SN[i,4]; //Уменьшаем количество предментов на норму
+       SN[i,3]:=SN[i,3]+SN[i,5]; //Переходим к следующему сроку выдачи
+      end;
+    end else SN[i,0]:=0;
+  end;
+ Ap.Cells[64,pEx]:=IntToStr(TT); //Запись общего количества предметов по Сводной ведомости
+ Ap.ActiveWorkbook.Save;
+ ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+ Ap.Range['S4']:=DateToStr(MainForm.DateTimePicker1.Date); //Дата окончания карточки
+ Ap.Range['S7']:=DateToStr(MainForm.DateTimePicker1.Date); // Дата увольнения сотрудника
+ Ap.Cells[12,20]:='Состоит на день увольнения';
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.Label2.Caption:='Исключение сотрудника...расчет денежной компенсации';
+ // Рассчет денежной компенсации
+ TT:=0; //Счетчик количества предметов денежной компенсации
+ NugnaZamena:=False; //Индикатор предметов выданных вперед
+ For i:=TN to 63 do
+  begin
+   if (SN[i,3]>0)and(SN[i,4]>0)and(i<>22)and((i<31)or(i>37)) then
+    begin
+     if (SN[i,1]=SN[i,4]) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно норме
+      begin
+       SN[i,3]:=SN[i,3]+SN[i,5];
+       while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+        begin
+         SN[i,3]:=SN[i,3]+SN[i,5];
+         SN[i,0]:=SN[i,0]+SN[i,4];
+        end;
+      end
+     else
+     if (SN[i,1]=0) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов равно 0
+      while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+       begin
+        SN[i,3]:=SN[i,3]+SN[i,5];
+        SN[i,0]:=SN[i,0]+SN[i,4];
+       end
+     else
+     if (SN[i,1]>0) and (SN[i,1]<SN[i,4]) and ((SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX))) then //Если в ячейке СОСТОИТ НА количество предметов меньше нормы
+      begin
+       SN[i,0]:=SN[i,4]-SN[i,1];
+       SN[i,3]:=SN[i,3]+SN[i,5];
+       while (SN[i,3]<yX) or ((SN[i,3]=yX) and (SN[i,2]<mX)) do
+        begin
+         SN[i,3]:=SN[i,3]+SN[i,5];
+         SN[i,0]:=SN[i,0]+SN[i,4];
+        end;
+      end
+     else
+     if (SN[i,1]>0) and ((SN[i,3]>yX) or ((SN[i,3]=yX) and (SN[i,2]>mX))) then //если предметы выданы вперед относительно даты расчета
+       begin
+        SN[i,0]:=SN[i,1];
+        SN[i,3]:=SN[i,3]-SN[i,5];
+        while (yX<SN[i,3]) or ((SN[i,3]=yX) and (SN[i,2]>=mX)) do
+         begin
+          SN[i,3]:=SN[i,3]-SN[i,5];
+          SN[i,0]:=SN[i,0]+SN[i,4];
+         end;
+        SN[i,0]:=0-SN[i,0];
+        if SN[i,0]<0 then NugnaZamena:=true;
+       end;
+    end;
+   TT:=TT+SN[i,0];
+  end;
+ MainForm.Label2.Caption:='Исключение сотрудника...создание черновика справки-расчета';
+ //4. Создание черновика справки-расчета, занесение туда данных
+ way:=Edit4.Text+'SREX.xlsx';
+ Way1:=Edit4.Text+NowDate;
+ if not DirectoryExists(way1) then MkDir(way1);
+ way1:=Edit4.Text+NowDate+'\'+'SR_'+'PP'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx';
+ if FileExists(way1) then deleteFile(way1); //удаляем файл прошлого расчета
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkBook.Sheets.Item[MW].Activate;
+ Ap.Range['G2']:=DateToStr(MainForm.DateTimePicker1.Date); // запись даты по которую осуществлялся расчет денежной компенсации
+ Ap.Range['A4:G4']:=StringGrid1.Cells[3,ComboBox1.ItemIndex+1]; // запись ФИО в справку-расчет
+ Ap.Range['A62:C62']:=MainForm.Edit11.Text; // запись должности руководителя МТО
+ Ap.Range['F62:G62']:=MainForm.Edit12.Text; // запись инициалы и фамилия руководителя МТО
+ Ap.Range['A64:C64']:=MainForm.Edit9.Text; // запись должности исполнителя МТО
+ Ap.Range['F64:G64']:=MainForm.Edit10.Text; // запись инициалы и фамилия исполнителя МТО
+ Ap.Range['A63:C63']:=DateToStr(DateTimePicker2.date); // запись даты создания справки-расчета
+ //Ap.Range['D59:G59']:='=ЧислоПрописью(E58)'; // формула количества - число прописью
+ //Ap.Range['C60:G60']:='=СуммаПрописью(G58)'; // формула суммы - сумма прописью
+
+ j:=TN-6;
+ for i:=TN to 63 do
+  begin
+   If SN[i,0]<>0 then Ap.Cells[j,5]:=IntToStr(SN[i,0]); //заносим количество предметов компенсации
+   inc(j);
+  end;
+ SumSpRas:=Ap.Range['G58']; //узнаем сумму по справке
+ if MW=1 then Ap.Workbooks[1].Sheets.Item[2].Delete else Ap.Workbooks[1].Sheets.Item[1].Delete;
+ Ap.Workbooks[1].WorkSheets[1].SaveAs(way1);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+ SSR:=StrToFloat(SumSpRas); //Сумма денежной компенсации в цифре
+ SSR:=system.Math.RoundTo(SSR,-2);
+ if (SSR=0) and not NugnaZamena then
+  begin
+   deleteFile(way1); //удаляем файл рассчета
+   ShowMessage('Выплата денежной компенсации при увольнении '+MainForm.ComboBox1.Text+' не требуется! Личная карточка готова к печати');
+   NewName:=Edit3.Text+'CART_'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'_NO_ACTUAL.xlsx'; //название карточки уволенного или переведенного сотрудника
+   RenameFile(OldName, NewName); //Переименовываем карточку удаленног сотрудника
+   DelOfSotrudnik;
+  end
+ else
+ if (SSR=0) and NugnaZamena then
+  begin
+   ZamenaFromSRPP(way1, OldName); //Процедура замены имущества из проекта справки-расчета
+   MainForm.Button18.Click;
+  end
+ else
+ if SSR<0 then
+  begin
+   ShowMessage('Требуется удержать денежные средства с увольняемого сотрудника по справке-расчету!');
+   MainForm.Button13.Click; //Регестрируем и разносим в карточку справку-расчет
+   DelOfSotrudnik;
+  end
+ else
+ if (SSR>0) and not NugnaZamena then
+  begin
+   MainForm.Button13.Click; //Регестрируем и разносим в карточку справку-расчет
+   NewName:=Edit3.Text+'CART_'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'_NO_ACTUAL.xlsx'; //название карточки уволенного или переведенного сотрудника
+   RenameFile(OldName, NewName); //Переименовываем карточку удаленного сотрудника
+   DelOfSotrudnik;
+   ShowMessage('Денежная компенсация '+DateToStr(MainForm.DateTimePicker1.Date)+' на день увольнения составляет: '+SumSpRas);
+  end
+ else
+ if (SSR>0) and NugnaZamena then
+  begin
+   ShowMessage('Для правильного рассчета денежной компенсации требуется заменить предметы одежды, выданные вперед!');   //Написать процедуры при увольнении
+   ZamenaFromSRPP(way1, OldName); //Процедура замены имущества из проекта справки-расчета
+   MainForm.Button18.Click;
+  end;
+ MainForm.Label2.Caption:='Исключение сотрудника...ЗАВЕРШЕНО!';
+ //ShowMessage('Операция завершена успешно');
+end;
+
+procedure TMainForm.Button19Click(Sender: TObject); //Исключение сотрудника (по отрицательным мотивам) с удержанием денег за ВИ
+Var
+ i, j, pEx, TT, TN, ListIndex, MW, mX, yX, p : integer;
+ SumX, SumR : Longint;
+ SSR : real;
+ way, way1, TextEx, NowDate, buf, RasDate, SumSpRas, wayFileDel, OldName, NewName : string;
+ SN : array[14..63,0..5] of integer; //0 - СВ и результат расчета 1-СОСТОИТ НА - количество
+ //2-СОСТОИТ НА месяц, 3- СОСТОИТ НА год, 4- НОРМА количество, 5-НОРМА - срок
+begin
+ MainForm.Label2.Caption:='Исключение и удержание...получение данных сводной ведомости';
+ FillChar(SN,sizeof(SN),0);
+ //Открываем сводную ведомость и добавляем данные из нее в массив SN
+ NowDate:=DateToStr(DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ way:=Edit5.Text+'SVEDOM_'+NowDate+'.xlsx';
+ if not FileExists(way) then GrateNewSVEDOM(way); //Проверка файла ведомости текущего года
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+
+ pEx:=2;
+ TextEx:=Ap.Cells[pEx,1];
+ while StrToInt(TextEx)<>StrToInt(StringGrid1.Cells[1,ComboBox1.ItemIndex+1]) do  //Ищем сотрудника в сводной ведомости
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+
+ TT:=0;
+ for i:=4 to 53 do //Переписываем из Сводной ведомости в массив SN данные о выдаче текущего года
+  begin
+   TextEx:=Ap.Cells[pEx,i];
+   if length(TextEx)<>0 then SN[i+10,0]:=StrToInt(TextEx) else SN[i+10,0]:=0;  //Добавляем в массив данные из сводной ведомости
+   TT:=TT+SN[i+10,0];
+  end;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.Label2.Caption:='Перевод сотрудника...оформление карточки сотрудника';
+ //Разносим сводную ведомость в карточку увольняемого по отрицательным мотивам сотрудника
+ OldName:=Edit3.Text+'CART_'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx';
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(OldName,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+ Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+
+ ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+ Ap.ActiveWorkbook.Save;
+
+ pEx:=6; //Поиск свободного столбца для записи
+ TextEx:=Ap.Cells[12,pEx];
+ buf:='Сводная ведомость '+NowDate;
+ While (Length(TextEx)<>0) and (pEx<20) and (textEx<>buf) do
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[12,pEx];
+  end;
+ if pEx=20 then
+  begin
+   NewListOfCart; //Создание нового листа карточки, если старый закончился
+   pEx:=7;
+  end;
+ if textex=buf then
+  begin
+   for i:=14 to 63 do Ap.Cells[i,pEx]:='';
+   ActualOfCart;
+  end
+  else If tt<>0 then Ap.Cells[12,pEx]:='Сводная ведомость '+NowDate; //Если сводная уже заносилась в карточку, то удаляем ее, чтобы записать заново
+
+ //Узнаем мужчина или женщина
+ TextEx:=Ap.Range['F8'];
+ if TextEx='Женщина' then MW:=2 else MW:=1;
+ //Проверка на полковника
+ TextEx:=Ap.Range['E6'];
+ if (TextEx='полковник')or(SN[14,0]>0) then TN:=14 else TN:=16;
+ if (SN[14,0]>0) and (TextEx<>'полковник') then ShowMessage('Вы уверены, что товарищ '+MainForm.ComboBox1.Text+' уже ПОЛКОВНИК? Шапку каракулевую Вы ему выдавали?');
+
+ For i:=TN to 63 do //Актуальное состояние карточки, занесение предметов и з сводной ведомости, заполнение массива актуальными данными
+  begin
+   SN[i,1]:=0;
+   SN[i,2]:=0;
+   SN[i,3]:=0;
+   SN[i,4]:=0;
+   SN[i,5]:=0;
+   TextEx:=Ap.Cells[i,20]; //Читаем ячейку СОСТОИТ НА
+   if length(textex)>0 then
+    begin
+     p:=pos('/',TextEx);
+     buf:=copy(textEx,1,p-1);
+     SN[i,1]:=StrToInt(buf); //Количество предметов в ячейке СОСТОИТ НА
+     delete(TextEx,1,p);
+     SN[i,2]:=StrToInt(Copy(TextEx,1,2)); //Месяц предметов в ячейке СОСТОИТ НА
+     SN[i,3]:=StrToInt(Copy(TextEx,4,4)); //Год предметов в ячейке СОСТОИТ НА
+    end;
+   TextEx:=Ap.Cells[i,5]; //Читаем норму количество/срок
+   p:=pos('/',TextEx);
+   if p>0 then
+    begin
+     SN[i,4]:=StrToInt(copy(textEx,1,p-1));
+     delete(TextEx,1,p);
+     SN[i,5]:=StrToInt(TextEx);
+    end
+   else SN[i,4]:=0;
+   if (SN[i,0]<>0) and (SN[i,4]>0) then
+    begin
+     if SN[i,1]=SN[i,4] then
+      begin
+        SN[i,1]:=SN[i,1]-SN[i,4];
+        SN[i,3]:=SN[i,3]+SN[i,5];
+      end;
+     If SN[i,2]<10 then buf:='0'+IntToStr(SN[i,2]) else buf:=IntToStr(SN[i,2]);
+     Ap.Cells[i,pEx]:=IntToStr(SN[i,0])+'/'+buf+'.'+IntToStr(SN[i,3]); //ЗАписываем ячейку с выданным предметом
+     SN[i,1]:=SN[i,1]+SN[i,0]; //Добавляем в состояние карточки количество предметов из сводной ведомости
+     SN[i,0]:=0; //Очищаем ячейку для освобождения под расчет компенсации
+     While (SN[i,4]>0) and (SN[i,1]>SN[i,4]) do
+      begin
+       SN[i,1]:=SN[i,1]-SN[i,4]; //Уменьшаем количество предментов на норму
+       SN[i,3]:=SN[i,3]+SN[i,5]; //Переходим к следующему сроку выдачи
+      end;
+    end else SN[i,0]:=0;
+  end;
+ Ap.Cells[64,pEx]:=IntToStr(TT); //Запись общего количества предметов по Сводной ведомости
+ Ap.ActiveWorkbook.Save;
+ ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+ Ap.Range['S4']:=DateToStr(MainForm.DateTimePicker1.Date); //Дата окончания карточки
+ Ap.Range['S7']:=DateToStr(MainForm.DateTimePicker1.Date); // Дата увольнения сотрудника
+ Ap.Cells[12,20]:='Состоит на день увольнения';
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ //Расчет количества месяцев для выплаты или удержания
+ RasDate:=DateToStr(DateTimePicker1.Date);
+ delete(RasDate,1,3);
+ mX:=StrToInt(copy(RasDate,1,2));  //Узнаем месяц расчета ДК
+ yX:=StrToInt(copy(RasDate,4,4));  //Узнаем год расчета ДК
+ SumX:=mX+yX*12; // Дата расчета в числе
+
+ For i:=TN to 63 do
+  begin
+   SN[i,0]:=0; //Обнуляем 0-й столбец
+   if (SN[i,4]>0) and (i<>22) and ((i<31)or(i>37)) then
+    begin
+     if SN[i,1]=SN[i,4] then //Количество СОСТОИТ НА = норме
+      begin
+       SumR:=SN[i,2]+(SN[i,3]+SN[i,5])*12;
+       SN[i,0]:=SumX-SumR;
+      end;
+     if SN[i,1]=0 then //Количество СОСТОИТ НА =0
+      begin
+       SumR:=SN[i,2]+SN[i,3]*12;
+       SN[i,0]:=SumX-SumR;
+      end;
+     if (0<SN[i,1]) and (SN[i,1]<SN[i,4]) then //Количество СОСТОИТ НА больше 0, но меньше нормы
+      begin
+       SumR:=(SN[i,2]+SN[i,3]*12)+((SN[i,1]*12*SN[i,5]) div SN[i,4]);
+       SN[i,0]:=SumX-SumR;
+      end;
+    end;
+  end;
+
+ MainForm.Label2.Caption:='Перевод сотрудника...оформление справки на удержание';
+ //Занесение полученных данных в справку-расчет на удержание
+ way:=Edit4.Text+'SRNAUDEREX.xlsx';
+ Way1:=Edit4.Text+NowDate;
+ if not DirectoryExists(way1) then MkDir(way1);
+ way1:=Edit4.Text+NowDate+'\'+'SR_'+'PP'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'.xlsx';
+ if FileExists(way1) then deleteFile(way1); //удаляем файл прошлого расчета
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkBook.Sheets.Item[MW].Activate;
+ Ap.Range['J2']:=DateToStr(MainForm.DateTimePicker1.Date); // запись даты по которую осуществлялся расчет денежной компенсации
+ Ap.Range['A4:J4']:=StringGrid1.Cells[3,ComboBox1.ItemIndex+1]; // запись ФИО в справку-расчет
+ Ap.Range['A74:C74']:=MainForm.Edit11.Text; // запись должности руководителя МТО
+ Ap.Range['H74:I74']:=MainForm.Edit12.Text; // запись инициалы и фамилия руководителя МТО
+ Ap.Range['A76:C76']:=MainForm.Edit9.Text; // запись должности исполнителя МТО
+ Ap.Range['H76:I76']:=MainForm.Edit10.Text; // запись инициалы и фамилия исполнителя МТО
+ Ap.Range['A75:C75']:=DateToStr(DateTimePicker2.date); // запись даты создания справки-расчета
+ j:=TN-6;
+ for i:=TN to 63 do
+  begin
+   If SN[i,0]<>0 then Ap.Cells[j,9]:=IntToStr(SN[i,0]);
+   inc(j);
+  end;
+ SumSpRas:=Ap.Range['J58']; //узнаем сумму по справке
+ SSR:=StrToFloat(SumSpRas);
+ SSR:=system.Math.RoundTo(SSR,-2);
+  if MW=1 then Ap.Workbooks[1].Sheets.Item[2].Delete else Ap.Workbooks[1].Sheets.Item[1].Delete;
+ Ap.Workbooks[1].WorkSheets[1].SaveAs(way1);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ MainForm.Label2.Caption:='Перевод сотрудника...регистрации справки-расчета на удержание';
+ //Открываем опись справок-расчета текущего года
+ way:=MainForm.Edit4.Text+NowDate+'\OPIS_SR_'+NowDate+'.xlsx';
+ if not FileExists(way) then CreatOpisSPRS(way);
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false); //Открываем опись справок-расчетов
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ pEx:=2;
+ TextEx:=Ap.Cells[pEx,1];
+ while Length(TextEx)>0 do
+  begin
+   inc(pEx);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+ Ap.Cells[pEx,1]:=IntToStr(pEx-1); //Присвоили номер справки-расчет
+ Ap.Cells[pEx,2]:=StringGrid1.Cells[1,ComboBox1.ItemIndex+1]; //Номер карточки сотрудника
+ Ap.Cells[pEx,3]:=DateToStr(MainForm.DateTimePicker2.Date); //Дата регистрации справки-расчета
+ Ap.Cells[pEx,4]:=DateToStr(MainForm.DateTimePicker1.Date); //Запись даты по которую осуществлялся расчет денежной компенсации
+ Ap.Cells[pEx,5]:=StringGrid1.Cells[3,ComboBox1.ItemIndex+1]; // запись ФИО в опись
+ Ap.Cells[pEx,6]:=IntToStr(pEx-1); //Присвоили номер справки-расчет
+ Ap.Cells[pEx,7]:=FloatToStr(SSR); //Сумма денежной компенсации по справке
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way1,0,false); //Открываем проект справки расчета
+ Ap.Visible:=false;
+ Ap.DisplayAlerts:=False;
+ Ap.Range['G2']:=IntToStr(pEx-1); // запись номера справки-расчета
+ wayFileDel:=way1;
+ way:=MainForm.Edit4.Text+NowDate+'\SR_'+IntToStr(pEx-1)+'.xlsx'; //Сохраняем зарегистрированную справку-расчет
+ Ap.ActiveWorkbook.SaveAs(way);
+ Ap.ActiveWorkbook.Close;
+ Ap.Application.Quit;
+ If TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+ DeleteFile(wayFileDel); //удаляем проект справки-расчет
+
+ //ЗДЕСЬ нужно написать код, который разносит содержимое справки-удержания в карточку и выводит ОБЕСПЕЧЕН ПО  __.__.20_
+
+ NewName:=Edit3.Text+'CART_'+StringGrid1.Cells[1,ComboBox1.ItemIndex+1]+'_NO_ACTUAL.xlsx';; //Присваиваем новое название для карточки уволенного сотрудника
+ RenameFile(OldName,NewName); //Переименовываем карточку уволенного сотрудника
+ DelOfSotrudnik; //Удаляем сотрудника из списка
+ ShowMessage('Денежная компенсация '+DateToStr(MainForm.DateTimePicker1.Date)+' на день увольнения составляет: '+FloatToStr(SSR)+'. Справка рассчет №'+IntToStr(pEx-1));
+end;
+
+procedure TMainForm.Button1Click(Sender: TObject);
+var
+TextEx, path : string;
+pEx, pGr, j : integer;
+
+begin
+ Combobox1.Items.Clear;//Очищаем ComBox с фамилиями
+ Ap:=CreateOleObject('Excel.Application');
+ //if OpenDialog1.Execute then way:=(OpenDialog1.FileName);
+ Ap.Workbooks.Open(Edit2.Text,0,false);
+ Ap.Visible:=false; //true-окно EXEL становиться видимым
+ Ap.ActiveWorkBook.Sheets.Item[1].Activate;
+ pEx:=1;
+ For j := 1 to 5 do StringGrid1.Cells[j,pEx-1]:=Ap.Cells[pEx,j]; //Ввод шапки StringGrid1
+ //Заполнение содержимого списка л/c
+ inc(pEx);
+ StringGrid1.RowCount:=pEx;
+ TextEx:=Ap.Cells[pEx,1];
+ while length(TextEx)<>0 do
+  begin
+   StringGrid1.RowCount:=pEx;
+   For j := 1 to 5 do StringGrid1.Cells[j,pEx-1]:=Ap.Cells[pEx,j];
+   ComboBox1.Items.Add(Ap.Cells[pEx,3]);
+   inc(pEx);
+   TextEx:=Ap.Cells[pEx,1];
+  end;
+ label1.Caption:=IntToStr(pEx-1); //Количество сотрудников в списке
+
+ Ap.DisplayAlerts:=False;
+ Ap.ActiveWorkbook.Save;
+ Ap.ActiveWorkbook.close;
+ Ap.Application.Quit;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure TMainForm.Button20Click(Sender: TObject); //Регистрация всех черновиков справок-расчетов и разноска в сводные ведомости
+var
+ i, j, pEx, cEx, p, col, ListIndex, TT, PR : integer;
+ SSR : real;
+ NowDate, WayOp, way, TextEx, buf, wayOld, wayNew : string;
+ CherK : array [0..2000,0..6] of string;
+ // 0..6, где 0 - регистрационный номер справки-расчета
+ // 0..6, где 1 - номер карточки
+ // 0..6, где 2 - дата расчета
+ // 0..6, где 3 - дата по какую произведен расчет
+ // 0..6, где 4 - ФИО
+ // 0..6, где 5 - сумма по справке
+ // 0..6, где 6 - нужна/не нужна замена
+
+ VSV : array [0..500,12..63,0..5] of integer;
+ //1..5000 список сотрудников
+ //12..50, где в 12,0 записано общее количество выданных по СВ или справке-расчету
+ //12..50, где в 13,0 записан номер карточки сотрудника,
+ //12..50, где в 14..50,0 предметы из сводной ведомости
+ //0..5, где в 0 записано количество предметов по Сводной или количество для компенсации
+ //0..5, где в 1 записано количество из столбца карточки состоит На..
+ //0..5, где в 2 записан месяц из столбца карточки состоит На..
+ //0..5, где в 3 записан год из столбца карточки состоит На..
+ //0..5, где в 4 записано количество предметов по норме
+ //0..5, где в 5 записано срок носки предметов по норме
+begin
+ FillChar(VSV,sizeof(VSV),0);
+ for i:=0 to 2000 do
+   for j:=0 to 6 do
+    CherK[i,j]:='';
+
+ //Открытие описи-черновика справок расчетов ДК всех сотрудников
+ NowDate:=DateToStr(DateTimePicker2.Date);
+ delete(NowDate, 1, 6);
+ wayOp:=Edit4.Text+NowDate+'\CHER_SR_'+NowDate+'.xlsx';  //Путь к описи-черновику
+ if FileExists(wayOp) then //Проверка наличия файла описи-черновика текущего года
+  begin
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(wayOp,0,false);
+   Ap.Visible:=false;
+   Ap.DisplayAlerts:=False;
+   Ap.ActiveWorkbook.Sheets.item[1].Activate;
+   col:=0;
+   pEx:=2;
+   TextEx:=Ap.Cells[pEx,5]; //Читаем сумму компенсации
+   buf:=Ap.Cells[pEx,6]; //Читаем замена нужна/не нужна
+   while Length(TextEx)>0 do
+    begin
+     SSR:=StrToFloat(TextEx);
+     SSR:=system.Math.RoundTo(SSR,-2); //Округление до 2-х знаков после запятой
+     if (SSR>0) and (buf='Замена не требуется') then
+      begin
+       inc(col); //Счетчик количества записей
+       MainForm.Label2.Caption:='Подсчет справок-расчетов подлежащих регистрации... '+IntToStr(col);
+       CherK[col,1]:=Ap.Cells[pEx,1]; //номер карточки
+       CherK[col,2]:=Ap.Cells[pEx,2]; //дата рассчета
+       CherK[col,3]:=Ap.Cells[pEx,3]; //по какую дату рассчет
+       CherK[col,4]:=Ap.Cells[pEx,4]; //ФИО
+       CherK[col,5]:=Ap.Cells[pEx,5]; //FloatToStr(SSR); //Сумма ДК
+       CherK[col,6]:=Ap.Cells[pEx,6]; // нужна/не нужна замена
+       MainForm.Label2.Caption:='Подсчет справок-расчетов подлежащих регистрации... '+IntToStr(col)+' '+CherK[col,1]+' '+CherK[col,4];
+      end
+     else
+      if (SSR<=0) or (buf='Требуется замена') then
+       begin
+        textEx:=Ap.Cells[pEx,1]; //номер карточки
+        way:=Edit4.Text+NowDate+'\SR_PP'+TextEx+'.xlsx'; //Путь к черновику справки-расчета
+        deleteFile(way); //удаляем черновик справки расчета
+       end;
+     Inc(pEx);
+     TextEx:=Ap.Cells[pEx,5]; //ЧИтаем сумму компенсации
+     buf:=Ap.Cells[pEx,6]; //ЧИтаем нужна/не нужна замена
+    end;
+
+   Ap.ActiveWorkbook.Save;
+   Ap.ActiveWorkbook.close;
+   Ap.Application.Quit;
+   if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+   DeleteFile(wayOp); //удаляем список-черновик проектов справок-расчетов
+
+   //Открываем опись справок текущего года OPIS_SR_ и регистрируем справки, которые не требует замены и ДК>0
+   way:=Edit4.Text+NowDate+'\OPIS_SR_'+NowDate+'.xlsx'; //Путь к черновику справки-расчета
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(way,0,false);
+   Ap.Visible:=false;
+   Ap.DisplayAlerts:=False;
+   Ap.ActiveWorkbook.Sheets.item[1].Activate;
+   pEx:=2;
+   TextEx:=Ap.Cells[pEx,1];
+   while Length(TextEx)>0 do
+    begin
+      inc(pEx);
+      TextEx:=Ap.Cells[pEx,1];
+    end;
+
+   MainForm.ProgressBar3.Position:=0;
+   MainForm.ProgressBar3.Width:=MainForm.Button20.Width;;
+   MainForm.ProgressBar3.Visible:=true;
+   for i:=1 to Col do
+    begin
+     MainForm.Label2.Caption:='Добавление данных в опись... '+IntToStr(i)+' справка из '+IntToStr(col);
+     CherK[i,0]:=IntToStr(pEx-1); //Порядковый номер
+     Ap.Cells[pEx,1]:=IntToStr(pEx-1); //Порядковый номер
+     Ap.Cells[pEx,2]:=CherK[i,1]; //номер карточки
+     Ap.Cells[pEx,3]:=CherK[i,2]; // дата рассчета
+     Ap.Cells[pEx,4]:=CherK[i,3]; // по какую дату рассчет
+     Ap.Cells[pEx,5]:=CherK[i,4]; // ФИО
+     Ap.Cells[pEx,6]:=IntToStr(pEx-1); //номер справки
+     Ap.Cells[pEx,7]:=CherK[i,5]; // Сумма ДК
+     inc(pEx);
+     MainForm.ProgressBar3.Position:=100*(i) div col; //Изменяем ProgressBar2
+    end;
+   Ap.ActiveWorkbook.Save;
+   Ap.ActiveWorkbook.close;
+   Ap.Application.Quit;
+   if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+   //MainForm.ProgressBar3.Visible:=false; //Скрываем ProgressBar2
+
+   //Открывавем по очереди проекты справок-расчетов, заполняем номер, считываем количество предметов для сводной вдедомости, переименовываем
+   MainForm.ProgressBar3.Position:=0;
+   MainForm.ProgressBar3.Width:=755;
+   MainForm.ProgressBar3.Visible:=true;
+   for i:=1 to Col do
+    begin
+     MainForm.Label2.Caption:='Регистрация справки-расчета '+IntToStr(i)+' из '+IntToStr(col)+' Номер: '+CherK[i,1];
+     wayOld:=Edit4.Text+NowDate+'\SR_PP'+CherK[i,1]+'.xlsx'; //Путь к проекту справки расчета
+     wayNew:=Edit4.Text+NowDate+'\SR_'+CherK[i,0]+'.xlsx'; //Путь к справки расчета
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(wayOld,0,false);
+     Ap.Visible:=false;
+     Ap.DisplayAlerts:=False;
+     //Ap.ActiveWorkbook.Sheets.item[1].Activate;
+     Ap.Range['E2:F2']:=CherK[i,0]; //Присваеваем номер справки-расчета
+     Ap.Range['A62:C62']:=MainForm.Edit11.Text; // запись должности руководителя МТО
+     Ap.Range['F62:G62']:=MainForm.Edit12.Text; // запись инициалы и фамилия руководителя МТО
+     Ap.Range['D59:G59']:='=ЧислоПрописью(E58)'; // формула количества - число прописью
+     Ap.Range['C60:G60']:='=СуммаПрописью(G58)'; // формула суммы - сумма прописью
+
+     VSV[i,12,0]:=Ap.Range['E58']; //Запоминаем количество предметов по справке-расчету
+     For j:=14 to 63 do
+      begin
+       TextEx:=Ap.Cells[j-6,5];
+       if length(TextEx)>0 then VSV[i,j,0]:=StrToInt(TextEx) else VSV[i,j,0]:=0;
+      end;
+     Ap.ActiveWorkbook.SaveAs(wayNew);
+     Ap.ActiveWorkbook.close;
+     Ap.Application.Quit;
+     if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+     DeleteFile(wayOld); //удаляем проект справки расчета
+     MainForm.ProgressBar3.Position:=100*(i+1) div col; //Изменяем ProgressBar2
+    end;
+   //MainForm.ProgressBar3.Visible:=false; //Скрываем ProgressBar2
+
+   //Открываем личные карточки сотрудников по списку и добавляем сведения из справки
+   MainForm.ProgressBar3.Position:=0;
+   MainForm.ProgressBar3.Width:=755;
+   MainForm.ProgressBar3.Visible:=true;
+   for i:=1 to Col do
+    begin
+     MainForm.Label2.Caption:='Добавление данных из справки расчета в личную карточку сотрудника '+IntToStr(i)+' из '+IntToStr(col);
+     way:=Edit3.Text+'CART_'+CherK[i,1]+'.xlsx'; //Путь к карточке сотрудника
+     Ap:=CreateOleObject('Excel.Application');
+     Ap.Workbooks.Open(way,0,false);
+     Ap.Visible:=false;
+     Ap.DisplayAlerts:=False;
+     ListIndex:=Ap.Workbooks[1].Sheets.Count; //Количество листов в книге-карточке;
+     Ap.ActiveWorkBook.Sheets.Item[ListIndex].Activate;
+     ActualOfCart; // Процедура приведения карточки к актуальному состоянию
+     Ap.ActiveWorkbook.Save;
+
+     pEx:=6; //Поиск свободного столбца для записи
+     TextEx:=Ap.Cells[12,pEx];
+     While (Length(TextEx)<>0) and (pEx<20) do
+      begin
+       inc(pEx);
+       TextEx:=Ap.Cells[12,pEx];
+      end;
+     if pEx=20 then
+      begin
+       NewListOfCart; //Создание нового листа карточки, если старый закончился
+       pEx:=7;
+      end;
+     Ap.Cells[12,pEx]:='Справка-расчет №'+CherK[i,0]; //Записываем в документы выдачи справку-расчет
+     for J:=14 to 63 do //Заполняем массив данными нормы и данными ячийки СОСТОИТ НА...
+      begin
+       if VSV[i,j,0]>0 then
+        begin
+         TextEx:=Ap.Cells[j,20]; //СОСТОИТ НА...
+         if Length(TextEx)>0 then
+          begin
+           p:=pos('/',TextEx);
+           VSV[i,j,1]:=StrToInt(copy(TextEx,1,p-1)); // Читаем количество предметов СОСТОИТ НА
+           VSV[i,j,2]:=StrToInt(copy(TextEx,p+1,2)); // Читаем месяц СОСТОИТ НА
+           if VSV[i,j,2]<10 then buf:='0'+IntToStr(VSV[i,j,2]) else buf:=IntToStr(VSV[i,j,2]);
+           VSV[i,j,3]:=StrToInt(copy(TextEx,p+4,4)); // Читаем год СОСТОИТ НА
+          end;
+         TextEx:=Ap.Cells[j,5]; //Читаем норму
+         p:=pos('/',TextEx);
+         VSV[i,j,4]:=StrToInt(copy(TextEx,1,p-1)); // Читаем норму - количество
+         delete(TextEx,1,p);
+         VSV[i,j,5]:=StrToInt(TextEx); // Читаем норму - срок
+         if (VSV[i,j,1]=0) or ((VSV[i,j,1]>0) and (VSV[i,j,1]<VSV[i,j,4])) then
+          Ap.Cells[j,pEx]:=IntToStr(VSV[i,j,0])+'/'+buf+'.'+IntToStr(VSV[i,j,3]);
+         if VSV[i,j,1]=VSV[i,j,4] then //Количество предметов состоит на = норме выдачи
+          begin
+           VSV[i,j,3]:=VSV[i,j,3]+VSV[i,j,5];
+           Ap.Cells[j,pEx]:=IntToStr(VSV[i,j,0])+'/'+buf+'.'+IntToStr(VSV[i,j,3]);
+          end;
+        end;
+      end;
+     Ap.Cells[64,pEx]:=IntToStr(VSV[i,12,0]); // Количество предметов по справке-расчету
+     Ap.Cells[66,pEx]:=CherK[i,5]; //Сумма денежной компенсации по справке
+     Ap.ActiveWorkbook.Save;
+     ActualOfCart; //приводим карточку в актуальное состояние
+     Ap.ActiveWorkbook.Save;
+     Ap.ActiveWorkbook.close;
+     Ap.Application.Quit;
+     if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+     MainForm.ProgressBar3.Position:=100*(i+1) div col; //Изменяем ProgressBar2
+    end;
+   MainForm.ProgressBar3.Visible:=false; //Скрываем ProgressBar2
+   ShowMessage('Все справки успешно зарегестрированы и добавлены во все карточки сотрудников!');
+  end
+ else
+  Begin
+   ShowMessage('Расчет денежной компенсации для всех сотрудников центра в текущем году не производился!');
+  End;
+end;
+
+procedure TMainForm.Button21Click(Sender: TObject); //Автоматическая замена ВИ выбранному сотруднику на выбранную дату
+Var
+ i : integer;
+ wayPP, wayCart, NowDate, SumSpRas : string;
+begin
+ MainForm.Label2.Caption:='Замена имущества сотруднику...';
+ NowDate:=DateToStr(MainForm.DateTimePicker1.Date);
+ delete(NowDate,1,6);
+ wayPP:=MainForm.Edit4.Text+NowDate+'\SR_PP'+MainForm.StringGrid1.Cells[1,MainForm.ComboBox1.ItemIndex+1]+'.xlsx';
+ wayCart:=MainForm.Edit3.Text+'CART_'+MainForm.StringGrid1.Cells[1,MainForm.ComboBox1.ItemIndex+1]+'.xlsx';
+ if FileExists(wayPP) then deleteFile(wayPP);
+
+ //ЗАМЕНА С УЧЕТОМ ПРЕДМЕТОВ В СВОДНОЙ ВЕДОМОСТИ
+ pokazMessag:=False; // Не показывать сообщения при просчете проекта справки-расчета ДК
+ MainForm.Button12.Click; //Рассчет денежной компенсации, создание черновика справки расчета
+ pokazMessag:=True; // Показывать сообщения при просчете проекта справки-расчета ДК
+
+ if FileExists(wayPP) then
+  begin
+   ZamenaFromSRPP(wayPP,wayCart); //Процедура замены имущества из проекта справки-расчета
+   ShowMessage('Замена произведена успешно!');
+  end
+ else
+  ShowMessage('Замена не нужна!');
+end;
+
+procedure TMainForm.Button22Click(Sender: TObject); //Открытие ведомости текущего года
+Var
+ NowDate, way : string;
+begin
+ MainForm.Label2.Caption:='Открытие сводной ведомости...';
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ way:=MainForm.Edit5.Text+'SVEDOM_'+NowDate+'.xlsx';
+ if not FileExists(way) then GrateNewSVEDOM(way);
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=true;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure TMainForm.Button23Click(Sender: TObject); //Открытие описи справок расчетов текущего года
+Var
+ NowDate, way : string;
+begin
+ MainForm.Label2.Caption:='Открытие описи справок-расчетов...';
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ way:=MainForm.Edit4.Text+NowDate+'\OPIS_SR_'+NowDate+'.xlsx';
+ if not FileExists(way) then CreatOpisSPRS(way);
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=true;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure TMainForm.Button24Click(Sender: TObject); //Открытие описи ведомостей замены текущего года
+Var
+ NowDate, way : string;
+begin
+ MainForm.Label2.Caption:='Открытие описи ведомостей замены...';
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ way:=MainForm.Edit15.Text+NowDate+'\OPIS_VZAMEN_'+NowDate+'.xlsx';
+ if not FileExists(way) then CreatOpisVZAMEN(way);
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=true;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure TMainForm.Button25Click(Sender: TObject); //Открытие описи ордеров на пошив текущего года
+Var
+ NowDate, way : string;
+begin
+ MainForm.Label2.Caption:='Открытие описи ордеров...';
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ way:=MainForm.Edit6.Text+NowDate+'\OPIS_ORDER_'+NowDate+'.xlsx';
+ if not FileExists(way) then CreatOpisORDER(way);
+ Ap:=CreateOleObject('Excel.Application');
+ Ap.Workbooks.Open(way,0,false);
+ Ap.Visible:=true;
+ if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+end;
+
+procedure TMainForm.Button26Click(Sender: TObject);
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ SelectDirectory ('Выберите папку', '', way, [sdNewFolder, sdNewUI]);
+ Edit15.Text:=way+'\';
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=Edit2.Text; Writeln(FC, S);
+ S:=Edit3.Text; Writeln(FC, S);
+ S:=Edit4.Text; Writeln(FC, S);
+ S:=Edit5.Text; Writeln(FC, S);
+ S:=Edit6.Text; Writeln(FC, S);
+ S:=Edit7.Text; Writeln(FC, S);
+ S:=Edit8.Text; Writeln(FC, S);
+ S:=Edit9.Text; Writeln(FC, S);
+ S:=Edit10.Text; Writeln(FC, S);
+ S:=Edit11.Text; Writeln(FC, S);
+ S:=Edit12.Text; Writeln(FC, S);
+ S:=Edit13.Text; Writeln(FC, S);
+ S:=Edit14.Text; Writeln(FC, S);
+ S:=Edit15.Text; Writeln(FC, S);
+ S:=Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ CloseFile(FC);
+end;
+
+procedure TMainForm.Button27Click(Sender: TObject); //Процедура замены ВИ всем сотрудникам Центра, которым была рассчитана денежная компенсация и имеется опись-черновик проектов справок-рассчетов
+var
+SSR : real;
+i, j, buttonSelected, pEx, col : integer;
+NowDate, wayOPIS, TextEx, zam, SumSpRas : string;
+MasZam : array [1..2000,1..7] of string;
+// 1..5000 количество строк для записи
+// 1..7, где 1 личный номер карточки сотрудника
+// 1..7, где 2 дата рассчета
+// 1..7, где 3 по какую дату рассчитан
+// 1..7, где 4 ФИО
+// 1..7, где 5 Сумма по справке
+// 1..7, где 6 Путь к черновику справки-рассчета i-го сотрудника
+// 1..7, где 7 Путь к карточку i-го сотрудника
+
+begin
+ MainForm.Label2.Caption:='Замена предметов вещевого имуществам всем сотрудникам центра...';
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ wayOPIS:=Edit4.Text+NowDate+'\CHER_SR_'+NowDate+'.xlsx';  //Путь к описи-черновику
+ if FileExists(wayOpis) then //Проверка наличия файла описи-черновика текущего года
+  begin //файл есть, производим его чтение
+   MainForm.Label2.Caption:='Файл описи черновика присутствует. Производим поиск карточек, нуждающихся в замене...';
+   Ap:=CreateOleObject('Excel.Application');
+   Ap.Workbooks.Open(wayOpis,0,false);
+   Ap.Visible:=false;
+   Ap.DisplayAlerts:=False;
+   for i:=1 to 2000 do
+    for j:=1 to 7 do
+     MasZam[i,j]:='';
+
+   col:=0;
+   pEx:=2;
+   TextEx:=Ap.Cells[pEx,1];
+   while Length(TextEx)>0 do
+    begin
+     zam:=Ap.Cells[pEx,6];
+     SSR:=StrToFloat(Ap.Cells[pEx,5]);
+     if (zam='Требуется замена')and (SSR>0) then
+      begin
+       inc(col);
+       MainForm.Label2.Caption:='Подсчет карточек требующих замены...'+IntToStr(col);
+       MasZam[col,1]:=Ap.Cells[pEx,1];
+       MasZam[col,2]:=Ap.Cells[pEx,2];
+       MasZam[col,3]:=Ap.Cells[pEx,3];
+       MasZam[col,4]:=Ap.Cells[pEx,4];
+       MasZam[col,5]:=Ap.Cells[pEx,5];
+       MasZam[col,6]:=MainForm.Edit4.Text+NowDate+'\SR_PP'+TextEx+'.xlsx';  // Путь к черновику справки-рассчета i-го сотрудника
+       MasZam[col,7]:=MainForm.Edit3.Text+'CART_'+TextEx+'.xlsx';  // Путь к карточку i-го сотрудника
+      end;
+     inc(pEx);
+     TextEx:=Ap.Cells[pEx,1];
+    end;
+   Ap.ActiveWorkbook.Save;
+   Ap.ActiveWorkbook.close;
+   Ap.Application.Quit;
+   if TVarData(Ap).VDispatch <> nil then Finalize(Ap);
+
+   // Производим замену предметов всем сотрудникам в массиве
+   MainForm.ProgressBar5.Position:=0;
+   MainForm.ProgressBar5.Width:=MainForm.Button27.Width;
+   MainForm.ProgressBar5.Visible:=true;
+   MainForm.Label2.Caption:='Замене подлежат '+IntToStr(col)+' карточек сотрудников';
+   for i:=1 to col do
+    begin
+     MainForm.Label2.Caption:='Замена предметов для '+IntToStr(i)+' карточки из '+IntToStr(col);
+     pokazMessag:=False; // Не показывать сообщения при просчете проекта справки-расчета ДК
+     MainForm.Label2.Caption:='Производим замену '+IntToStr(i)+' карточки из ' +IntToStr(col)+' карточек сотрудников';
+     if FileExists(MasZam[i,6]) then ZamenaFromSRPP(MasZam[i,6],MasZam[i,7]); //Процедура замены имущества из проекта справки-расчета
+     pokazMessag:=True; // Показывать сообщения при просчете проекта справки-расчета ДК
+     MainForm.ProgressBar5.Position:=100*(i) div col; //Изменяем ProgressBar2
+    end;
+   MainForm.ProgressBar5.Position:=0;
+   MainForm.ProgressBar5.Visible:=false;
+   buttonSelected:=MessageDlg('Замена имущества ВСЕМ сотрудникам Центра произведена. Произвести расчет денежной компенсации сотрудникам центра за '+NowDate+' год заново?' ,mtConfirmation,[mbYes,mbNo],0);
+   if buttonSelected=mrYes then
+    begin
+     if col>0 then
+      begin
+       NowDate:=MasZam[col,3];
+       MainForm.DateTimePicker1.Date:=StrToDate(NowDate);
+       MainForm.Button16.Click;
+      end;
+    end;
+  end
+ else
+  begin //файла нет!
+   buttonSelected:=MessageDlg('Расчет денежной компенсации сотрудникам центра за '+NowDate+' год не производился. Хотите произвести рассчет?' ,mtConfirmation,[mbYes,mbNo],0);
+   if buttonSelected=mrYes then
+    begin
+     i:=StrToInt(NowDate);
+     inc(i);
+     NowDate:='01.01.'+IntToStr(i);
+     MainForm.DateTimePicker1.Date:=StrToDate(NowDate);
+     MainForm.Button16.Click;
+    end;
+  end;
+end;
+
+procedure TMainForm.Button28Click(Sender: TObject);
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ SelectDirectory ('Выберите папку', '', way, [sdNewFolder, sdNewUI]);
+ Edit16.Text:=way+'\';;
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=Edit2.Text; Writeln(FC, S);
+ S:=Edit3.Text; Writeln(FC, S);
+ S:=Edit4.Text; Writeln(FC, S);
+ S:=Edit5.Text; Writeln(FC, S);
+ S:=Edit6.Text; Writeln(FC, S);
+ S:=Edit7.Text; Writeln(FC, S);
+ S:=Edit8.Text; Writeln(FC, S);
+ S:=Edit9.Text; Writeln(FC, S);
+ S:=Edit10.Text; Writeln(FC, S);
+ S:=Edit11.Text; Writeln(FC, S);
+ S:=Edit12.Text; Writeln(FC, S);
+ S:=Edit13.Text; Writeln(FC, S);
+ S:=Edit14.Text; Writeln(FC, S);
+ S:=Edit15.Text; Writeln(FC, S);
+ S:=Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ if MainForm.CheckBox6.Checked then Writeln(FC, 'Save in ZIP-archive: 1') else Writeln(FC, 'Save in ZIP-archive: 0');
+ CloseFile(FC);
+end;
+
+procedure TMainForm.Button29Click(Sender: TObject);
+var
+ S, NowDate : string;
+begin
+ S:=MainForm.Edit17.Text;
+ if (Length(S)=10) and (S[3]='.') and (S[6]='.') then
+  begin
+   MainForm.DateTimePicker2.Date:=StrToDate(S);
+   NowDate:=Copy(S,7,4);
+   MainForm.Button22.Caption:='Открыть сводную ведомость '+NowDate+' года';
+   MainForm.Button23.Caption:='Открыть опись справок на выплату денежной компенсации '+NowDate+' года';
+   MainForm.Button24.Caption:='Открыть опись ведомостей замены '+NowDate+' года';
+   MainForm.Button25.Caption:='Открыть опись ордеров на пошив '+NowDate+' года';
+  end
+  else
+   begin
+     MainForm.Edit17.Text:='dd.mm.yyyy';
+     ShowMessage('Введена не верная дата');
+   end;
+  MainForm.Label2.Caption:='';
+  MainForm.Label2.Caption:=DateToStr(MainForm.DateTimePicker2.Date);
+end;
+
+procedure TMainForm.Button2Click(Sender: TObject);
+begin
+ Form1:=TForm1.Create(self);
+ Form1.Visible:= True;
+ Form1.SetFocus;
+end;
+
+procedure TMainForm.Button30Click(Sender: TObject);
+var
+ textEx : string;
+begin
+ MainForm.DateTimePicker2.Time:=now;
+ TextEx:=TimeToStr(MainForm.DateTimePicker2.Time);
+ MainForm.Button30.Caption:=TextEx;
+end;
+
+procedure TMainForm.Button3Click(Sender: TObject);
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ if OpenDialog1.Execute then way:=(OpenDialog1.FileName);
+ Edit2.Text:=way;
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=Edit2.Text; Writeln(FC, S);
+ S:=Edit3.Text; Writeln(FC, S);
+ S:=Edit4.Text; Writeln(FC, S);
+ S:=Edit5.Text; Writeln(FC, S);
+ S:=Edit6.Text; Writeln(FC, S);
+ S:=Edit7.Text; Writeln(FC, S);
+ S:=Edit8.Text; Writeln(FC, S);
+ S:=Edit9.Text; Writeln(FC, S);
+ S:=Edit10.Text; Writeln(FC, S);
+ S:=Edit11.Text; Writeln(FC, S);
+ S:=Edit12.Text; Writeln(FC, S);
+ S:=Edit13.Text; Writeln(FC, S);
+ S:=Edit14.Text; Writeln(FC, S);
+ S:=Edit15.Text; Writeln(FC, S);
+ S:=Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ if MainForm.CheckBox6.Checked then Writeln(FC, 'Save in ZIP-archive: 1') else Writeln(FC, 'Save in ZIP-archive: 0');
+ CloseFile(FC);
+end;
+
+procedure TMainForm.Button4Click(Sender: TObject);
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ SelectDirectory ('Выберите папку', '', way, [sdNewFolder, sdNewUI]);
+ Edit3.Text:=way+'\';;
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=Edit2.Text; Writeln(FC, S);
+ S:=Edit3.Text; Writeln(FC, S);
+ S:=Edit4.Text; Writeln(FC, S);
+ S:=Edit5.Text; Writeln(FC, S);
+ S:=Edit6.Text; Writeln(FC, S);
+ S:=Edit7.Text; Writeln(FC, S);
+ S:=Edit8.Text; Writeln(FC, S);
+ S:=Edit9.Text; Writeln(FC, S);
+ S:=Edit10.Text; Writeln(FC, S);
+ S:=Edit11.Text; Writeln(FC, S);
+ S:=Edit12.Text; Writeln(FC, S);
+ S:=Edit13.Text; Writeln(FC, S);
+ S:=Edit14.Text; Writeln(FC, S);
+ S:=Edit15.Text; Writeln(FC, S);
+ S:=Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ if MainForm.CheckBox6.Checked then Writeln(FC, 'Save in ZIP-archive: 1') else Writeln(FC, 'Save in ZIP-archive: 0');
+ CloseFile(FC);
+end;
+
+procedure TMainForm.Button5Click(Sender: TObject);
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ SelectDirectory ('Выберите папку', '', way, [sdNewFolder, sdNewUI]);
+ Edit4.Text:=way+'\';;
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=Edit2.Text; Writeln(FC, S);
+ S:=Edit3.Text; Writeln(FC, S);
+ S:=Edit4.Text; Writeln(FC, S);
+ S:=Edit5.Text; Writeln(FC, S);
+ S:=Edit6.Text; Writeln(FC, S);
+ S:=Edit7.Text; Writeln(FC, S);
+ S:=Edit8.Text; Writeln(FC, S);
+ S:=Edit9.Text; Writeln(FC, S);
+ S:=Edit10.Text; Writeln(FC, S);
+ S:=Edit11.Text; Writeln(FC, S);
+ S:=Edit12.Text; Writeln(FC, S);
+ S:=Edit13.Text; Writeln(FC, S);
+ S:=Edit14.Text; Writeln(FC, S);
+ S:=Edit15.Text; Writeln(FC, S);
+ S:=Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ if MainForm.CheckBox6.Checked then Writeln(FC, 'Save in ZIP-archive: 1') else Writeln(FC, 'Save in ZIP-archive: 0');
+ CloseFile(FC);
+end;
+
+procedure TMainForm.Button6Click(Sender: TObject);
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ SelectDirectory ('Выберите папку', '', way, [sdNewFolder, sdNewUI]);
+ Edit5.Text:=way+'\';;
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=Edit2.Text; Writeln(FC, S);
+ S:=Edit3.Text; Writeln(FC, S);
+ S:=Edit4.Text; Writeln(FC, S);
+ S:=Edit5.Text; Writeln(FC, S);
+ S:=Edit6.Text; Writeln(FC, S);
+ S:=Edit7.Text; Writeln(FC, S);
+ S:=Edit8.Text; Writeln(FC, S);
+ S:=Edit9.Text; Writeln(FC, S);
+ S:=Edit10.Text; Writeln(FC, S);
+ S:=Edit11.Text; Writeln(FC, S);
+ S:=Edit12.Text; Writeln(FC, S);
+ S:=Edit13.Text; Writeln(FC, S);
+ S:=Edit14.Text; Writeln(FC, S);
+ S:=Edit15.Text; Writeln(FC, S);
+ S:=Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ if MainForm.CheckBox6.Checked then Writeln(FC, 'Save in ZIP-archive: 1') else Writeln(FC, 'Save in ZIP-archive: 0');
+ CloseFile(FC);
+end;
+
+procedure TMainForm.Button7Click(Sender: TObject);
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ SelectDirectory ('Выберите папку', '', way, [sdNewFolder, sdNewUI]);
+ Edit6.Text:=way+'\';;
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=Edit2.Text; Writeln(FC, S);
+ S:=Edit3.Text; Writeln(FC, S);
+ S:=Edit4.Text; Writeln(FC, S);
+ S:=Edit5.Text; Writeln(FC, S);
+ S:=Edit6.Text; Writeln(FC, S);
+ S:=Edit7.Text; Writeln(FC, S);
+ S:=Edit8.Text; Writeln(FC, S);
+ S:=Edit9.Text; Writeln(FC, S);
+ S:=Edit10.Text; Writeln(FC, S);
+ S:=Edit11.Text; Writeln(FC, S);
+ S:=Edit12.Text; Writeln(FC, S);
+ S:=Edit13.Text; Writeln(FC, S);
+ S:=Edit14.Text; Writeln(FC, S);
+ S:=Edit15.Text; Writeln(FC, S);
+ S:=Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ if MainForm.CheckBox6.Checked then Writeln(FC, 'Save in ZIP-archive: 1') else Writeln(FC, 'Save in ZIP-archive: 0');
+ CloseFile(FC);
+end;
+
+procedure TMainForm.Button8Click(Sender: TObject);
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ SelectDirectory ('Выберите папку', '', way, [sdNewFolder, sdNewUI]);
+ Edit7.Text:=way+'\';
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=Edit2.Text; Writeln(FC, S);
+ S:=Edit3.Text; Writeln(FC, S);
+ S:=Edit4.Text; Writeln(FC, S);
+ S:=Edit5.Text; Writeln(FC, S);
+ S:=Edit6.Text; Writeln(FC, S);
+ S:=Edit7.Text; Writeln(FC, S);
+ S:=Edit8.Text; Writeln(FC, S);
+ S:=Edit9.Text; Writeln(FC, S);
+ S:=Edit10.Text; Writeln(FC, S);
+ S:=Edit11.Text; Writeln(FC, S);
+ S:=Edit12.Text; Writeln(FC, S);
+ S:=Edit13.Text; Writeln(FC, S);
+ S:=Edit14.Text; Writeln(FC, S);
+ S:=Edit15.Text; Writeln(FC, S);
+ S:=Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ if MainForm.CheckBox6.Checked then Writeln(FC, 'Save in ZIP-archive: 1') else Writeln(FC, 'Save in ZIP-archive: 0');
+ CloseFile(FC);
+end;
+
+procedure saveCfg; //Сохранение данных в файл config.cfg
+var
+ way, FileName, FilePath, S : string;
+ FC : TextFile;
+begin
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ rewrite(FC);
+ S:=MainForm.Edit2.Text; Writeln(FC, S);
+ S:=MainForm.Edit3.Text; Writeln(FC, S);
+ S:=MainForm.Edit4.Text; Writeln(FC, S);
+ S:=MainForm.Edit5.Text; Writeln(FC, S);
+ S:=MainForm.Edit6.Text; Writeln(FC, S);
+ S:=MainForm.Edit7.Text; Writeln(FC, S);
+ S:=MainForm.Edit8.Text; Writeln(FC, S);
+ S:=MainForm.Edit9.Text; Writeln(FC, S);
+ S:=MainForm.Edit10.Text; Writeln(FC, S);
+ S:=MainForm.Edit11.Text; Writeln(FC, S);
+ S:=MainForm.Edit12.Text; Writeln(FC, S);
+ S:=MainForm.Edit13.Text; Writeln(FC, S);
+ S:=MainForm.Edit14.Text; Writeln(FC, S);
+ S:=MainForm.Edit15.Text; Writeln(FC, S);
+ S:=MainForm.Edit16.Text; Writeln(FC, S);
+ if MainForm.CheckBox4.Checked then Writeln(FC, 'Save every month: 1') else Writeln(FC, 'Save every month: 0');
+ if MainForm.CheckBox5.Checked then Writeln(FC, 'Save every time: 1') else Writeln(FC, 'Save every time: 0');
+ if MainForm.CheckBox6.Checked then Writeln(FC, 'Save in ZIP-archive: 1') else Writeln(FC, 'Save in ZIP-archive: 0');
+ CloseFile(FC);
+end;
+
+procedure TMainForm.CheckBox7Click(Sender: TObject);
+begin
+ if MainForm.CheckBox7.Checked then
+  begin
+    MainForm.Button29.Enabled:=true;
+    MainForm.Edit17.Enabled:=true;
+    MainForm.Edit17.Text:=DateToStr(MainForm.DateTimePicker2.Date);
+  end
+ else
+  begin
+    MainForm.Button29.Enabled:=false;
+    MainForm.Edit17.Enabled:=false;
+  end;
+end;
+
+procedure TMainForm.ComboBox1Change(Sender: TObject);
+begin
+ Label5.Caption:=StringGrid1.Cells[2,ComboBox1.ItemIndex+1]; //Пишет звание в Label5
+ Label7.Caption:=StringGrid1.Cells[1,ComboBox1.ItemIndex+1]; //Пишет индивидуальный номер в Label7
+ Button10.Enabled:=true; //Активируем клавишу просмотра карточки сотрудника
+ Button11.Enabled:=true; //Активируем клавишу выписки одрера
+ Button12.Enabled:=true; //Активируем клавишу расчета ДК
+ Button13.Enabled:=true; //Активируем клавишу внесения в карточку данных из сводной
+ Button14.Enabled:=true; //Активируем клавишу оформления аттестата
+ Button18.Enabled:=true; //Активируем клавишу исключения сотрудника + ДК
+ Button19.Enabled:=true; //Активируем клавишу исключения сотрудника + удержание денег
+ Button21.Enabled:=true; //Активируем клавишу замены предметов
+ DateTimePicker1.Date:=now;
+end;
+
+procedure TMainForm.CreateMDIChild(const Name: string);
+var
+  Child: TMDIChild;
+begin
+  { create a new MDI child window }
+  Child := TMDIChild.Create(Application);
+  Child.Caption := Name;
+  if FileExists(Name) then Child.Memo1.Lines.LoadFromFile(Name);
+end;
+
+
+procedure TMainForm.FileNew1Execute(Sender: TObject);
+begin
+  CreateMDIChild('NONAME' + IntToStr(MDIChildCount + 1));
+end;
+
+procedure TMainForm.FileOpen1Execute(Sender: TObject);
+begin
+  if OpenDialog.Execute then
+    CreateMDIChild(OpenDialog.FileName);
+
+end;
+
+procedure TMainForm.FormActivate(Sender: TObject);
+var
+ FilePath, FileName, S, NowDate : string;
+ FC : TextFile;
+begin
+ DateTimePicker1.Date:=now;
+ DateTimePicker2.Date:=now;
+ NowDate:=DateToStr(MainForm.DateTimePicker2.Date);
+ delete(NowDate,1,6);
+ MainForm.Button22.Caption:='Открыть сводную ведомость '+NowDate+' года';
+ MainForm.Button23.Caption:='Открыть опись справок на выплату денежной компенсации '+NowDate+' года';
+ MainForm.Button24.Caption:='Открыть опись ведомостей замены '+NowDate+' года';
+ MainForm.Button25.Caption:='Открыть опись ордеров на пошив '+NowDate+' года';
+
+ FilePath:=ExtractFilePath(Application.ExeName);
+ FileName:=FilePath+'config.cfg';
+ AssignFile(FC, FileName);
+ reset(FC);
+ Readln(FC, S); Edit2.Text:=S; //Путь к списку сотрудников
+ Readln(FC, S); Edit3.Text:=S; //Путь к папке с карточками
+ Readln(FC, S); Edit4.Text:=S; //Путь к папке со справками расчетом
+ Readln(FC, S); Edit5.Text:=S; //Путь к папке со сводной ведомостью
+ Readln(FC, S); Edit6.Text:=S; //Путь к папке с оредрами на пошив
+ Readln(FC, S); Edit7.Text:=S; //Путь к папке с вещевыми аттестатами
+ Readln(FC, S); //пропускает строку с указанием пути до config.cfg
+ Readln(FC, S); Edit9.Text:=S; // Должность исполнителя МТО
+ Readln(FC, S); Edit10.Text:=S; // Инициалы и фамилия исполнителя
+ Readln(FC, S); Edit11.Text:=S; // Должность руководителя МТО
+ Readln(FC, S); Edit12.Text:=S; // Инициалы и фамилия руководителя
+ Readln(FC, S); Edit13.Text:=S; // Наименование организации пошива
+ Readln(FC, S); Edit14.Text:=S; // Адрес организации пошива
+ Readln(FC, S); Edit15.Text:=S; // Путь к папке с ведомостями замены
+ Readln(FC, S); Edit16.Text:=S; // Путь к папке с резервными файлами
+ Readln(FC, S);
+ if S='' then else
+ if S='Save every month: 1' then MainForm.CheckBox4.Checked:=true
+  else MainForm.CheckBox4.Checked:=false;
+ Readln(FC, S);
+ if S='Save every time: 1' then MainForm.CheckBox5.Checked:=true
+  else MainForm.CheckBox5.Checked:=false;
+ Readln(FC, S);
+ if S='Save in ZIP-archive: 1' then MainForm.CheckBox6.Checked:=true
+  else MainForm.CheckBox5.Checked:=false;
+ CloseFile(FC);
+
+ Edit8.Text:=FileName;
+ if length(Edit2.Text)=0 then
+  begin
+   ShowMessage('Выберите файл со списком сотрудников');
+   Button3.Click;
+  end;
+ if length(Edit3.Text)=0 then
+  begin
+   ShowMessage('Укажите путь к папке с личными карточками сотрудников');
+   Button4.Click;
+  end;
+ if length(Edit4.Text)=0 then
+  begin
+   ShowMessage('Укажите путь к папке с карточками-расчетом денежной компенсации');
+   Button5.Click;
+  end;
+ if length(Edit5.Text)=0 then
+  begin
+   ShowMessage('Укажите путь к папке со сводной ведомостью');
+   Button6.Click;
+  end;
+ if length(Edit6.Text)=0 then
+  begin
+   ShowMessage('Укажите путь к папке с ордерами на пошив');
+   Button7.Click;
+  end;
+ if length(Edit7.Text)=0 then
+  begin
+   ShowMessage('Укажите путь к папке с вещевыми аттестатами');
+   Button8.Click;
+  end;
+ if length(Edit9.Text)=0 then ShowMessage('Укажите в настройках должность исполнителя');
+ if length(Edit10.Text)=0 then ShowMessage('Укажите в настройках инициалы и фамилию исполнителя');
+ if length(Edit11.Text)=0 then ShowMessage('Укажите в настройках должность руководителя отдела МТО');
+ if length(Edit12.Text)=0 then ShowMessage('Укажите в настройках инициалы и фамилию руководителя отдела МТО');
+ if length(Edit13.Text)=0 then ShowMessage('Укажите в настройках организацию, выбранную для оказания услуг по пошиву');
+ if length(Edit14.Text)=0 then ShowMessage('Укажите в настройках адрес организации, выбранной для оказания услуг по пошиву');
+ if length(Edit15.Text)=0 then
+  begin
+   ShowMessage('Укажите путь к папке с ведомостями замены');
+   Button26.Click;
+  end;
+ if length(Edit16.Text)=0 then
+  begin
+   ShowMessage('Укажите путь к папке для хранения резервных файлов');
+   Button28.Click;
+  end;
+
+ MainForm.TabControl1.ActivePageIndex:=1; //при загрузке будет открываться всегда вкладка ОПЕРАЦИИ
+ pokazMessag:=true; //Показывать сообщения при рассчете проектов справки-расчетов
+ Button1.Click; //Загружаем список сотрудников
+ end;
+
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+Var
+ TextEx, buf, m, FPath, mZIP : string;
+ p : integer;
+begin
+ saveCfg;
+
+// DateTimePicker2.Date:=StrToDate('01.09.2021');
+ DateTimePicker2.Date:=now;
+ DateTimePicker2.Time:=now;
+
+ m:=TimeToStr(MainForm.DateTimePicker2.Time);
+ if length(m)=7 then m:='0'+m;
+ buf:=DateToStr(MainForm.DateTimePicker2.Date)+m;
+ TextEx:=MainForm.Edit16.Text+Copy(buf,7,4)+'_'+Copy(buf,4,2)+'_'+Copy(buf,1,2)+'_'+Copy(buf,11,2)+'_'+Copy(buf,14,2)+'\';
+ mZIP:=MainForm.Edit16.Text+Copy(buf,7,4)+'_'+Copy(buf,4,2)+'_'+Copy(buf,1,2)+'_'+Copy(buf,11,2)+'_'+Copy(buf,14,2)+'.zip';
+
+ if MainForm.CheckBox6.Checked then // Если делаем архив
+  begin
+   ArZip:=TZipFile.Create; //Создаем файл архива
+   if MainForm.CheckBox5.Checked then zname:=mZip //Если делаем сохранение при каждом закрытии
+   else
+   if MainForm.CheckBox4.Checked then //Делаем сохранение только в 1 число месяца
+    begin
+     p:=Length(mZip);
+     Delete(mZip,p-5,6);
+     mZip:=mZip+'01.zip';
+    end;
+   if not FileExists(zname) then
+    begin
+     ArZip.Open(zname, zmWrite);
+     FPath:=ExtractFilePath(Application.ExeName);
+     FullDirectoryCopyToZip(FPath, '', FALSE, TRUE);
+     ArZip.Close;
+     ArZip.Free;
+    end;
+  end
+ else //Если архив НЕ ДЕЛАЕМ
+  begin
+   if (MainForm.CheckBox5.Checked) and (not DirectoryExists(TextEx)) then //Если делаем сохранение при каждом закрытии
+    begin
+     MkDir(TextEx);
+     FPath:=ExtractFilePath(Application.ExeName);
+     FullDirectoryCopy(FPath, TextEx, FALSE, TRUE)
+    end
+   else
+   if MainForm.CheckBox4.Checked then //Делаем сохранение только в 1 число месяца
+    begin
+     p:=Length(TextEx);
+     Delete(TextEx,p-5,6);
+
+    end;
+  end;
+
+
+
+   if not DirectoryExists(TextEx) then
+    begin
+     if not (MainForm.CheckBox6.Checked) then
+      begin
+       MkDir(TextEx);
+       FPath:=ExtractFilePath(Application.ExeName);
+       FullDirectoryCopy(FPath, TextEx, FALSE, TRUE)
+      end
+      else
+       begin
+        ArZip:=TZipFile.Create; //Создаем файл архива
+        delete(TextEx,length(textEx),1);
+        zname:=TextEx+'.zip';
+        if FileExists(zname) then DeleteFile(zname);
+        ArZip.Open(zname, zmWrite);
+        FPath:=ExtractFilePath(Application.ExeName);
+        FullDirectoryCopyToZip(FPath, '', FALSE, TRUE);
+        ArZip.Close;
+        ArZip.Free;
+       end;
+    end
+
+ else
+ if MainForm.CheckBox4.Checked then
+  begin
+   buf:=DateToStr(MainForm.DateTimePicker2.Date);
+   m:=Copy(buf,1,2);
+   TextEx:=MainForm.Edit16.Text+Copy(buf,7,4)+'_'+Copy(buf,4,2)+'_01\';
+   if (m='01') and (not DirectoryExists(TextEx)) then
+    begin
+     if not (MainForm.CheckBox6.Checked) then
+      begin
+       MkDir(TextEx);
+       FPath:=ExtractFilePath(Application.ExeName);
+       FullDirectoryCopy(FPath, TextEx, FALSE, TRUE)
+      end
+      else
+       begin
+        ArZip:=TZipFile.Create; //Создаем файл архива
+        delete(TextEx,length(textEx),1);
+        zname:=TextEx+'.zip';
+        if FileExists(zname) then DeleteFile(zname);
+        ArZip.Open(zname, zmWrite);
+        FPath:=ExtractFilePath(Application.ExeName);
+        FullDirectoryCopyToZip(FPath, '', FALSE, TRUE);
+        ArZip.Close;
+        ArZip.Free;
+       end;
+    end;
+  end;
+
+end;
+
+procedure TMainForm.HelpAbout1Execute(Sender: TObject);
+begin
+  AboutBox.ShowModal;
+end;
+
+procedure TMainForm.FileExit1Execute(Sender: TObject);
+begin
+  Close;
+end;
+
+end.
