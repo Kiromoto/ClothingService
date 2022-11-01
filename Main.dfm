@@ -62,6 +62,10 @@ object MainForm: TMainForm
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = #1057#1087#1080#1089#1086#1082
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object StringGrid1: TStringGrid
         Left = 0
         Top = 31
@@ -407,6 +411,10 @@ object MainForm: TMainForm
     object TabSheet3: TTabSheet
       Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Edit2: TEdit
         Left = 216
         Top = 0
@@ -710,6 +718,10 @@ object MainForm: TMainForm
     object TabSheet2: TTabSheet
       Caption = #1057#1086#1093#1088#1072#1085#1077#1085#1080#1077
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Button28: TButton
         Left = 678
         Top = 3
