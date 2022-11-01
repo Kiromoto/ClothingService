@@ -217,7 +217,7 @@ Ap : Variant;
 Way : string;
 PokazMessag : boolean;
 ArZip : TZipFile;
-path, f, zname, zfn, fa : string;
+zname : string;
 //fa : TStringDynArray;
 
 function FullDirectoryCopyToZip(SourceDir, TargetDir: string; StopIfNotAllCopied, OverWriteFiles: Boolean): Boolean;
@@ -306,7 +306,7 @@ end;
 
 procedure ActualOfCart;
 var
-i, j, yOT, yV, yN, yR, mOT, mV, colN, colV, ColCart, P, ZZ : integer;
+i, j, yOT, yV, yN, yR, mOT, mV, colN, colV, ColCart, p, ZZ : integer;
 textEx, mS, yS, buf, NowDate : string;
 begin
  Ap.Range['E9']:='Начальник ОТиВ';
@@ -347,13 +347,13 @@ begin
  TextEx:=Ap.Range['E6'];
  if (TextEx='полковник') or (TextEx='генерал-майор') or (TextEx='генерал-лейтенант') or (TextEx='генерал-полковник') then
   begin
-   P:=14;
+   p:=14;
    Ap.Range[Ap.Cells[14, 1], Ap.Cells[15, 20]].Select;
    Ap.Selection.Interior.Color:=16777215;
   end
  else
   begin
-   P:=16;
+   p:=16;
    Ap.Range[Ap.Cells[14, 1], Ap.Cells[15, 20]].Select;
    Ap.Selection.Interior.Color:=14277081;
   end;
@@ -366,7 +366,7 @@ begin
 
  Ap.Range[Ap.Cells[1, 1], Ap.Cells[1, 1]].Select;
 
- for i:=P to 63 do
+ for i:=p to 63 do
   begin
    colCart:=0;
    for j:=7 to 19 do
@@ -374,7 +374,7 @@ begin
      textEx:=Ap.Cells[i,j]; //Читаем ячейку
      if (length(textEx)<>0) and (pos('/',textex)<>0) then // Если она не пуста, плюсуем количество предметов
       begin
-       P:=pos('/',textex);
+       p:=pos('/',textex);
        textex:=copy(textex,1,p-1);
        colCart:=colCart+StrToInt(textex);
       end;
@@ -392,7 +392,7 @@ begin
    Textex:=Ap.Cells[i,6]; //Читаем ячейку с аттестатом или переносом ведомости
    if (length(textex)<>0) and (pos('/',textex)<>0) then
     begin
-     P:=pos('/',textex);
+     p:=pos('/',textex);
      buf:=copy(textex,1,p-1); // Количество предметов прибывших с сотрудником
      delete(textex,1,p);
      mS:=copy(textex,1,2);
@@ -3582,7 +3582,6 @@ end;
 
 procedure TMainForm.Button21Click(Sender: TObject); //Автоматическая замена ВИ выбранному сотруднику на выбранную дату
 Var
- i : integer;
  wayPP, wayCart, NowDate, SumSpRas : string;
 begin
  MainForm.Label2.Caption:='Замена имущества сотруднику...';
@@ -3702,7 +3701,7 @@ procedure TMainForm.Button27Click(Sender: TObject); //Процедура замены ВИ всем с
 var
 SSR : real;
 i, j, buttonSelected, pEx, col : integer;
-NowDate, wayOPIS, TextEx, zam, SumSpRas : string;
+NowDate, wayOPIS, TextEx, zam : string;
 MasZam : array [1..2000,1..7] of string;
 // 1..5000 количество строк для записи
 // 1..7, где 1 личный номер карточки сотрудника
@@ -4069,7 +4068,7 @@ end;
 
 procedure saveCfg; //Сохранение данных в файл config.cfg
 var
- way, FileName, FilePath, S : string;
+ FileName, FilePath, S : string;
  FC : TextFile;
 begin
  FilePath:=ExtractFilePath(Application.ExeName);
