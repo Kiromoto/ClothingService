@@ -227,6 +227,7 @@ function FullDirectoryCopyToZip(SourceDir, TargetDir: string; StopIfNotAllCopied
 var
   SR: TSearchRec;
   I: Integer;
+
 begin
   Result:=False;
   SourceDir:=IncludeTrailingBackslash(SourceDir);
