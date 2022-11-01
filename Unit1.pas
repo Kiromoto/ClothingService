@@ -48,10 +48,9 @@ implementation
 
 {$R *.dfm}
 
-uses MAIN, ComObj;
+uses MAIN, ComObj, System.UITypes;
 Var
  Ap : Variant;
- Way : string;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
@@ -196,7 +195,10 @@ if (length(MaskEdit1.Text)>0)and (MaskEdit1.Text<>'Воинское звание')
         yD:=StrToInt(copy(TextEx,4,4));
         mP:=StrToInt(copy(buf,1,2));
         yP:=StrToInt(copy(buf,4,4));
-        if (pEx=19) or (pEx=22) or (pEx=35) or (pEx=36) or ((pEx>=38)and(pEx<=41)) or (pEx=43) or ((pEx>=47)and(pEx<=50)) or (pEx=52) or (pEx=57) or (pEx=61) or (pEx=63) then
+        if (pEx=19) or (pEx=22) or (pEx=35) or (pEx=36)
+        or ((pEx>=38)and(pEx<=41)) or (pEx=43)
+        or ((pEx>=47)and(pEx<=50)) or (pEx=52) or (pEx=57)
+        or (pEx=61) or (pEx=63) then
          begin  //Предметы введенные нормой от 07.2020 года
           if (yD<2020) or ((yd=2020)and(mD<=7))  then
            begin
